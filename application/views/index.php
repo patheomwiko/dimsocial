@@ -4,8 +4,8 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="<?=base_url('assets/img/favicon.png');?>');?>" type="image/png">
-        <title>MeetMe Personal</title>
+        <link rel="icon" href="<?=base_url('assets/img/main/logo.png');?>');?>" type="image/png">
+        <title>DIM Social</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -20,93 +20,112 @@
         <link rel="stylesheet" href="<?=base_url('assets/css/responsive.css');?>">
     </head>
     <body>
-        
-        <!--================Header Menu Area =================-->
-        <!-- <header class="header_area">
-            <div class="main_menu">
-            	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container box_1620"> -->
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<!-- <a class="navbar-brand logo_h" href="index.html"><img src="<?=base_url('assets/img/logo.png');?>" alt=""></a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button> -->
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<!-- <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-							<ul class="nav navbar-nav menu_nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="<?=site_url('home/index');?>">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="<?=site_url('home/desc_blog');?>">Main</a></li> 
-								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-							</ul>
-						</div> 
+
+
+        <header>
+            <div>
+                <ul class="nav justify-content-end fixed-top bg-primary">
+                    <li class="nav-item">
+                        <a class="nav-link active  text-light" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="#">Se connecter</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="#">Politiques de confidentialités</a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </header>
+ 
+        <!--================Testimonials Area =================-->
+        <section class="testimonials_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<!-- <h2>Toutes les catégories</h2> -->
+        			<p>Toutes les catégories.</p>
+        		</div>
+        		<div class="testi_inner">
+					<div class="testi_slider owl-carousel"> 
+                   
+						<div class="item">
+							<div class="testi_item bg-primary">
+								<a href="#"><h4 class="text-light">Agriculture</h4></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star-half-o"></i></a>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testi_item">
+                                <a href="#"><h4>Numérique</h4></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star-half-o"></i></a>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testi_item bg-primary">
+								<a href="#"><h4 class="text-light">Entrepreneuriat</h4></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star-half-o"></i></a>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testi_item">
+                                <a href="#"><h4>Industrie</h4></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star-half-o"></i></a>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testi_item bg-primary">
+								<a href="#"><h4 class="text-light">Art et Musique</h4></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star-half-o"></i></a>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testi_item">
+                                <a href="#"><h4>ENR</h4></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star-half-o"></i></a>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testi_item  bg-primary">
+                                <a href="#"><h4 class="text-light">Santé</h4></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star"></i></a>
+								<a href="#"><i class="fa fa-star-half-o"></i></a>
+							</div>
+						</div>
 					</div>
-            	</nav>
-            </div>
-        </header> -->
-        <!--================Header Menu Area =================-->
-        
-        <!--================Home Banner Area =================-->
-        <!-- <section class="home_banner_area blog_banner">
-            <div class="banner_inner d-flex align-items-center">
-            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="<?=base_url('assets/img/main/elements.jpg')?>"></div>
-				<div class="container">
-					<div class="blog_b_text text-center">
-						<h2>Dude You’re Getting <br /> a Telescope</h2>
-						<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first</p>
-						<a class="white_bg_btn" href="#">View More</a>
-					</div>
-				</div>
-            </div>
-        </section> -->
-        <!--================End Home Banner Area =================-->
-        
-        <!--================Blog Categorie Area =================-->
-        <section class="blog_categorie_area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="<?=base_url('assets/img/blog/cat-post/cat-post-3.jpg');?>" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="blog-details.html"><h5>Social Life</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Enjoy your social life together</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="<?=base_url('assets/img/blog/cat-post/cat-post-2.jpg');?>" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="blog-details.html"><h5>Politics</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Be a part of politics</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="categories_post">
-                            <img src="<?=base_url('assets/img/blog/cat-post/cat-post-1.jpg');?>" alt="post">
-                            <div class="categories_details">
-                                <div class="categories_text">
-                                    <a href="blog-details.html"><h5>Food</h5></a>
-                                    <div class="border_line"></div>
-                                    <p>Let the food be finished</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        		</div>
+        	</div>
         </section>
-        <!--================Blog Categorie Area =================-->
-        
+        <!--================End Testimonials Area =================-->
+
+ 
         <!--================Blog Area =================-->
         <section class="blog_area">
             <div class="container">
@@ -127,6 +146,7 @@
                                             <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
                                             <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+                                            <li><a href="#">0 Likes<i class="fa fa-heart "></i></a></li>
                                         </ul>
                                     </div>
                                </div>
@@ -137,6 +157,7 @@
                                             <a href="single-blog.html"><h2>Astronomy Binoculars A Great Alternative</h2></a>
                                             <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
                                             <a href="single-blog.html" class="white_bg_btn">View More</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -279,29 +300,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget search_widget">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search Posts">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-                                    </span>
-                                </div><!-- /input-group -->
-                                <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget author_widget">
-                                <img class="author_img rounded-circle" src="<?=base_url('assets/img/blog/author.png');?>" alt="">
-                                <h4>Charlie Barber</h4>
-                                <p>Senior blog writer</p>
-                                <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-github"></i></a>
-                                    <a href="#"><i class="fa fa-behance"></i></a>
-                                </div>
-                                <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits detractors.</p>
-                                <div class="br"></div>
-                            </aside>
+                        <div class="blog_right_sidebar"> 
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title">Popular Posts</h3>
                                 <div class="media post_item">

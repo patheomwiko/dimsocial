@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ProjectModel extends CI_Model {
+class ActivityModel extends CI_Model {
 
     /**
      * PROJECT
@@ -18,11 +18,11 @@ class ProjectModel extends CI_Model {
      */
 
     /**
-     * $table_project
+     * $table_activity
      *
      * @var string
      */
-    private $table_project = 'projects';
+    private $table_activity = 'activities';
     
     /**
      * $table_category
@@ -53,7 +53,7 @@ class ProjectModel extends CI_Model {
      * @return void
      */
     public function get_project() {
-        return $this->db->get($this->table_project); 
+        return $this->db->get($this->table_activity); 
     }
 
     /**
@@ -63,7 +63,7 @@ class ProjectModel extends CI_Model {
      * @return void
      */
     public function get_where_project($id) {
-        return $this->db->where('id', $id)->get($this->table_project);
+        return $this->db->where('id', $id)->get($this->table_activity);
     } 
 
     /**
@@ -73,7 +73,7 @@ class ProjectModel extends CI_Model {
      */
     public function get_desc_projects() {
         $this->db->order_by('id', 'DESC');
-        return $this->db->get($this->table_project); 
+        return $this->db->get($this->table_activity); 
     }
 
 
@@ -85,7 +85,7 @@ class ProjectModel extends CI_Model {
      */
     public function get_where_desc_projects($id) {
         $this->db->order_by('id', 'DESC');
-        return $this->db->where('id', $id)->get($this->table_project);
+        return $this->db->where('id', $id)->get($this->table_activity);
     }
 
 
@@ -95,7 +95,7 @@ class ProjectModel extends CI_Model {
      * @return integer
      */
     public function count_projects() : int {
-        return $this->db->count_all($this->table_project);
+        return $this->db->count_all($this->table_activity);
     }
 
 
@@ -109,7 +109,7 @@ class ProjectModel extends CI_Model {
     public function add_project($data) : bool { 
         $arr = array($data['description']);
         if( ! $this->db->where_not_in('description', $arr) == TRUE) {
-            $this->db->insert($this->table_project, $data);
+            $this->db->insert($this->table_activity, $data);
             $this->done = TRUE;
         } else {
             $this->done = FALSE;
@@ -125,7 +125,7 @@ class ProjectModel extends CI_Model {
      */
     public function replace_project($data) : bool {
         $this->db->where('id', $data['id']);
-        return $this->db->replace($this->table_project, $data);
+        return $this->db->replace($this->table_activity, $data);
     }
 
     /**
@@ -135,7 +135,7 @@ class ProjectModel extends CI_Model {
      * @return boolean
      */
     public function update_project($data) : bool {
-        return $this->db->update($this->table_project, $data, array('id' => $data['id']));
+        return $this->db->update($this->table_activity, $data, array('id' => $data['id']));
     }
 
     /**
@@ -145,7 +145,7 @@ class ProjectModel extends CI_Model {
      * @return boolean
      */
     public function delete_project($id) : bool {
-        return $this->db->delete($this->table_project, array('id' => $id));  
+        return $this->db->delete($this->table_activity, array('id' => $id));  
     }
 
 
@@ -201,7 +201,7 @@ class ProjectModel extends CI_Model {
      * @return void
      */
     public function get_category_where($id) {
-        return $this->db->where('id_category', $id)->get($this->table_project);
+        return $this->db->where('id_category', $id)->get($this->table_activity);
     }
 
 }

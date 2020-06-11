@@ -17,4 +17,16 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('desc_blog');
 	}
+
+	public function publish()
+	{
+		$this->load->view('publish');
+	}
+
+	public function sign_in()
+	{
+		$this->load->view('sign_in');
+	}
+
+
 }

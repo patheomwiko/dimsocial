@@ -9,6 +9,9 @@ class UserModel extends CI_Model {
      * email,
      * address,
      * phone,
+     * gender,
+     * bio,
+     * site,
      * photoUrl,
      * password,
      * state,
@@ -16,11 +19,11 @@ class UserModel extends CI_Model {
 
      
     /**
-     * $table
+     * $table_entrepreneur
      *
      * @var string
      */
-    private $table = 'entrepreneurs';
+    private $table_entrepreneur = 'entrepreneurs';
 
     /**
      * $done
@@ -36,7 +39,7 @@ class UserModel extends CI_Model {
      * @return void
      */
     public function get() {
-        return $this->db->get($this->table); 
+        return $this->db->get($this->table_entrepreneur); 
     }
 
     /**
@@ -46,7 +49,7 @@ class UserModel extends CI_Model {
      * @return void
      */
     public function get_where($id) {
-        return $this->db->where('id', $id)->get($this->table);
+        return $this->db->where('id', $id)->get($this->table_entrepreneur);
     } 
 
     /**
@@ -56,7 +59,7 @@ class UserModel extends CI_Model {
      */
     public function get_desc() {
         $this->db->order_by('id', 'DESC');
-        return $this->db->get($this->table); 
+        return $this->db->get($this->table_entrepreneur); 
     }
 
 
@@ -68,7 +71,7 @@ class UserModel extends CI_Model {
      */
     public function get_where_desc($id) {
         $this->db->order_by('id', 'DESC');
-        return $this->db->where('id', $id)->get($this->table);
+        return $this->db->where('id', $id)->get($this->table_entrepreneur);
     }
 
 
@@ -78,7 +81,7 @@ class UserModel extends CI_Model {
      * @return integer
      */
     public function count() : int {
-        return $this->db->count_all($this->table);
+        return $this->db->count_all($this->table_entrepreneur);
     }
 
 
@@ -91,7 +94,7 @@ class UserModel extends CI_Model {
     public function add($data) : bool { 
         $arr = array($data['email']);
         if( ! $this->db->where_not_in('email', $arr) == TRUE) {
-            $this->db->insert($this->table, $data);
+            $this->db->insert($this->table_entrepreneur, $data);
             $this->done = TRUE;
         } else {
             $this->done = FALSE;
@@ -107,7 +110,7 @@ class UserModel extends CI_Model {
      */
     public function replace($data) : bool {
         $this->db->where('id', $data['id']);
-        return $this->db->replace($this->table, $data);
+        return $this->db->replace($this->table_entrepreneur, $data);
     }
 
     /**
@@ -117,7 +120,7 @@ class UserModel extends CI_Model {
      * @return boolean
      */
     public function update($data) : bool {
-        return $this->db->update($this->table, $data, array('id' => $data['id']));
+        return $this->db->update($this->table_entrepreneur, $data, array('id' => $data['id']));
     }
 
     /**
@@ -127,7 +130,7 @@ class UserModel extends CI_Model {
      * @return boolean
      */
     public function delete($id) : bool {
-        return $this->db->delete($this->table, array('id' => $id));  
+        return $this->db->delete($this->table_entrepreneur, array('id' => $id));  
     }
 
 

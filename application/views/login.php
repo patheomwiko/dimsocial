@@ -20,6 +20,25 @@
         <link rel="stylesheet" href="<?=base_url('assets/css/responsive.css');?>">
     </head>
     <body>
+
+
+    <header>
+            <div>
+                <ul class="nav justify-content-end fixed-top bg-primary">
+                    <li class="nav-item">
+                        <a class="nav-link active  text-light" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="#">Se connecter</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="#">Politiques de confidentialités</a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </header>
+ 
         
       
         <!--================Blog Area =================-->
@@ -58,7 +77,12 @@
                             <div class="col-lg-9 col-md-9 blog_details">
                                 <h2>DIM Social - Technologie</h2> 
                                 <p class="excert text-justify">
-                                Aujourd’hui le numérique est en expansion et rend la vie intelligente à travers plusieurs solutions intégrées dans divers domaines notamment dans le finance, la médecine, la communication, l’agriculture, l’armée, l’industrie…, tout cela dans l’objectif de simplifier certaines tâches quotidiennes. Vu sa capacité de croissance rapide dans tous les domaines sans exception, DIM a trouvé ce secteur l’un des moyens efficaces pour participer au développement. 
+                                Créer un réseau des entrepreneurs pour permettre à tous nos utilisateurs de partager leurs
+                                actualités, de faire la géolocalisation de leurs services. 
+                                <br> Ce réseau social permettra aux entreprises, entrepreneurs d’accroitre
+                                sensiblement leurs zones d’action, profiter de nos outils pour mieux évaluer les revenues,
+                                consulter les experts, permettre les échanges avec les professionnels et tenir de forums
+                                économiques et autres publicités pour la plateforme.
                                 </p>
                             </div>
                            
@@ -125,6 +149,8 @@
         </section>
         <!--================Blog Area =================-->
         
+    </body>
+</html>
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
