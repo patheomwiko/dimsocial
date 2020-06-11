@@ -22,19 +22,19 @@
     <body>
         
         <!--================Header Menu Area =================-->
-        <header class="header_area">
+        <!-- <header class="header_area">
             <div class="main_menu">
             	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container box_1620">
+					<div class="container box_1620"> -->
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="<?=base_url('assets/img/logo.png');?>" alt=""></a>
+						<!-- <a class="navbar-brand logo_h" href="index.html"><img src="<?=base_url('assets/img/logo.png');?>" alt=""></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
-						</button>
+						</button> -->
 						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<!-- <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
 								<li class="nav-item active"><a class="nav-link" href="<?=site_url('home/index');?>">Home</a></li> 
 								<li class="nav-item"><a class="nav-link" href="<?=site_url('home/desc_blog');?>">Main</a></li> 
@@ -44,11 +44,11 @@
 					</div>
             	</nav>
             </div>
-        </header>
+        </header> -->
         <!--================Header Menu Area =================-->
         
         <!--================Home Banner Area =================-->
-        <section class="home_banner_area blog_banner">
+        <!-- <section class="home_banner_area blog_banner">
             <div class="banner_inner d-flex align-items-center">
             	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="<?=base_url('assets/img/main/elements.jpg')?>"></div>
 				<div class="container">
@@ -59,7 +59,7 @@
 					</div>
 				</div>
             </div>
-        </section>
+        </section> -->
         <!--================End Home Banner Area =================-->
         
         <!--================Blog Categorie Area =================-->
