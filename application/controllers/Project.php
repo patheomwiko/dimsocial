@@ -8,15 +8,15 @@ class Project extends CI_Controller {
      *
      * @return array
      */
-    private function project_data() : array {
-        return array(
-            'title' => $this->input->post('', TRUE),
-            'description' => $this->input->post('', TRUE),
-            'category' => $this->input->post('', TRUE),
-            '' => $this->input->post('', TRUE),
-            '' => $this->input->post('', TRUE),
-            '' => $this->input->post('', TRUE),
-        );
-    }
+    // private function project_data() : array {
+    //     return array(
+    //         'title' => $this->input->post('', TRUE),
+    //         'description' => $this->input->post('', TRUE),
+    //         'category' => $this->input->post('', TRUE),
+    //         '' => $this->input->post('', TRUE),
+    //         '' => $this->input->post('', TRUE),
+    //         '' => $this->input->post('', TRUE),
+    //     );
+    // }
 
 }
