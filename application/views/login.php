@@ -15,6 +15,42 @@
         <link rel="stylesheet" href="<?=base_url('assets/vendors/nice-select/css/nice-select.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/animate-css/animate.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/popup/magnific-popup.css');?>">
+        
+        <style>
+             .blog_right_sidebar .tag_cloud_widget ul li a:hover {
+                background-image: -moz-linear-gradient(0deg, #1d3163 0%, #88f3ff 100%);
+                background-image: -webkit-linear-gradient(0deg, #1d3163 0%, #88f3ff 100%);
+                background-image: -ms-linear-gradient(0deg, #1d3163 0%, #88f3ff 100%);
+                color: #fff; 
+            }
+            .blog_right_sidebar .post_category_widget .cat-list li:hover a {
+                color: #1d3163; 
+            }
+            .blog_right_sidebar .post_category_widget .cat-list li:hover {
+                border-color: #1d3163; 
+            }
+
+            .blog-pagination .page-link:hover {
+                color: #fff;
+                text-decoration: none;
+                background-color: #1d3163; 
+                border-color: #eee; 
+            }
+
+            .blog-pagination .page-item.active .page-link {
+                background-color: #1d3163; 
+                border-color: transparent;
+                color: #fff; 
+            }
+
+            .white_bg_btn:hover {
+                background-image: -moz-linear-gradient(0deg, #1d3163 0%, #88f3ff 100%);
+                background-image: -webkit-linear-gradient(0deg, #1d3163 0%, #88f3ff 100%);
+                background-image: -ms-linear-gradient(0deg, #1d3163 0%, #88f3ff 100%);
+                color: #fff;
+                border: none; 
+            }
+        </style>
         <!-- main css -->
         <link rel="stylesheet" href="<?=base_url('assets/css/style.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/css/responsive.css');?>">
@@ -24,7 +60,7 @@
 
         <header>
             <div>
-                <ul class="nav justify-content-end fixed-top bg-primary">
+                <ul class="nav justify-content-end fixed-top" style="background: #1d3163;">
                     <li class="nav-item">
                         <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
@@ -61,12 +97,6 @@
                             </div>
                             <div class="col-lg-3  col-md-3">
                                 <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">Alimentation,</a>
-                                        <a class="active" href="#">Technologie,</a>
-                                        <a href="#">ENR,</a>
-                                        <a href="#">Immobilier</a>
-                                    </div>
                                     <ul class="blog_meta list">
                                         <li><a href="#">Daniel Wa Mukina<i class="lnr lnr-user"></i></a></li>
                                         <li><a href="#">10 Juin, 2020<i class="lnr lnr-calendar-full"></i></a></li>
@@ -140,7 +170,7 @@
                                     
                                     <div class="form-group row">
                                         <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-primary btn-sm btn-block">Se connecter</button>
+                                        <button type="submit" class="btn btn-primary btn-sm btn-block border-0" style="background: #1d3163;">Se connecter</button>
                                         </div>
                                     </div>
                                 </form>

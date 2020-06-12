@@ -88,6 +88,7 @@ class User extends CI_Controller {
     function login() 
     {
 
+        print_r($this->user_login_data());
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
