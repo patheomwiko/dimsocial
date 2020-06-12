@@ -23,6 +23,11 @@ class Home extends CI_Controller {
 		$this->load->view('publish');
 	}
 
+	public function activity() 
+	{
+		$this->load->view('activity');
+	}
+
 	public function sign_in()
 	{
 		$this->load->view('sign_in');

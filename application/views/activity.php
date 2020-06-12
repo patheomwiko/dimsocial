@@ -21,50 +21,25 @@
     </head>
     <body>
         
-        <!--================Header Menu Area =================-->
-        <header class="header_area">
-            <div class="main_menu">
-            	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container box_1620">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="<?=base_url('assets/img/logo.png');?>" alt=""></a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-							<ul class="nav navbar-nav menu_nav ml-auto">
-                                <li class="nav-item active"><a class="nav-link" href="<?=site_url('home/index');?>">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="<?=site_url('home/desc_blog');?>">Main</a></li> 
-								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-							</ul>
-						</div> 
-					</div>
-            	</nav>
+
+    
+        <header>
+            <div>
+                <ul class="nav justify-content-end fixed-top bg-primary">
+                    <li class="nav-item">
+                        <a class="nav-link active  text-light" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="#">Se connecter</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="#">Politiques de confidentialités</a>
+                    </li>
+                   
+                </ul>
             </div>
         </header>
-        <!--================Header Menu Area =================-->
-        
-        <!--================Home Banner Area =================-->
-        <section class="banner_area">
-            <div class="box_1620">
-				<div class="banner_inner d-flex align-items-center">
-					<div class="container">
-						<div class="banner_content text-center">
-							<h2>Blog Details</h2>
-							<div class="page_link">
-								<a href="index.html">Home</a>
-								<a href="blog.html">Blog</a>
-								<a href="single-blog.html">Blog Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
-            </div>
-        </section>
-        <!--================End Home Banner Area =================-->
+    
         
         <!--================Blog Area =================-->
         <section class="blog_area single-post-area p_120">
@@ -260,52 +235,19 @@
                             </div>	                                             				
                         </div>
                         <div class="comment-form">
-                            <h4>Leave a Reply</h4>
-                            <form>
-                                <div class="form-group form-inline">
-                                  <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-                                  </div>
-                                  <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                                  </div>										
-                                </div>
+                            <h4>Faites un commentaire</h4>
+                            <form method="POST" action="<?=site_url('user/comment');?>" novalidate="novalidate">  
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                                    <textarea class="form-control mb-10" rows="5" name="comment" placeholder="Votre commentaire .... " onfocus="this.placeholder = ''" onblur="this.placeholder = 'comment'" required=""></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-                                </div>
-                                <a href="#" class="primary-btn submit_btn">Post Comment</a>	
+                                <button type="submit" class="btn btn-primary btn-sm btn-block">Commenter</button>	
                             </form>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget search_widget">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search Posts">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-                                    </span>
-                                </div><!-- /input-group -->
-                                <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget author_widget">
-                                <img class="author_img rounded-circle" src="<?=base_url('assets/img/blog/author.png');?>" alt="">
-                                <h4>Charlie Barber</h4>
-                                <p>Senior blog writer</p>
-                                <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-github"></i></a>
-                                    <a href="#"><i class="fa fa-behance"></i></a>
-                                </div>
-                                <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits detractors.</p>
-                                <div class="br"></div>
-                            </aside>
+                        <div class="blog_right_sidebar"> 
                             <aside class="single_sidebar_widget popular_post_widget">
-                                <h3 class="widget_title">Popular Posts</h3>
+                                
                                 <div class="media post_item">
                                     <img src="<?=base_url('assets/img/blog/popular-post/post1.jpg');?>" alt="post">
                                     <div class="media-body">
@@ -336,12 +278,29 @@
                                 </div>
                                 <div class="br"></div>
                             </aside>
+                            <aside class="single-sidebar-widget tag_cloud_widget">
+                               
+                                <ul class="list">
+                                    <li><a href="#">Technology</a></li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Architecture</a></li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Food</a></li>
+                                    <li><a href="#">Technology</a></li>
+                                    <li><a href="#">Lifestyle</a></li>
+                                    <li><a href="#">Art</a></li>
+                                    <li><a href="#">Adventure</a></li>
+                                    <li><a href="#">Food</a></li>
+                                    <li><a href="#">Lifestyle</a></li>
+                                    <li><a href="#">Adventure</a></li>
+                                </ul>
+                            </aside>
                             <aside class="single_sidebar_widget ads_widget">
                                 <a href="#"><img class="img-fluid" src="<?=base_url('assets/img/blog/add.jpg');?>" alt=""></a>
                                 <div class="br"></div>
                             </aside>
                             <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Post Catgories</h4>
+                               
                                 <ul class="list cat-list">
                                     <li>
                                         <a href="#" class="d-flex justify-content-between">
@@ -388,41 +347,7 @@
                                 </ul>
                                 <div class="br"></div>
                             </aside>
-                            <aside class="single-sidebar-widget newsletter_widget">
-                                <h4 class="widget_title">Newsletter</h4>
-                                <p>
-                                Here, I focus on a range of items and features that we use in life without
-                                giving them a second thought.
-                                </p>
-                                <div class="form-group d-flex flex-row">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                                        </div>
-                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
-                                    </div>
-                                    <a href="#" class="bbtns">Subcribe</a>
-                                </div>	
-                                <p class="text-bottom">You can unsubscribe at any time</p>	
-                                <div class="br"></div>							
-                            </aside>
-                            <aside class="single-sidebar-widget tag_cloud_widget">
-                                <h4 class="widget_title">Tag Clouds</h4>
-                                <ul class="list">
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Art</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                </ul>
-                            </aside>
+                          
                         </div>
                     </div>
                 </div>
