@@ -22,22 +22,29 @@
     <body>
 
 
-    <header>
+        <header>
             <div>
                 <ul class="nav justify-content-end fixed-top bg-primary">
                     <li class="nav-item">
-                        <a class="nav-link active  text-light" href="#">Accueil</a>
+                        <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Se connecter</a>
+                        <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/login')?>"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Politiques de confidentialités</a>
-                    </li>
+                        <a class="nav-link text-light" href="<?=site_url('home/sign_in')?>"><i class="fa fa-sign-in"></i><small> <strong>S'inscrire</strong> </small> </a>
+                    </li> 
+                    <!-- <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
+                    </li> -->
                    
                 </ul>
             </div>
         </header>
+ 
  
         
       
@@ -103,39 +110,41 @@
 
 
 
-                            <!-- *** Login Form **** -->
-                            <form method="POST" action="<?=site_url('home');?>" class="contact_form" novalidate="novalidate">
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <input type="email" class="form-control rounded-0" id="inputEmail3" placeholder="Email" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <input type="password" class="form-control rounded-0" id="inputPassword3" placeholder="Mot de passe" required>
-                                    </div>
-                                </div>
-                                <fieldset class="form-group">
-                                    <div class="row"> 
+                                <!-- *** Login Form **** -->
+                                <form method="POST" action="<?=site_url('user/login');?>" class="contact_form" novalidate="novalidate">
+                                    <div class="form-group row">
                                         <div class="col-sm-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="stay_connect" id="stay_connect1" value="option1" checked>
-                                                <label class="form-check-label text-left" for="stay_connect1">
-                                                   <small class="text-muted">Me garder connecter</small> 
-                                                </label>
-                                            </div> 
+                                            <input type="email" name="email" value="<?=set_value('email');?>" class="form-control rounded-0" id="email" placeholder="Email" required>
+                                            <small class="text-danger"><?= form_error('email','<em>','</em>') ?></small>
                                         </div>
                                     </div>
-                                </fieldset>
-                                
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary btn-sm btn-block">Se connecter</button>
-                                        <small class="text-muted"></small>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            <input type="password" name="password" class="form-control rounded-0" id="password" placeholder="Mot de passe" required>
+                                            <small class="text-danger"><?= form_error('password','<em>','</em>') ?></small>
+                                            <small class="text-muted text-left">Assurez-vous qu'il s'agit d'au moins 15 caractères OU d'au moins 8 caractères.</small>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                            <!-- *** Login Form **** -->
+                                    <fieldset class="form-group">
+                                        <div class="row"> 
+                                            <div class="col-sm-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="stay_connect" id="stay_connect1" value="option1" checked>
+                                                    <label class="form-check-label text-left" for="stay_connect1">
+                                                    <small class="text-muted">Me garder connecter</small> 
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary btn-sm btn-block">Se connecter</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- *** Login Form **** -->
 
 
 

@@ -18,75 +18,100 @@
         <!-- main css -->
         <link rel="stylesheet" href="<?=base_url('assets/css/style.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/css/responsive.css');?>">
+ 
+        <!-- *** jQuery *** -->
+        <script src="<?=base_url('assets/js/jQuery-3.4.1.min.js');?>"></script>
+        <!-- *** jQuery *** -->
     </head>
     <body>
 
-    <header>
+   
+
+        <header>
             <div>
                 <ul class="nav justify-content-end fixed-top bg-primary">
                     <li class="nav-item">
-                        <a class="nav-link active  text-light" href="#">Accueil</a>
+                        <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Se connecter</a>
+                        <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/login')?>"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Politiques de confidentialités</a>
-                    </li>
+                        <a class="nav-link text-light" href="<?=site_url('home/sign_in')?>"><i class="fa fa-sign-in"></i><small> <strong>S'inscrire</strong> </small> </a>
+                    </li> 
+                    <!-- <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
+                    </li> -->
                    
                 </ul>
             </div>
-        </header>
- 
+        </header> 
 
         <!--================Contact Area =================-->
         <section class="contact_area p_120">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9">
-                        <form class="row contact_form" action="<?=site_url('home');?>" method="post" id="contactForm" novalidate="novalidate">
+                        
+                        <form class="row contact_form" action="<?=site_url('user/sign_in');?>" method="post" id="contactForm" novalidate="novalidate">
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <h4 class="text-muted">S'inscrivez-vous et partagez votre activité</h4>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nom" required>
+                                    <input type="text" class="form-control" id="name" name="name" value="<?=set_value('name');?>" placeholder="Nom" required>
+                                    <small class="text-danger"><?= form_error('name','<em>','</em>') ?></small>
                                 </div> 
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                    <input type="email" class="form-control" id="email" name="email" value="<?=set_value('email');?>" placeholder="Email" required>
+                                    <small class="text-danger"><?= form_error('email','<em>','</em>') ?></small>
                                 </div> 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Addresse physique">
+                                    <input type="text" class="form-control" id="address" name="address" value="<?=set_value('addrses');?>" placeholder="Addresse physique">
+                                    <small class="text-danger"><?= form_error('address','<em>','</em>') ?></small>
                                 </div> 
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Téléphone" required>
+                                    <input type="tel" class="form-control" id="phone" name="phone" value="<?=set_value('phone');?>" placeholder="Téléphone" required>
+                                    <small class="text-danger"><?= form_error('phone','<em>','</em>') ?></small>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="site" name="site" placeholder="Site web (facultatif)">
+                                    <input type="text" class="form-control" id="site" name="site" value="<?=set_value('site');?>" placeholder="Site web (facultatif)">
+                                    <small class="text-danger"><?= form_error('site','<em>','</em>') ?></small>
                                 </div> 
 
                                 <div class="form-group"> 
-                                    <select name="gender"  id="gender" class="form-group form-control" required>
-                                        <option value="m"selected>Homme</option> 
+                                    <select name="gender"  id="gender"  class="form-group form-control" required>
+                                        <option value="m" selected>Homme</option> 
                                         <option value="f" >Femme</option> 
                                     </select>
+                                    <small class="text-danger"><?= form_error('gender','<em>','</em>') ?></small>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="bio" id="bio" rows="1" placeholder="Une biographie sur vous..."></textarea>
+                                    <textarea class="form-control" name="bio" id="bio" value="<?=set_value('bio');?>" rows="1" placeholder="Une biographie sur vous..."></textarea>
+                                    <small class="text-danger"><?= form_error('bio','<em>','</em>') ?></small>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="imageUrl"> <small class="text-center">Votre photo</small> </label>
-                                    <input type="file" class="form-control" id="imageUrl" name="imageUrl">
+                                    <input type="file" class="form-control" value="<?=set_value('imageUrl');?>" id="imageUrl" name="imageUrl">
+                                    <div class="col-md-12" id="uploaded_image">
+                                        
+                                    </div> 
                                 </div>
 
                                 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe *" required>
+                                    <input type="password" class="form-control" value="<?=set_value('password');?>" id="password" name="password" placeholder="Mot de passe *" required>
+                                    <small class="text-muted text-left"> <i>Assurez-vous qu'il s'agit d'au moins 15 caractères OU d'au moins 8 caractères.</i> </small>
+                                    <small class="text-danger"><?= form_error('password','<em>','</em>') ?></small>
                                 </div> 
                                 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="site" name="site" placeholder="Confimer votre mot de passe *" required>
+                                    <input type="password" class="form-control" value="<?=set_value('confirm');?>" id="confirm" name="confirm" placeholder="Confimer votre mot de passe *" required>
+                                    <small class="text-danger"><?= form_error('confirm','<em>','</em>') ?></small>
                                 </div> 
 
                                 <div class="form-group">
@@ -103,60 +128,42 @@
                                 <aside class="single-sidebar-widget tag_cloud_widget">
                                     <h4 class="widget_title">Les plus actives</h4>
                                     <ul class="list">
-                                        <li><a href="#">Technologie</a></li>
-                                        <li><a href="#">Agriculture</a></li>
-                                        <li><a href="#">Architecture</a></li> 
-                                        <li><a href="#">Alimentation</a></li> 
-                                        <li><a href="#">Habillement</a></li>
-                                        <li><a href="#">Art et Musique</a></li>
-                                        <li><a href="#">Evenementiel</a></li>  
+                                        <?php
+                                            if(isset($categories)) 
+                                            {
+                                                if($categories -> num_rows() > 0) 
+                                                {
+                                                    foreach ($categories -> result() as $row) 
+                                                    {
+                                                        echo '<li><a href="'.site_url('activity/get_activity/'.$row->id).'">'.$row->title.'</a></li>';
+                                                    }
+                                                }
+                                            } 
+                                        ?> 
                                     </ul>
                                 </aside>
                                 <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title">Top Catgories</h4>
                                 <ul class="list cat-list">
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Technologie</p>
-                                            <p>37</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Agriculture</p>
-                                            <p>24</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Architecture</p>
-                                            <p>59</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Art et Musique</p>
-                                            <p>29</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Alimentation</p>
-                                            <p>15</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Architecture</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Evenementiel</p>
-                                            <p>44</p>
-                                        </a>
-                                    </li>															
+                                    <?php
+                                        if(isset($categories)) 
+                                        {
+                                            if($categories -> num_rows() > 0) 
+                                            {
+                                                foreach ($categories -> result() as $row) 
+                                                {
+                                                    echo '
+                                                    <li>
+                                                        <a href="'.site_url('activity/get_activity/'.$row->id).'" class="d-flex justify-content-between">
+                                                            <p>'.$row->title.'</p>
+                                                            <p>0</p>
+                                                        </a>
+                                                    </li>
+                                                    ';
+                                                }
+                                            }
+                                        } 
+                                    ?> 										
                                 </ul>
                                 <div class="br"></div>
                             </aside>
@@ -259,3 +266,47 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </body>
 </html>
       
+<script>
+
+
+$(document).ready(function(){
+	$('#imageUrl').change(function(){
+		
+		var files = $('#imageUrl')[0].files;
+		var error = '';
+		var form_data = new FormData();
+		
+		for (var index = 0; index < files.length; index++) {
+			var name = files[index].name;
+			var extension = name.split('.').pop().toLowerCase();
+			
+			if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+				error += 'Invalid ' + index + ' image file.';
+			} else {
+				form_data.append("files[]", files[index]);
+			}
+		}
+
+		if(error == '') {
+			$.ajax({
+				url:"<?php echo base_url(); ?>user/upload_image",
+				method:'POST',
+				data:form_data,
+				contentType:false,
+				cache:false, 
+				processData:false,
+				beforeSend:function() {
+					$('#uploaded_image').html("<label class='text-success'>Uploading...</label>");
+				},
+				success:function(data) { 
+					$('#uploaded_image').html(data);
+					// $('#files').val('');
+				}
+			});
+		} else {
+			alert(error);
+		}
+	});
+});
+
+</script> 

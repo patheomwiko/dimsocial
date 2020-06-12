@@ -62,7 +62,18 @@ class Activity extends CI_Controller {
 	}
  
 
-    function add_activity() {
+    function publish() 
+    {
+        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
+            array(
+                'required' => 'Le champs %s est obligatoire.',
+                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
+                'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
+                'xss_clean' => 'Le  %schamps contient des caractères inapropriés.',
+                'valid_email' => 'Entrez un e-mail valide.'
+            )
+        );
+
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 '' => '',
@@ -70,6 +81,7 @@ class Activity extends CI_Controller {
                 '' => '',
             )
         );
+
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 '' => '',
@@ -77,6 +89,7 @@ class Activity extends CI_Controller {
                 '' => '',
             )
         );
+
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 '' => '',
@@ -84,13 +97,7 @@ class Activity extends CI_Controller {
                 '' => '',
             )
         );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
+
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 '' => '',
@@ -99,7 +106,8 @@ class Activity extends CI_Controller {
             )
         );
         
-        if($this->form_validation->run()) {
+        if($this->form_validation->run()) 
+        {
             $result = $this->activitymodel->add_activity($this->activity_data());
             if($result == TRUE) {
                 echo 'Activity is added !';

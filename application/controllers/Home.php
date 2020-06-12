@@ -22,7 +22,8 @@ class Home extends CI_Controller {
 
 	public function publish()
 	{
-		$this->load->view('publish');
+		$data['categories'] = $this->ActivityModel->get_category();
+		$this->load->view('publish', $data);
 	}
 
 	public function activity() 
@@ -32,8 +33,13 @@ class Home extends CI_Controller {
 
 	public function sign_in()
 	{
-		$this->load->view('sign_in');
+		$data['categories'] = $this->ActivityModel->get_category();
+		$this->load->view('sign_in', $data);
 	}
 
+	public function politic()
+	{
+		echo 'Politics';
+	}
 
 }

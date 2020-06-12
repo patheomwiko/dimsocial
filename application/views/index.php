@@ -26,14 +26,20 @@
             <div>
                 <ul class="nav justify-content-end fixed-top bg-primary">
                     <li class="nav-item">
-                        <a class="nav-link active  text-light" href="#">Accueil</a>
+                        <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Se connecter</a>
+                        <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/login')?>"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Politiques de confidentialités</a>
-                    </li>
+                        <a class="nav-link text-light" href="<?=site_url('home/sign_in')?>"><i class="fa fa-sign-in"></i><small> <strong>S'inscrire</strong> </small> </a>
+                    </li> 
+                    <!-- <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
+                    </li> -->
                    
                 </ul>
             </div>
@@ -48,77 +54,32 @@
         		</div>
         		<div class="testi_inner">
 					<div class="testi_slider owl-carousel"> 
-                   
-						<div class="item">
-							<div class="testi_item bg-primary">
-								<a href="#"><h4 class="text-light">Agriculture</h4></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testi_item">
-                                <a href="#"><h4>Numérique</h4></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testi_item bg-primary">
-								<a href="#"><h4 class="text-light">Entrepreneuriat</h4></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testi_item">
-                                <a href="#"><h4>Industrie</h4></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testi_item bg-primary">
-								<a href="#"><h4 class="text-light">Art et Musique</h4></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testi_item">
-                                <a href="#"><h4>ENR</h4></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testi_item  bg-primary">
-                                <a href="#"><h4 class="text-light">Santé</h4></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
+                        <?php
+                            if(isset($categories)) 
+                            {
+                                if($categories -> num_rows() > 0) 
+                                {
+                                    foreach ($categories -> result() as $row) 
+                                    {
+                                        echo '
+                                        <div class="item">
+                                            <div class="testi_item bg-primary">
+                                                <a href="#"><h4 class="text-light">'.$row->title.'</h4></a>
+                                                <a href="#"><i class="fa fa-star"></i></a>
+                                                <a href="#"><i class="fa fa-star"></i></a>
+                                                <a href="#"><i class="fa fa-star"></i></a>
+                                                <a href="#"><i class="fa fa-star"></i></a>
+                                                <a href="#"><i class="fa fa-star-half-o"></i></a>
+                                            </div>
+                                        </div>
+                                        ';
+                                    }
+                                }
+                            } 
+                        ?> 				
+
+                    
+					 
 					</div>
         		</div>
         	</div>
@@ -340,48 +301,27 @@
                             <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title">Post Catgories</h4>
                                 <ul class="list cat-list">
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Technology</p>
-                                            <p>37</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Lifestyle</p>
-                                            <p>24</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Fashion</p>
-                                            <p>59</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Art</p>
-                                            <p>29</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Food</p>
-                                            <p>15</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Architecture</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Adventure</p>
-                                            <p>44</p>
-                                        </a>
-                                    </li>															
+                                  
+                                    <?php
+                                        if(isset($categories)) 
+                                        {
+                                            if($categories -> num_rows() > 0) 
+                                            {
+                                                foreach ($categories -> result() as $row) 
+                                                {
+                                                    echo '
+                                                    <li>
+                                                        <a href="'.site_url('activity/get_activity/' . $row->id ).'" class="d-flex justify-content-between">
+                                                            <p>'.$row->title.'</p>
+                                                            <p>0</p>
+                                                        </a>
+                                                    </li>
+                                                    ';
+                                                }
+                                            }
+                                        } 
+                                    ?> 		
+                                    														
                                 </ul>
                                 <div class="br"></div>
                             </aside>
@@ -406,18 +346,20 @@
                             <aside class="single-sidebar-widget tag_cloud_widget">
                                 <h4 class="widget_title">Tag Clouds</h4>
                                 <ul class="list">
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Art</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Adventure</a></li>
+                                   
+                                    <?php
+                                        if(isset($categories)) 
+                                        {
+                                            if($categories -> num_rows() > 0) 
+                                            {
+                                                foreach ($categories -> result() as $row) 
+                                                {
+                                                    echo '<li><a href="'.site_url('activity/get_activity/' . $row->id ).'">'.$row->title.'</a></li>';
+                                                }
+                                            }
+                                        } 
+                                    ?> 				
+
                                 </ul>
                             </aside>
                         </div>

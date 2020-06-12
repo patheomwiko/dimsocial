@@ -31,20 +31,25 @@
             <div>
                 <ul class="nav justify-content-end fixed-top bg-primary">
                     <li class="nav-item">
-                        <a class="nav-link active  text-light" href="#">Accueil</a>
+                        <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Se connecter</a>
+                        <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/login')?>"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link  text-light" href="#">Politiques de confidentialités</a>
-                    </li>
+                        <a class="nav-link text-light" href="<?=site_url('home/sign_in')?>"><i class="fa fa-sign-in"></i><small> <strong>S'inscrire</strong> </small> </a>
+                    </li> 
+                    <!-- <li class="nav-item">
+                        <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
+                    </li> -->
                    
                 </ul>
             </div>
         </header>
-    
-        
+ 
         <!--================Blog Area =================-->
         <section class="blog_area single-post-area p_120">
             <div class="container">
