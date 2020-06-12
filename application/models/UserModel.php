@@ -50,13 +50,13 @@ class UserModel extends CI_Model {
     }
 
     /**
-     * get_where_entrepreneur($id)
+     *  get_where_entrepreneur
      *
-     * @param [integer] $id
+     * @param [type] $data
      * @return void
      */
-    public function get_where_entrepreneur($id) {
-        return $this->db->where('id', $id)->get($this->table_entrepreneur);
+    public function get_where_entrepreneur($data) {
+        return $this->db->where($data)->get($this->table_entrepreneur);
     } 
 
     /**

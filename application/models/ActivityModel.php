@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ActivityModel extends CI_Model {
 
     /**
-     * PROJECT
+     * ACTIVITY
      * =======
      * 
-     * IDProject,
+     * IDActivity,
      * IDEntrepreneur,
      * title,
      * description,
@@ -52,7 +52,7 @@ class ActivityModel extends CI_Model {
      *
      * @return void
      */
-    public function get_project() {
+    public function get_activity() {
         return $this->db->get($this->table_activity); 
     }
 
@@ -62,7 +62,7 @@ class ActivityModel extends CI_Model {
      * @param [integer] $id
      * @return void
      */
-    public function get_where_project($id) {
+    public function get_where_activity($id) {
         return $this->db->where('id', $id)->get($this->table_activity);
     } 
 
@@ -71,7 +71,7 @@ class ActivityModel extends CI_Model {
      *
      * @return void
      */
-    public function get_desc_projects() {
+    public function get_desc_activities() {
         $this->db->order_by('id', 'DESC');
         return $this->db->get($this->table_activity); 
     }
@@ -83,18 +83,18 @@ class ActivityModel extends CI_Model {
      * @param [integer] $id
      * @return void
      */
-    public function get_where_desc_projects($id) {
+    public function get_where_desc_activities($id) {
         $this->db->order_by('id', 'DESC');
         return $this->db->where('id', $id)->get($this->table_activity);
     }
 
 
     /**
-     * count_projects()
+     * count_activities()
      *
      * @return integer
      */
-    public function count_projects() : int {
+    public function count_activities() : int {
         return $this->db->count_all($this->table_activity);
     }
 
@@ -106,7 +106,7 @@ class ActivityModel extends CI_Model {
      * @param [array] $data
      * @return boolean
      */
-    public function add_project($data) : bool { 
+    public function add_activity($data) : bool { 
         $arr = array($data['description']);
         if( ! $this->db->where_not_in('description', $arr) == TRUE) {
             $this->db->insert($this->table_activity, $data);
@@ -123,7 +123,7 @@ class ActivityModel extends CI_Model {
      * @param [array] $data
      * @return boolean
      */
-    public function replace_project($data) : bool {
+    public function replace_activity($data) : bool {
         $this->db->where('id', $data['id']);
         return $this->db->replace($this->table_activity, $data);
     }
@@ -134,7 +134,7 @@ class ActivityModel extends CI_Model {
      * @param [array] $data
      * @return boolean
      */
-    public function update_project($data) : bool {
+    public function update_activity($data) : bool {
         return $this->db->update($this->table_activity, $data, array('id' => $data['id']));
     }
 
@@ -144,7 +144,7 @@ class ActivityModel extends CI_Model {
      * @param [int] $id
      * @return boolean
      */
-    public function delete_project($id) : bool {
+    public function delete_activity($id) : bool {
         return $this->db->delete($this->table_activity, array('id' => $id));  
     }
 

@@ -5,7 +5,9 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('index');
+		$data['activities'] = $this->ActivityModel->get_activity();
+		$data['categories'] = $this->ActivityModel->get_category();
+		$this->load->view('index', $data);
 	}
 
 	public function login()

@@ -61,6 +61,7 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array(
     'session',
     'form_validation',
+    'database',
     'user'
 );
 
@@ -136,4 +137,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array('ActivityModel', 'UserModel');

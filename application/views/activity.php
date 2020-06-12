@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="<?=base_url('assets/img/favicon.png');?>" type="image/png">
-        <title>MeetMe Personal</title>
+        <title>DIM Social - </title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -18,6 +18,10 @@
         <!-- main css -->
         <link rel="stylesheet" href="<?=base_url('assets/css/style.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/css/responsive.css');?>">
+
+        <!-- *** jQuery *** -->
+        <script src="<?=base_url('assets/js/jQuery-3.4.1.min.js');?>"></script>
+        <!-- *** jQuery *** -->
     </head>
     <body>
         
@@ -428,3 +432,91 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="<?=base_url('assets/js/theme.js');?>"></script>
     </body>
 </html>
+
+<script>
+
+
+$(document).ready(function(){
+	$('#files').change(function(){
+		
+		var files = $('#files')[0].files;
+		var error = '';
+		var form_data = new FormData();
+		
+		for (var index = 0; index < files.length; index++) {
+			var name = files[index].name;
+			var extension = name.split('.').pop().toLowerCase();
+			
+			if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+				error += 'Invalid ' + index + ' image file.';
+			} else {
+				form_data.append("files[]", files[index]);
+			}
+		}
+
+		if(error == '') {
+			$.ajax({
+				url:"<?php echo base_url(); ?>admin/upload_image",
+				method:'POST',
+				data:form_data,
+				contentType:false,
+				cache:false, 
+				processData:false,
+				beforeSend:function() {
+					$('#uploaded_images').html("<label class='text-success'>Uploading...</label>");
+				},
+				success:function(data) { 
+					$('#uploaded_images').html(data);
+					// $('#files').val('');
+				}
+			});
+		} else {
+			alert(error);
+		}
+	});
+
+
+    // ====================================================
+    // ====================================================
+
+
+    $('#files_comment').change(function(){
+		
+		var files = $('#files_comment')[0].files;
+		var error = '';
+		var form_data = new FormData();
+		
+		for (var index = 0; index < files.length; index++) {
+			var name = files[index].name;
+			var extension = name.split('.').pop().toLowerCase();
+			
+			if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+				error += 'Invalid ' + index + ' image file.';
+			} else {
+				form_data.append("files[]", files[index]);
+			}
+		}
+
+		if(error == '') {
+			$.ajax({
+				url:"<?php echo base_url(); ?>admin/upload_image",
+				method:'POST',
+				data:form_data,
+				contentType:false,
+				cache:false, 
+				processData:false,
+				beforeSend:function() {
+					$('#uploaded_images_comment').html("<label class='text-success'>Uploading...</label>");
+				},
+				success:function(data) { 
+					$('#uploaded_images_comment').html(data);
+					// $('#files').val('');
+				}
+			});
+		} else {
+			alert(error);
+		}
+	});
+});
+
+</script> 
