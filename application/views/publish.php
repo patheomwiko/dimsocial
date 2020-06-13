@@ -143,7 +143,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" value="submit" class="btn btn-sm btn-block border-0" style="background: #1d3163;">Publier</button>
+                                    <button type="submit" value="submit" class="btn btn-sm btn-block text-light border-0" style="background: #1d3163;">Publier</button>
                                 </div>
                             </div> 
                             
@@ -153,7 +153,7 @@
                             <div class="col-lg-5">
                                 <div class="blog_right_sidebar"> 
                                     <aside class="single_sidebar_widget popular_post_widget">
-                                        <h3 class="widget_title">Posts récents</h3>
+                                        <h3 class="widget_title" style="background: #1d3163;">Posts récents</h3>
                                         <div class="media post_item">
                                             <img src="<?=base_url('assets/img/blog/popular-post/post1.jpg');?>" alt="post">
                                             <div class="media-body">

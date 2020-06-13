@@ -111,7 +111,17 @@ class User extends CI_Controller {
             // print_r($this->user_login_data());
             $result = $this->UserModel->get_where_user($this->user_login_data());
             if( ! empty($result) ) { 
-                $this->session->set_tempdata($this->cast_object_to_array($result[0]), NULL, 3000);  
+                // $cookie = array(
+                //     'name' => '',
+                //     'value' => '',
+                //     'expire' => '86500',
+                //     'domain' => '.dimsocial.com',
+                //     'path' => '/',
+                //     'prefix' => '',
+                //     'secure' => TRUE
+                // );
+                // $this->input->set_cookie($cookie);
+                $this->session->set_tempdata($this->cast_object_to_array($result[0]), NULL, 86500);  
                 redirect(base_url() . 'home');
             } else {
                 $this->load->view('login');
