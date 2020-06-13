@@ -37,13 +37,12 @@ class User extends CI_Controller {
         );
     }
 
-
-    function start_session() { 
-        $this->user_data()['is_connected'] = TRUE;
-        $this->session->set_tempdata($this->user_data(), NULL, 3000);
-    }
-
-
+ 
+	public function logout() {
+		$this->session->unset_userdata($this->user_login_data()); 
+		$this->session->sess_destroy();
+        redirect(base_url().'home');
+	}
     
 	public function upload_image() {
 
@@ -88,13 +87,12 @@ class User extends CI_Controller {
     function login() 
     {
 
-        print_r($this->user_login_data());
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
                 'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
                 'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'xss_clean' => 'Le  %schamps contient des caractères inapropriés.',
+                'xss_clean' => 'Le  %s champs contient des caractères inapropriés.',
                 'valid_email' => 'Entrez un e-mail valide.'
             )
         );
@@ -109,19 +107,51 @@ class User extends CI_Controller {
         );
 
         if($this->form_validation->run()) {
-            $result = $this->usermodel->get_where_entrepreneur($this->user_login_data());
-            if( ! empty($result) ) {
-                print_r($result);
-                $this->start_session(); 
-                echo 'Done ! Is connected : ' . $this->start_session()['is_connected'];
+            $err = array();
+            // print_r($this->user_login_data());
+            $result = $this->UserModel->get_where_user($this->user_login_data());
+            if( ! empty($result) ) { 
+                $this->session->set_tempdata($this->cast_object_to_array($result[0]), NULL, 3000);  
+                redirect(base_url() . 'home');
             } else {
-                echo 'Failed';
+                $this->load->view('login');
             }
         } else {
-            echo 'Failed at form validation !';
+            // redirect(base_url() . 'home/login');
+            $this->load->view('login');
         }
     }
 
+
+    /**
+     * cast_object_to_array($obj)
+     *
+     * @param [Object] $obj
+     * @return array
+     */
+    private function cast_object_to_array($obj) : array {
+        $arr = array();
+        if (is_object($obj)) {
+            foreach ($obj as $key => $value) {
+                $arr[$key] = $value;
+                // array_push($arr, $value);
+            }
+        } else {
+            $arr = NULL;
+        }
+        return $arr;
+    }
+
+
+    function my_account() {
+        $id = $this->uri->segment(3);
+        $user = $this->UserModel->get_where_user($id);
+        if( ! empty($user) ) {
+            $this->load->view('my_account', $user);
+        } else {
+            echo 'Error, user not found';
+        }
+    }
 
     function sign_in() {
          
@@ -199,7 +229,7 @@ class User extends CI_Controller {
         );
 
         if($this->form_validation->run()) {
-            $result = $this->usermodel->add_entrepreneur($this->user_data());
+            $result = $this->UserModel->add_entrepreneur($this->user_data());
             if($result == TRUE) {
                 echo 'Account is created !';
             } else {

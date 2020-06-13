@@ -80,7 +80,7 @@
                        if(isset($exist)){
                            echo '
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="'.site_url('home/sign_in').'"><i class="fa fa-sign-in"></i><small> <strong>Publier un article</strong> </small> </a>
+                                <a class="nav-link text-light" href="'.site_url('home/publish').'"><i class="fa fa-sign-in"></i><small> <strong>Publier un article</strong> </small> </a>
                             </li> 
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="'.site_url('home/deconnect').'"><i class="fa fa-sign-in"></i><small> <strong>Se déconnecter</strong> </small> </a>

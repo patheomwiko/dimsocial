@@ -65,7 +65,7 @@
     
         <header>
             <div>
-                <ul class="nav justify-content-end fixed-top bg-primary">
+                <ul class="nav justify-content-end fixed-top" style="background: #1d3163;">
                     <li class="nav-item">
                         <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
@@ -143,7 +143,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" value="submit" class="btn btn-primary btn-sm btn-block">Publier</button>
+                                    <button type="submit" value="submit" class="btn btn-sm btn-block border-0" style="background: #1d3163;">Publier</button>
                                 </div>
                             </div> 
                             

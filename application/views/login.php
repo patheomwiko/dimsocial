@@ -152,7 +152,12 @@
                                         <div class="col-sm-12">
                                             <input type="password" name="password" class="form-control rounded-0" id="password" placeholder="Mot de passe" required>
                                             <small class="text-danger"><?= form_error('password','<em>','</em>') ?></small>
-                                            <small class="text-muted text-left">Assurez-vous qu'il s'agit d'au moins 15 caractères OU d'au moins 8 caractères.</small>
+                                            
+                                            <small class="text-muted text-left">
+                                                <?php
+                                                    if(isset($not_found)) echo $not_found; 
+                                                ?>
+                                            </small>
                                         </div>
                                     </div>
                                     <fieldset class="form-group">

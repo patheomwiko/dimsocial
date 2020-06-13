@@ -66,7 +66,7 @@
 
         <header>
             <div>
-                <ul class="nav justify-content-end fixed-top bg-primary">
+                <ul class="nav justify-content-end fixed-top" style="background-color: #1d3163;">
                     <li class="nav-item">
                         <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
@@ -152,7 +152,7 @@
                                 </div> 
 
                                 <div class="form-group">
-                                    <button type="submit" value="submit" class="btn btn-primary btn-sm btn-block">Publier</button>
+                                    <button type="submit" value="submit" class="btn btn-sm btn-block text-light border-0" style="background-color: #1d3163;">Publier</button>
                                 </div>
                             </div> 
                             
@@ -163,7 +163,7 @@
                                 <div class="blog_right_sidebar"> 
                                 
                                 <aside class="single-sidebar-widget tag_cloud_widget">
-                                    <h4 class="widget_title">Les plus actives</h4>
+                                    <h4 class="widget_title" style="background-color: #1d3163;">Les plus actives</h4>
                                     <ul class="list">
                                         <?php
                                             if(isset($categories)) 
@@ -180,7 +180,7 @@
                                     </ul>
                                 </aside>
                                 <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Top Catgories</h4>
+                                <h4 class="widget_title" style="background-color: #1d3163;">Top Catgories</h4>
                                 <ul class="list cat-list">
                                     <?php
                                         if(isset($categories)) 

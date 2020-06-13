@@ -19,11 +19,11 @@ class UserModel extends CI_Model {
 
      
     /**
-     * $table_entrepreneur
+     * $table_user
      *
      * @var string
      */
-    private $table_entrepreneur = 'entrepreneurs';
+    private $table_user = 'users';
 
     /**
      * $table_comment
@@ -41,67 +41,67 @@ class UserModel extends CI_Model {
 
 
     /**
-     * get_entrepreneur()
+     * get_user()
      *
      * @return void
      */
-    public function get_entrepreneur() {
-        return $this->db->get($this->table_entrepreneur); 
+    public function get_user() {
+        return $this->db->get($this->table_user); 
     }
 
     /**
-     *  get_where_entrepreneur
+     *  get_where_user
      *
      * @param [type] $data
      * @return void
      */
-    public function get_where_entrepreneur($data) {
-        return $this->db->where($data)->get($this->table_entrepreneur);
+    public function get_where_user($data) {
+        return $this->db->where($data)->get($this->table_user)->result();
     } 
 
     /**
-     * get_desc_entrepreneur()
+     * get_desc_user()
      *
      * @return void
      */
-    public function get_desc_entrepreneur() {
+    public function get_desc_user() {
         $this->db->order_by('id', 'DESC');
-        return $this->db->get($this->table_entrepreneur); 
+        return $this->db->get($this->table_user); 
     }
 
 
     /**
-     * get_where_desc_entrepreneur($id)
+     * get_where_desc_user($id)
      *
      * @param [integer] $id
      * @return void
      */
-    public function get_where_desc_entrepreneur($id) {
+    public function get_where_desc_user($id) {
         $this->db->order_by('id', 'DESC');
-        return $this->db->where('id', $id)->get($this->table_entrepreneur);
+        return $this->db->where('id', $id)->get($this->table_user);
     }
 
 
     /**
-     * count_entrepreneur()
+     * count_user()
      *
      * @return integer
      */
-    public function count_entrepreneur() : int {
-        return $this->db->count_all($this->table_entrepreneur);
+    public function count_user() : int {
+        return $this->db->count_all($this->table_user);
     }
 
 
     /**
-     * add_entrepreneur($data)
+     * add_user($data)
      *
      * @param [array] $data
      * @return boolean
      */
-    public function add_entrepreneur($data) : bool { 
+    public function add_user($data) : bool { 
         $arr = array($data['email']);
         if( ! $this->db->where_not_in('email', $arr) == TRUE) {
-            $this->db->insert($this->table_entrepreneur, $data);
+            $this->db->insert($this->table_user, $data);
             $this->done = TRUE;
         } else {
             $this->done = FALSE;
@@ -110,34 +110,34 @@ class UserModel extends CI_Model {
     }
 
     /**
-     * replace_entrepreneur($data)
+     * replace_user($data)
      *
      * @param [array] $data
      * @return boolean
      */
-    public function replace_entrepreneur($data) : bool {
+    public function replace_user($data) : bool {
         $this->db->where('id', $data['id']);
-        return $this->db->replace($this->table_entrepreneur, $data);
+        return $this->db->replace($this->table_user, $data);
     }
 
     /**
-     * update_entrepreneur($data)
+     * update_user($data)
      *
      * @param [array] $data
      * @return boolean
      */
-    public function update_entrepreneur($data) : bool {
-        return $this->db->update($this->table_entrepreneur, $data, array('id' => $data['id']));
+    public function update_user($data) : bool {
+        return $this->db->update($this->table_user, $data, array('id' => $data['id']));
     }
 
     /**
-     *  delete_entrepreneur($id)
+     *  delete_user($id)
      *
      * @param [int] $id
      * @return boolean
      */
-    public function delete_entrepreneur($id) : bool {
-        return $this->db->delete($this->table_entrepreneur, array('id' => $id));  
+    public function delete_user($id) : bool {
+        return $this->db->delete($this->table_user, array('id' => $id));  
     }
 
 
