@@ -42,48 +42,29 @@ class User extends CI_Controller {
 		$this->session->unset_userdata($this->user_login_data()); 
 		$this->session->sess_destroy();
         redirect(base_url().'home');
-	}
+    }
     
-	public function upload_image() {
+
+    public function upload_image() {
 
         if(isset($_FILES['imageUrl']['name']))
         {
+            $config['upload_path'] = './upload/';
+            $config['allowed_types'] = 'gif|png|jpg|jpeg';
+            $this -> load -> library('upload', $config);
+            $this -> upload -> initialize($config);
 
-            if($_FILES['imageUrl']['name'] != '') 
-            {
-				$output = '';
-				$config['upload_path'] = './upload/';
-				$config['allowed_types'] = 'gif|png|jpg|jpeg';
-				$this -> load -> library('upload', $config);
-				$this -> upload -> initialize($config);
-	
-	
-                for ($i=0; $i < count($_FILES['imageUrl']['name']); $i++) 
-                { 
-					$_FILES['file']['name'] = $_FILES['imageUrl']['name'][$i];
-					$_FILES['file']['type'] = $_FILES['imageUrl']['type'][$i];
-					$_FILES['file']['tmp_name'] = $_FILES['imageUrl']['tmp_name'][$i];
-					$_FILES['file']['error'] = $_FILES['imageUrl']['error'][$i];
-					$_FILES['file']['size'] = $_FILES['imageUrl']['size'][$i];
-				
-                    if($this -> upload -> do_upload('file')) 
-                    {
-						$data = $this -> upload -> data();
-						$output .= '
-						<div class="col-md-8">
-							<img src="'.base_url().'upload/'.$data["file_name"].'" class="img-responsive img-thumbnail"/>
-						</div>
-						';
-					}
-				}
-				
-				echo $output;
-			}
+            if( ! $this -> upload -> do_upload('imageUrl'))  {
+                echo $this->upload->display_errors();
+            } else {
+                $data = $this -> upload -> data();
+                echo '<img src="'.base_url().'upload/'.$data["file_name"].'" class="img-responsive img-thumbnail"/>';
+            }
 		}
-	
-	}
-
-
+    }
+    
+    
+ 
     function login() 
     {
 
@@ -155,9 +136,9 @@ class User extends CI_Controller {
 
     function my_account() {
         $id = $this->uri->segment(3);
-        $user = $this->UserModel->get_where_user($id);
-        if( ! empty($user) ) {
-            $this->load->view('my_account', $user);
+        $data['user'] = $this->UserModel->get_where_user_id($id);
+        if( ! empty($data) ) {
+            $this->load->view('my_account', $data);
         } else {
             echo 'Error, user not found';
         }

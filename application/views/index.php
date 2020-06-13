@@ -83,13 +83,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="'.site_url('home/login').'"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
                             </li> 
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="'.site_url('home/sign_in').'"><i class="fa fa-sign-in"></i><small> <strong>S\'inscrire</strong> </small> </a>
+                            </li>
                             ';
                         }
                     ?>
                     
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="<?=site_url('home/sign_in')?>"><i class="fa fa-sign-in"></i><small> <strong>S'inscrire</strong> </small> </a>
-                    </li> 
+                    
                     <!-- <li class="nav-item">
                         <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
                     </li> -->
@@ -103,7 +104,7 @@
         	<div class="container">
         		<div class="main_title">
         			<!-- <h2>Toutes les catégories</h2> -->
-        			<p>Toutes les catégories.</p>
+        			<!-- <p>Toutes les catégories.</p> -->
         		</div>
         		<div class="testi_inner">
 					<div class="testi_slider owl-carousel"> 
@@ -288,7 +289,7 @@
                                     </div>
                                 </div>
                             </article>
-                            <nav class="blog-pagination justify-content-center d-flex">
+                            <!-- <nav class="blog-pagination justify-content-center d-flex">
 		                        <ul class="pagination">
 		                            <li class="page-item">
 		                                <a href="#" class="page-link" aria-label="Previous">
@@ -310,7 +311,7 @@
 		                                </a>
 		                            </li>
 		                        </ul>
-		                    </nav>
+		                    </nav> -->
                         </div>
                     </div>
                     <div class="col-lg-4">

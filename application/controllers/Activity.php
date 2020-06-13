@@ -24,41 +24,20 @@ class Activity extends CI_Controller {
     
 	public function upload_image() {
 
-        if(isset($_FILES['files']['name']))
+        if(isset($_FILES['imageUrl']['name']))
         {
+            $config['upload_path'] = './upload/';
+            $config['allowed_types'] = 'gif|png|jpg|jpeg';
+            $this -> load -> library('upload', $config);
+            $this -> upload -> initialize($config);
 
-            if($_FILES['files']['name'] != '') 
-            {
-				$output = '';
-				$config['upload_path'] = './upload/';
-				$config['allowed_types'] = 'gif|png|jpg|jpeg';
-				$this -> load -> library('upload', $config);
-				$this -> upload -> initialize($config);
-	
-	
-                for ($i=0; $i < count($_FILES['files']['name']); $i++) 
-                { 
-					$_FILES['file']['name'] = $_FILES['files']['name'][$i];
-					$_FILES['file']['type'] = $_FILES['files']['type'][$i];
-					$_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
-					$_FILES['file']['error'] = $_FILES['files']['error'][$i];
-					$_FILES['file']['size'] = $_FILES['files']['size'][$i];
-				
-                    if($this -> upload -> do_upload('file')) 
-                    {
-						$data = $this -> upload -> data();
-						$output .= '
-						<div class="col-md-8">
-							<img src="'.base_url().'upload/'.$data["file_name"].'" class="img-responsive img-thumbnail"/>
-						</div>
-						';
-					}
-				}
-				
-				echo $output;
-			}
+            if( ! $this -> upload -> do_upload('imageUrl'))  {
+                echo $this->upload->display_errors();
+            } else {
+                $data = $this -> upload -> data();
+                echo '<img src="'.base_url().'upload/'.$data["file_name"].'" class="img-responsive img-thumbnail"/>';
+            }
 		}
-	
 	}
  
 

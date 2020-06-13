@@ -28,7 +28,8 @@ class Home extends CI_Controller {
 
 	public function activity() 
 	{
-		$this->load->view('activity');
+		$data['categories'] = $this->ActivityModel->get_category();
+		$this->load->view('activity', $data);
 	}
 
 	public function sign_in()

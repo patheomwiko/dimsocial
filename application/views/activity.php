@@ -73,31 +73,33 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
-                    </li> 
-                    
-                    <?php 
-                        $exist = TRUE;
-                       if(isset($exist)){
-                           echo '
+                    </li>
+                    <?php
+                        if(isset($this->session->name) || isset($this->session->email)) {
+                            echo
+                            '
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="'.site_url('home/publish').'"><i class="fa fa-sign-in"></i><small> <strong>Publier un article</strong> </small> </a>
+                                <a class="nav-link  text-light" href="'.site_url('home/publish').'"><i class="fa fa-user"></i><small> <strong>Publier un article</strong> </small> </a>
                             </li> 
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="'.site_url('home/deconnect').'"><i class="fa fa-sign-in"></i><small> <strong>Se déconnecter</strong> </small> </a>
+                                <a class="nav-link  text-light" href="'.site_url('user/my_account/'.$this->session->id).'"><i class="fa fa-user"></i><small> <strong>'.$this->session->name.'</strong> </small> </a>
                             </li> 
-                           ';
-                       } else {
-                        echo '
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="'.site_url('home/login').'"><i class="fa fa-sign-in"></i><small> <strong>Se connecter</strong> </small> </a>
+                                <a class="nav-link  text-light" href="'.site_url('user/logout').'"><i class="fa fa-user"></i><small> <strong>Se déconnecter</strong> </small> </a>
+                            </li> 
+                           
+                            ';
+                        } else {
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="'.site_url('home/login').'"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
                             </li> 
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="'.site_url('home/sign_in').'"><i class="fa fa-sign-in"></i><small> <strong>S\'inscrire</strong> </small> </a>
-                            </li>  
+                            </li>
                             ';
-                       }
-                   ?>
-                  
+                        }
+                    ?> 
                 </ul>
             </div>
         </header>
@@ -295,15 +297,32 @@
                                 </div>
                             </div>	                                             				
                         </div>
-                        <div class="comment-form">
-                            <h4>Faites un commentaire</h4>
-                            <form method="POST" action="<?=site_url('user/comment');?>" novalidate="novalidate">  
-                                <div class="form-group">
-                                    <textarea class="form-control mb-10" rows="5" name="comment" placeholder="Votre commentaire .... " onfocus="this.placeholder = ''" onblur="this.placeholder = 'comment'" required=""></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-sm btn-block border-0" style="background-color: #1d3163;">Commenter</button>	
-                            </form>
-                        </div>
+<!-- 
+                        <div class="comment-form"> -->
+
+                        <?php
+                            // if(isset($this->session->name) || isset($this->session->email)) {
+                            //     echo 
+                            //     '
+                            //     <h4>Faites un commentaire</h4>
+                            //     <form method="POST" action="'.site_url('user/comment').'" novalidate="novalidate">  
+                            //         <div class="form-group">
+                            //             <textarea class="form-control mb-10" rows="5" name="comment" placeholder="Votre commentaire .... " onfocus="this.placeholder = " onblur="this.placeholder = '."comment".'" required=""></textarea>
+                            //         </div>
+                            //         <button type="submit" class="btn btn-lg btn-block text-light border-0" style="background-color: #1d3163;">Commenter</button>	
+                            //     </form>
+                            //     ';
+                            // } else {
+                            //     echo 
+                            //     '
+                            //     <h4>Connectez-vous pour faire un commentaire.</h4>
+                            //     <a href="'.site_url('user/login').'" type="button" class="btn btn-lg btn-block text-light" style="background-color: #1d3163;">Se connecter</a>
+                            //     ';
+                            // }
+                        ?>
+
+                            
+                        <!-- </div> -->
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar"> 
@@ -342,18 +361,20 @@
                             <aside class="single-sidebar-widget tag_cloud_widget">
                                
                                 <ul class="list">
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Art</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Adventure</a></li>
+                                   
+                                <?php
+                                        if(isset($categories)) 
+                                        {
+                                            if($categories -> num_rows() > 0) 
+                                            {
+                                                foreach ($categories -> result() as $row) 
+                                                {
+                                                    echo '<li><a href="'.site_url('activity/get_activity/' . $row->id ).'">'.$row->title.'</a></li>';
+                                                }
+                                            }
+                                        } 
+                                    ?> 				
+
                                 </ul>
                             </aside>
                             <aside class="single_sidebar_widget ads_widget">
@@ -363,48 +384,25 @@
                             <aside class="single_sidebar_widget post_category_widget">
                                
                                 <ul class="list cat-list">
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Technology</p>
-                                            <p>37</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Lifestyle</p>
-                                            <p>24</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Fashion</p>
-                                            <p>59</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Art</p>
-                                            <p>29</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Food</p>
-                                            <p>15</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Architecture</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Adventure</p>
-                                            <p>44</p>
-                                        </a>
-                                    </li>															
+                                    <?php
+                                        if(isset($categories)) 
+                                        {
+                                            if($categories -> num_rows() > 0) 
+                                            {
+                                                foreach ($categories -> result() as $row) 
+                                                {
+                                                    echo '
+                                                    <li>
+                                                        <a href="'.site_url('activity/get_activity/' . $row->id ).'" class="d-flex justify-content-between">
+                                                            <p>'.$row->title.'</p>
+                                                            <p>0</p>
+                                                        </a>
+                                                    </li>
+                                                    ';
+                                                }
+                                            }
+                                        } 
+                                    ?> 															
                                 </ul>
                                 <div class="br"></div>
                             </aside>

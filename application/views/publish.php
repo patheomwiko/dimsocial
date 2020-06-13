@@ -104,7 +104,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         
-                        <form class="row contact_form" action="<?=site_url('activity/publish')?>" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="row contact_form" action="<?=site_url('activity/publish')?>" method="POST" id="contactForm" novalidate="novalidate">
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <h4 class="text-muted">Partager votre activité</h4>
@@ -139,7 +139,12 @@
                                 
                                 <div class="form-group">
                                     <label for="imageUrl"> <small class="text-center">Sélectionner une image</small> </label>
-                                    <input type="file" value="<?=set_value('imageUrl');?>" class="form-control" id="imageUrl" name="imageUrl">
+                                    <input type="file" class="form-control" name="imageUrl" id="imageUrl" >
+                                </div>
+                                <div class="form-group">
+                                    <div id="uploaded_image">
+                                        
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -229,88 +234,26 @@
       
 <script>
 
-
 $(document).ready(function(){
-	$('#files').change(function(){
-		
-		var files = $('#files')[0].files;
-		var error = '';
-		var form_data = new FormData();
-		
-		for (var index = 0; index < files.length; index++) {
-			var name = files[index].name;
-			var extension = name.split('.').pop().toLowerCase();
-			
-			if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-				error += 'Invalid ' + index + ' image file.';
-			} else {
-				form_data.append("files[]", files[index]);
-			}
-		}
+    $('#contactForm').on('change', function(e){
+        e.preventDefault();
+        if($('#imageUrl').val() == '') {
+            alert('Please, select a file.');
+        } else {
+            $.ajax({
+                url:"<?php echo base_url();?>activity/upload_image",
+                method:'POST',
+                data: new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(data){
+                    $('#uploaded_image').html(data);
+                }
+            })
+        }
 
-		if(error == '') {
-			$.ajax({
-				url:"<?php echo base_url(); ?>admin/upload_image",
-				method:'POST',
-				data:form_data,
-				contentType:false,
-				cache:false, 
-				processData:false,
-				beforeSend:function() {
-					$('#uploaded_images').html("<label class='text-success'>Uploading...</label>");
-				},
-				success:function(data) { 
-					$('#uploaded_images').html(data);
-					// $('#files').val('');
-				}
-			});
-		} else {
-			alert(error);
-		}
-	});
-
-
-    // ====================================================
-    // ====================================================
-
-
-    $('#files_comment').change(function(){
-		
-		var files = $('#files_comment')[0].files;
-		var error = '';
-		var form_data = new FormData();
-		
-		for (var index = 0; index < files.length; index++) {
-			var name = files[index].name;
-			var extension = name.split('.').pop().toLowerCase();
-			
-			if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-				error += 'Invalid ' + index + ' image file.';
-			} else {
-				form_data.append("files[]", files[index]);
-			}
-		}
-
-		if(error == '') {
-			$.ajax({
-				url:"<?php echo base_url(); ?>admin/upload_image",
-				method:'POST',
-				data:form_data,
-				contentType:false,
-				cache:false, 
-				processData:false,
-				beforeSend:function() {
-					$('#uploaded_images_comment').html("<label class='text-success'>Uploading...</label>");
-				},
-				success:function(data) { 
-					$('#uploaded_images_comment').html(data);
-					// $('#files').val('');
-				}
-			});
-		} else {
-			alert(error);
-		}
-	});
+    });
 });
 
 </script> 
