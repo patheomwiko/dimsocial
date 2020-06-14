@@ -73,16 +73,32 @@
                     <li class="nav-item">
                         <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-light" href="<?=site_url('home/login')?>"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="<?=site_url('home/sign_in')?>"><i class="fa fa-sign-in"></i><small> <strong>S'inscrire</strong> </small> </a>
-                    </li> 
-                    <!-- <li class="nav-item">
-                        <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
-                    </li> -->
-                   
+                    <?php
+                        if(isset($this->session->name) || isset($this->session->email)) {
+                            echo
+                            '
+                            <li class="nav-item">
+                                <a class="nav-link  text-light" href="'.site_url('home/publish_article').'"><i class="fa fa-user"></i><small> <strong>Publier un article</strong> </small> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link  text-light" href="'.site_url('user/my_account/'.$this->session->id).'"><i class="fa fa-user"></i><small> <strong>'.$this->session->name.'</strong> </small> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link  text-light" href="'.site_url('user/logout').'"><i class="fa fa-user"></i><small> <strong>Se déconnecter</strong> </small> </a>
+                            </li> 
+                           
+                            ';
+                        } else {
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="'.site_url('home/login').'"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="'.site_url('home/sign_in').'"><i class="fa fa-sign-in"></i><small> <strong>S\'inscrire</strong> </small> </a>
+                            </li>
+                            ';
+                        }
+                    ?> 
                 </ul>
             </div>
         </header> 
@@ -93,7 +109,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         
-                        <form class="row contact_form" action="<?=site_url('user/sign_in');?>" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="row contact_form" action="<?=site_url('user/sign_in');?>" method="post"  id="contact_form" novalidate="novalidate">
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <h4 class="text-muted">S'inscrivez-vous et partagez votre activité</h4>
@@ -134,8 +150,10 @@
                                 <div class="form-group">
                                     <label for="imageUrl"> <small class="text-center">Votre photo</small> </label>
                                     <input type="file" class="form-control" value="<?=set_value('imageUrl');?>" id="imageUrl" name="imageUrl">
-                                    <div class="col-md-12" id="uploaded_image">
-                                        
+                                    <div class="form-group">
+                                        <div id="uploaded_image">
+
+                                        </div>
                                     </div> 
                                 </div>
 
@@ -248,46 +266,27 @@
 </html>
       
 <script>
-
-
+      
 $(document).ready(function(){
-	$('#imageUrl').change(function(){
-		
-		var files = $('#imageUrl')[0].files;
-		var error = '';
-		var form_data = new FormData();
-		
-		for (var index = 0; index < files.length; index++) {
-			var name = files[index].name;
-			var extension = name.split('.').pop().toLowerCase();
-			
-			if(jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-				error += 'Invalid ' + index + ' image file.';
-			} else {
-				form_data.append("files[]", files[index]);
-			}
-		}
+    $('.contact_form').on('change', function(e){
+        e.preventDefault();
+        if($('#imageUrl').val() == '') {
+            alert('Please, select a file.');
+        } else {
+            $.ajax({
+                url:"<?php echo base_url();?>activity/upload_image",
+                method:'POST',
+                data: new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(data){
+                    $('#uploaded_image').html(data);
+                }
+            })
+        }
 
-		if(error == '') {
-			$.ajax({
-				url:"<?php echo base_url(); ?>user/upload_image",
-				method:'POST',
-				data:form_data,
-				contentType:false,
-				cache:false, 
-				processData:false,
-				beforeSend:function() {
-					$('#uploaded_image').html("<label class='text-success'>Uploading...</label>");
-				},
-				success:function(data) { 
-					$('#uploaded_image').html(data);
-					// $('#files').val('');
-				}
-			});
-		} else {
-			alert(error);
-		}
-	});
+    });
 });
 
 </script> 

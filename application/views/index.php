@@ -72,11 +72,15 @@
                             echo
                             '
                             <li class="nav-item">
-                                <a class="nav-link  text-light" href="'.site_url('user/my_account').'"><i class="fa fa-user"></i><small> <strong>'.$this->session->name.'</strong> </small> </a>
+                                <a class="nav-link  text-light" href="'.site_url('home/publish_article').'"><i class="fa fa-user"></i><small> <strong>Publier un article</strong> </small> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link  text-light" href="'.site_url('user/my_account/'.$this->session->id).'"><i class="fa fa-user"></i><small> <strong>'.$this->session->name.'</strong> </small> </a>
                             </li> 
                             <li class="nav-item">
                                 <a class="nav-link  text-light" href="'.site_url('user/logout').'"><i class="fa fa-user"></i><small> <strong>Se déconnecter</strong> </small> </a>
                             </li> 
+                           
                             ';
                         } else {
                             echo '
@@ -88,12 +92,7 @@
                             </li>
                             ';
                         }
-                    ?>
-                    
-                    
-                    <!-- <li class="nav-item">
-                        <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
-                    </li> -->
+                    ?> 
                    
                 </ul>
             </div>

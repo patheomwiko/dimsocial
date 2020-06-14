@@ -88,45 +88,6 @@
         <section class="blog_area single-post-area p_120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 posts-list">
-                        <div class="single-post row">
-                            <div class="col-lg-12">
-                                <div class="feature-img">
-                                    <img class="img-fluid" src="<?=base_url('assets/img/main/news_post_5.jpg');?>" alt="">
-                                </div>									
-                            </div>
-                            <div class="col-lg-3  col-md-3">
-                                <div class="blog_info text-right">
-                                    <ul class="blog_meta list">
-                                        <li><a href="#">Daniel Wa Mukina<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">10 Juin, 2020<i class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">10k Vues<i class="lnr lnr-eye"></i></a></li>
-                                        <li><a href="#">06 Commentaires<i class="lnr lnr-bubble"></i></a></li>
-                                    </ul>
-                                    <ul class="social-links">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-md-9 blog_details">
-                                <h2>DIM Social - Technologie</h2> 
-                                <p class="excert text-justify">
-                                Créer un réseau des entrepreneurs pour permettre à tous nos utilisateurs de partager leurs
-                                actualités, de faire la géolocalisation de leurs services. 
-                                <br> Ce réseau social permettra aux entreprises, entrepreneurs d’accroitre
-                                sensiblement leurs zones d’action, profiter de nos outils pour mieux évaluer les revenues,
-                                consulter les experts, permettre les échanges avec les professionnels et tenir de forums
-                                économiques et autres publicités pour la plateforme.
-                                </p>
-                            </div>
-                           
-                        </div>
-                        
-                            
-                    </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
                             <aside class="single_sidebar_widget search_widget">
@@ -141,7 +102,7 @@
 
 
                                 <!-- *** Login Form **** -->
-                                <form method="POST" action="<?=site_url('user/login');?>" class="contact_form" novalidate="novalidate">
+                                <form method="POST" action="<?=site_url('user/login');?>"    class="contact_form"  id="contact_form" novalidate="novalidate">
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <input type="email" name="email" value="<?=set_value('email');?>" class="form-control rounded-0" id="email" placeholder="Email" required>
@@ -152,11 +113,8 @@
                                         <div class="col-sm-12">
                                             <input type="password" name="password" class="form-control rounded-0" id="password" placeholder="Mot de passe" required>
                                             <small class="text-danger"><?= form_error('password','<em>','</em>') ?></small>
-                                            
                                             <small class="text-muted text-left">
-                                                <?php
-                                                    if(isset($not_found)) echo $not_found; 
-                                                ?>
+                                              
                                             </small>
                                         </div>
                                     </div>
@@ -187,6 +145,52 @@
                             </aside>
                             
                         </div>
+                    </div>
+                    
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post row">
+                            <div class="col-lg-12">
+                                <div class="feature-img">
+                                    <img class="img-fluid" src="<?=base_url('assets/img/main/news_post_5.jpg');?>" alt="">
+                                </div>									
+                            </div>
+                            <div class="col-lg-4  col-md-4">
+                                <div class="blog_info text-right">
+                                    <ul class="blog_meta list">
+                                        <li><a>Daniel Wa Mukina<i class="lnr lnr-user"></i></a></li>
+                                        <li><a>10 Juin, 2020<i class="lnr lnr-calendar-full"></i></a></li>
+                                        <li><a href="#">0 Vues<i class="lnr lnr-eye"></i></a></li>
+                                        <li><a href="#">0 Commentaires<i class="lnr lnr-bubble"></i></a></li>
+                                    </ul>
+                                    <ul class="social-links">
+                                        <li><a href="https://web.facebook.com/dimeurclub/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a></li>
+                                        <li> <a href="https://www.linkedin.com/in/dim-business-ab9221185" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-linkedin"><i class="sr-only">LikedIn</i></span></a></li>
+                                        <li><a href="https://twitter.com/Danieldimilung1" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a></li>
+                                        <li> <a href="https://www.instagram.com/dimbusinessfamily/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a></li>
+                                        <li> <a href="https://www.youtube.com/channel/UCCWswgrLvQ2HqJo-HnSZasQ" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-youtube"><i class="sr-only">Youtube</i></span></a></li>
+										
+                                        <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-github"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-8 blog_details">
+                                <h2>DIM Social - Technologie</h2> 
+                                <p class="excert text-justify">
+                                Créer un réseau des entrepreneurs pour permettre à tous nos utilisateurs de partager leurs
+                                actualités, de faire la géolocalisation de leurs services. 
+                                <br> Ce réseau social permettra aux entreprises, entrepreneurs d’accroitre
+                                sensiblement leurs zones d’action, profiter de nos outils pour mieux évaluer les revenues,
+                                consulter les experts, permettre les échanges avec les professionnels et tenir de forums
+                                économiques et autres publicités pour la plateforme.
+                                </p>
+                            </div>
+                           
+                        </div>
+                        
+                            
                     </div>
                 </div>
             </div>

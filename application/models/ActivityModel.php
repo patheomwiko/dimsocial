@@ -17,12 +17,23 @@ class ActivityModel extends CI_Model {
      * comment
      */
 
+     
+    /**
+     * $table_article
+     *
+     * @var string
+     */
+    private $table_article = 'articles';
+
+
     /**
      * $table_activity
      *
      * @var string
      */
     private $table_activity = 'activities';
+
+
     
     /**
      * $table_category
@@ -42,74 +53,74 @@ class ActivityModel extends CI_Model {
 
     /*
     | -------------------------------------------------------------------
-    | PROJECTS QUERIES
+    | ARTICLES QUERIES
     | -------------------------------------------------------------------
     */
 
 
     /**
-     * get()
+     * get_article()
      *
      * @return void
      */
-    public function get_activity() {
-        return $this->db->get($this->table_activity); 
+    public function get_article() {
+        return $this->db->get($this->table_article); 
     }
 
     /**
-     * get_where($id)
+     * get_where_article($id)
      *
      * @param [integer] $id
      * @return void
      */
-    public function get_where_activity($id) {
-        return $this->db->where('id', $id)->get($this->table_activity);
+    public function get_where_article($id) {
+        return $this->db->where('id', $id)->get($this->table_article);
     } 
 
     /**
-     * get_desc()
+     * get_desc_articles()
      *
      * @return void
      */
-    public function get_desc_activities() {
+    public function get_desc_articles() {
         $this->db->order_by('id', 'DESC');
-        return $this->db->get($this->table_activity); 
+        return $this->db->get($this->table_article); 
     }
 
 
     /**
-     * get_where_desc($id)
+     * get_where_desc_articles($id)
      *
      * @param [integer] $id
      * @return void
      */
-    public function get_where_desc_activities($id) {
+    public function get_where_desc_articles($id) {
         $this->db->order_by('id', 'DESC');
-        return $this->db->where('id', $id)->get($this->table_activity);
+        return $this->db->where('id', $id)->get($this->table_article);
     }
 
 
     /**
-     * count_activities()
+     * count_articles()
      *
      * @return integer
      */
-    public function count_activities() : int {
-        return $this->db->count_all($this->table_activity);
+    public function count_articles() : int {
+        return $this->db->count_all($this->table_article);
     }
 
 
 
     /**
-     * add($data)
+     * add_article($data)
      *
      * @param [array] $data
      * @return boolean
      */
-    public function add_activity($data) : bool { 
+    public function add_article($data) : bool { 
         $arr = array($data['description']);
         if( ! $this->db->where_not_in('description', $arr) == TRUE) {
-            $this->db->insert($this->table_activity, $data);
+            $this->db->insert($this->table_article, $data);
             $this->done = TRUE;
         } else {
             $this->done = FALSE;
@@ -118,34 +129,34 @@ class ActivityModel extends CI_Model {
     }
 
     /**
-     * replace($data)
+     * replace_article($data)
      *
      * @param [array] $data
      * @return boolean
      */
-    public function replace_activity($data) : bool {
+    public function replace_article($data) : bool {
         $this->db->where('id', $data['id']);
-        return $this->db->replace($this->table_activity, $data);
+        return $this->db->replace($this->table_article, $data);
     }
 
     /**
-     * update($data)
+     * update_article($data)
      *
      * @param [array] $data
      * @return boolean
      */
-    public function update_activity($data) : bool {
-        return $this->db->update($this->table_activity, $data, array('id' => $data['id']));
+    public function update_article($data) : bool {
+        return $this->db->update($this->table_article, $data, array('id' => $data['id']));
     }
 
     /**
-     *  delete($id)
+     *  delete_article($id)
      *
      * @param [int] $id
      * @return boolean
      */
-    public function delete_activity($id) : bool {
-        return $this->db->delete($this->table_activity, array('id' => $id));  
+    public function delete_article($id) : bool {
+        return $this->db->delete($this->table_article, array('id' => $id));  
     }
 
 
@@ -201,7 +212,117 @@ class ActivityModel extends CI_Model {
      * @return void
      */
     public function get_category_where($id) {
-        return $this->db->where('id_category', $id)->get($this->table_activity);
+        return $this->db->where('id_category', $id)->get($this->table_article);
+    }
+
+
+    
+    /*
+    | -------------------------------------------------------------------
+    | ACTIVITIES QUERIES
+    | -------------------------------------------------------------------
+    */
+
+
+    /**
+     * get_activity()
+     *
+     * @return void
+     */
+    public function get_activity() {
+        return $this->db->get($this->table_activity); 
+    }
+
+    /**
+     * get_where_activity($id)
+     *
+     * @param [integer] $id
+     * @return void
+     */
+    public function get_where_activity($id) {
+        return $this->db->where('id', $id)->get($this->table_activity);
+    } 
+
+    /**
+     * get_desc_activities()
+     *
+     * @return void
+     */
+    public function get_desc_activities() {
+        $this->db->order_by('id', 'DESC');
+        return $this->db->get($this->table_activity); 
+    }
+
+
+    /**
+     * get_where_desc_activities($id)
+     *
+     * @param [integer] $id
+     * @return void
+     */
+    public function get_where_desc_activities($id) {
+        $this->db->order_by('id', 'DESC');
+        return $this->db->where('id', $id)->get($this->table_activity);
+    }
+
+
+    /**
+     * count_activities()
+     *
+     * @return integer
+     */
+    public function count_activities() : int {
+        return $this->db->count_all($this->table_activity);
+    }
+
+
+
+    /**
+     * add_activity($data)
+     *
+     * @param [array] $data
+     * @return boolean
+     */
+    public function add_activity($data) : bool { 
+        $arr = array($data['description']);
+        if( ! $this->db->where_not_in('description', $arr) == TRUE) {
+            $this->db->insert($this->table_activity, $data);
+            $this->done = TRUE;
+        } else {
+            $this->done = FALSE;
+        }
+        return $this->done;
+    }
+
+    /**
+     * replace_activity($data)
+     *
+     * @param [array] $data
+     * @return boolean
+     */
+    public function replace_activity($data) : bool {
+        $this->db->where('id', $data['id']);
+        return $this->db->replace($this->table_activity, $data);
+    }
+
+    /**
+     * update_activity($data)
+     *
+     * @param [array] $data
+     * @return boolean
+     */
+    public function update_activity($data) : bool {
+        return $this->db->update($this->table_activity, $data, array('id' => $data['id']));
+    }
+
+    /**
+     *  delete_activity($id)
+     *
+     * @param [int] $id
+     * @return boolean
+     */
+    public function delete_activity($id) : bool {
+        return $this->db->delete($this->table_activity, array('id' => $id));  
     }
 
 }

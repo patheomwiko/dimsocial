@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data['activities'] = $this->ActivityModel->get_activity();
+		$data['activities'] = $this->ActivityModel->get_article();
 		$data['categories'] = $this->ActivityModel->get_category();
 		$this->load->view('index', $data);
 	}
@@ -20,10 +20,16 @@ class Home extends CI_Controller {
 		$this->load->view('desc_blog');
 	}
 
-	public function publish()
+	public function publish_activity()
 	{
 		$data['categories'] = $this->ActivityModel->get_category();
-		$this->load->view('publish', $data);
+		$this->load->view('publish_activity', $data);
+	}
+
+	public function publish_article()
+	{
+		$data['categories'] = $this->ActivityModel->get_category();
+		$this->load->view('publish_article', $data);
 	}
 
 	public function activity() 

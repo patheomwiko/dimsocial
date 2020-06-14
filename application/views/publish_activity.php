@@ -72,26 +72,32 @@
                     <li class="nav-item">
                         <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-light" href="<?=site_url('home/login')?>"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="<?=site_url('home/sign_in')?>"><i class="fa fa-sign-in"></i><small> <strong>S'inscrire</strong> </small> </a>
-                    </li> 
-                    <?php 
-                       
-                        // if(isset($_SESSION['name']) || isset($_SESSION['email'])){
-                        //     echo '
-                            // <li class="nav-item">
-                            //     <a class="nav-link text-light" href="'.site_url('home/sign_in').'"><i class="fa fa-sign-in"></i><small> <strong>S\'inscrire</strong> </small> </a>
-                            // </li> 
-                            // ';
-                        // }
-                    ?>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link  text-light" href="<?=site_url('home/politic')?>"><i class="fa fa-book"></i><small> <strong>Politiques de confidentialités</strong> </small></a>
-                    </li> -->
-                   
+                    <?php
+                        if(isset($this->session->name) || isset($this->session->email)) {
+                            echo
+                            '
+                            <li class="nav-item">
+                                <a class="nav-link  text-light" href="'.site_url('home/publish_article').'"><i class="fa fa-user"></i><small> <strong>Publier un article</strong> </small> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link  text-light" href="'.site_url('user/my_account/'.$this->session->id).'"><i class="fa fa-user"></i><small> <strong>'.$this->session->name.'</strong> </small> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link  text-light" href="'.site_url('user/logout').'"><i class="fa fa-user"></i><small> <strong>Se déconnecter</strong> </small> </a>
+                            </li> 
+                           
+                            ';
+                        } else {
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="'.site_url('home/login').'"><i class="fa fa-user"></i><small> <strong>Se connecter</strong> </small> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="'.site_url('home/sign_in').'"><i class="fa fa-sign-in"></i><small> <strong>S\'inscrire</strong> </small> </a>
+                            </li>
+                            ';
+                        }
+                    ?> 
                 </ul>
             </div>
         </header>
@@ -104,7 +110,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         
-                        <form class="row contact_form" action="<?=site_url('activity/publish')?>" method="POST" id="contactForm" novalidate="novalidate">
+                        <form  method="POST" action="<?=site_url('activity/publish_activity')?>" class="row contact_form" id="contact_form" novalidate="novalidate">
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <h4 class="text-muted">Partager votre activité</h4>
@@ -136,6 +142,10 @@
                                     <textarea class="form-control" value="<?=set_value('description');?>" name="description" id="description" rows="3" placeholder="Description de votre activité"></textarea>
                                     <small class="text-danger"><?= form_error('description','<em>','</em>') ?></small>
                                 </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" value="<?=set_value('experience');?>" id="experience" name="experience" placeholder="Année d'expérience">
+                                    <small class="text-danger"><?= form_error('experience','<em>','</em>') ?></small>
+                                </div>
                                 
                                 <div class="form-group">
                                     <label for="imageUrl"> <small class="text-center">Sélectionner une image</small> </label>
@@ -148,7 +158,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" value="submit" class="btn btn-sm btn-block text-light border-0" style="background: #1d3163;">Publier</button>
+                                    <button type="submit" class="btn btn-primary btn-sm btn-block border-0" style="background: #1d3163;">Publier</button>
                                 </div>
                             </div> 
                             
@@ -235,10 +245,10 @@
 <script>
 
 $(document).ready(function(){
-    $('#contactForm').on('change', function(e){
+    $('#contact_form').on('change', function(e){
         e.preventDefault();
         if($('#imageUrl').val() == '') {
-            alert('Please, select a file.');
+            // alert('Please, select a file.');
         } else {
             $.ajax({
                 url:"<?php echo base_url();?>activity/upload_image",
