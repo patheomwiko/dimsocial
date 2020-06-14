@@ -108,9 +108,10 @@
         <section class="contact_area p_120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-9">
+                    <div class="col-lg-11">
                         
                         <form  method="POST" action="<?=site_url('activity/publish_activity')?>" class="row contact_form" id="contact_form" novalidate="novalidate">
+                            
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <h4 class="text-muted">Partager votre activité</h4>
@@ -120,7 +121,7 @@
                                     <small class="text-danger"><?= form_error('name','<em>','</em>') ?></small>
                                 </div>
                                 <div class="form-group"> 
-                                    <select name="category" value="<?=set_value('category');?>" class="form-group form-control"  id="category">
+                                    <select name="domain" value="<?=set_value('domain');?>" class="form-group form-control"  id="domain">
                                         <option value="none">Votre domaine</option>
                                         <?php
                                             if(isset($categories)) 
@@ -136,20 +137,20 @@
                                         ?> 
 
                                     </select>
-                                    <small class="text-danger"><?= form_error('category','<em>','</em>') ?></small>
+                                    <small class="text-danger"><?= form_error('domain','<em>','</em>') ?></small>
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" value="<?=set_value('description');?>" name="description" id="description" rows="3" placeholder="Description de votre activité"></textarea>
                                     <small class="text-danger"><?= form_error('description','<em>','</em>') ?></small>
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" value="<?=set_value('experience');?>" id="experience" name="experience" placeholder="Année d'expérience">
+                                    <input type="number" class="form-control" value="<?=set_value('experience');?>" id="experience" name="experience" placeholder="Année d'expérience (en mois)">
                                     <small class="text-danger"><?= form_error('experience','<em>','</em>') ?></small>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="imageUrl"> <small class="text-center">Sélectionner une image</small> </label>
-                                    <input type="file" class="form-control" name="imageUrl" id="imageUrl" >
+                                    <input type="file" value="<?=set_value('imageUrl');?>" class="form-control" name="imageUrl" id="imageUrl" >
                                 </div>
                                 <div class="form-group">
                                     <div id="uploaded_image">

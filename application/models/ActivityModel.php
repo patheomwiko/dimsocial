@@ -50,21 +50,27 @@ class ActivityModel extends CI_Model {
     private $done = FALSE;
 
 
+    /**
+     * none
+     *
+     * @var array
+     */
+    private $none = array();
+
 
     /*
     | -------------------------------------------------------------------
     | ARTICLES QUERIES
     | -------------------------------------------------------------------
     */
-
-
+ 
     /**
-     * get_article()
+     * get_articles()
      *
      * @return void
      */
-    public function get_article() {
-        return $this->db->get($this->table_article); 
+    public function get_articles() {
+        return $this->db->get($this->table_article)->result(); 
     }
 
     /**
@@ -118,8 +124,13 @@ class ActivityModel extends CI_Model {
      * @return boolean
      */
     public function add_article($data) : bool { 
-        $arr = array($data['description']);
-        if( ! $this->db->where_not_in('description', $arr) == TRUE) {
+        $arr = $this->get_articles();
+        
+        if(empty($arr)) {
+            return $this->done = FALSE;    
+        }  
+
+        if( ! in_array($data['title'], $this->cast_object_to_array($arr[0]))) {
             $this->db->insert($this->table_article, $data);
             $this->done = TRUE;
         } else {
@@ -127,6 +138,8 @@ class ActivityModel extends CI_Model {
         }
         return $this->done;
     }
+
+   
 
     /**
      * replace_article($data)
@@ -171,7 +184,7 @@ class ActivityModel extends CI_Model {
      *
      * @return void
      */
-    public function get_category() {
+    public function get_domains() {
         return $this->db->get($this->table_category); 
     }
 
@@ -181,27 +194,27 @@ class ActivityModel extends CI_Model {
      * @param [int] $id
      * @return void
      */
-    public function get_where_category($id) {
+    public function get_where_domain($id) {
         return $this->db->where('id', $id)->get($this->table_category);
     } 
 
     /**
-     * get_desc_categories()
+     * get_desc_domains()
      *
      * @return void
      */
-    public function get_desc_categories() {
+    public function get_desc_domains() {
         $this->db->order_by('id', 'DESC');
         return $this->db->get($this->table_category); 
     }
 
 
     /**
-     * count_categories()
+     * count_domains()
      *
      * @return integer
      */
-    public function count_categories() : int {
+    public function count_domains() : int {
         return $this->db->count_all($this->table_category);
     }
 
@@ -233,14 +246,24 @@ class ActivityModel extends CI_Model {
         return $this->db->get($this->table_activity); 
     }
 
+
+    /**
+     * get_activities()
+     *
+     * @return void
+     */
+    public function get_activities() {
+        return $this->db->get($this->table_activity)->result(); 
+    }
+
     /**
      * get_where_activity($id)
      *
      * @param [integer] $id
-     * @return void
+     * @return CI_DB_mysqli_result Object 
      */
     public function get_where_activity($id) {
-        return $this->db->where('id', $id)->get($this->table_activity);
+        return $this->db->where('id_user', $id)->get($this->table_activity)->result();
     } 
 
     /**
@@ -284,8 +307,13 @@ class ActivityModel extends CI_Model {
      * @return boolean
      */
     public function add_activity($data) : bool { 
-        $arr = array($data['description']);
-        if( ! $this->db->where_not_in('description', $arr) == TRUE) {
+        $arr = $this->get_activities();
+        
+        if(empty($arr)) {
+            return $this->done = FALSE;    
+        }  
+
+        if( ! in_array($data['name'], $this->cast_object_to_array($arr[0]))) {
             $this->db->insert($this->table_activity, $data);
             $this->done = TRUE;
         } else {
@@ -293,6 +321,8 @@ class ActivityModel extends CI_Model {
         }
         return $this->done;
     }
+ 
+
 
     /**
      * replace_activity($data)
@@ -324,5 +354,25 @@ class ActivityModel extends CI_Model {
     public function delete_activity($id) : bool {
         return $this->db->delete($this->table_activity, array('id' => $id));  
     }
+
+
+    
+    /**
+     * cast_object_to_array($obj)
+     *
+     * @param [Object] $obj
+     * @return array
+     */
+    private function cast_object_to_array($obj) : array {
+        $arr = array();
+        if (is_object($obj)) {
+            foreach ($obj as $key => $value) {
+                $arr[$key] = $value;
+                // array_push($arr, $value);
+            }
+        }
+        return $arr;
+    }
+
 
 }

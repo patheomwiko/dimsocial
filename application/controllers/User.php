@@ -73,7 +73,7 @@ class User extends CI_Controller {
                 'required' => 'Le champs %s est obligatoire.',
                 'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
                 'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'xss_clean' => 'Le  %s champs contient des caractères inapropriés.',
+                'xss_clean' => 'Le  %s champs contient des caractères inappropriés.',
                 'valid_email' => 'Entrez un e-mail valide.'
             )
         );
@@ -83,7 +83,7 @@ class User extends CI_Controller {
                 'required' => 'Le champs %s est obligatoire.',
                 'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
                 'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'xss_clean' => 'Le  %schamps contient des caractères inapropriés.'
+                'xss_clean' => 'Le  %s champs contient des caractères inappropriés.'
             )
         );
 

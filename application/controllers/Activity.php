@@ -13,10 +13,11 @@ class Activity extends CI_Controller {
         return array
         (
             'name' => $this->input->post('name', TRUE),
-            'domaine' => $this->input->post('domaine', TRUE),
+            'domain' => $this->input->post('domain', TRUE),
             'description' => $this->input->post('description', TRUE),
+            'experience' => $this->input->post('experience', TRUE),
             'imageUrl' => $this->input->post('imageUrl', TRUE),
-            'date' => date("Y-m-d h:i:sa")
+            'id_user' => $this->session->id
         );
     }
 
@@ -41,66 +42,94 @@ class Activity extends CI_Controller {
 	}
 
     function publish_article() {
-        
+
     }
 
     function publish_activity() 
     {
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
-            array(
-                'required' => 'Le champs %s est obligatoire.',
-                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
-                'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'xss_clean' => 'Le  %schamps contient des caractères inapropriés.',
-                'valid_email' => 'Entrez un e-mail valide.'
-            )
-        );
+        $this->form_validation->set_rules('name', 'name', 'required|trim');
+        $this->form_validation->set_rules('domain', 'domaine', 'required|trim');
+        $this->form_validation->set_rules('description', 'description', 'required|trim');
+        $this->form_validation->set_rules('experience', 'expérience', 'required|trim');
+        $this->form_validation->set_rules('imageUrl', 'imageUrl', 'required|trim');
 
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
+        // $this->form_validation->set_rules('name', 'name', 'required|trim|max_length[255]|min_length[3]|xss_clean|strip_tags', 
+        //     array(
+        //         'required' => 'Le champs %s est obligatoire.',
+        //         'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
+        //         'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
+        //         'xss_clean' => 'Le  %schamps contient des caractères inappropriés.'
+        //     )
+        // );
 
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
+        // $this->form_validation->set_rules('category', 'categorie', 'required|trim|xss_clean|strip_tags', 
+        //     array(
+        //         'required' => 'Le champs %s est obligatoire.',
+        //         'xss_clean' => 'Le  %schamps contient des caractères inappropriés.'
+        //     )
+        // );
 
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
+        // $this->form_validation->set_rules('description', 'description', 'required|trim|xss_clean|strip_tags', 
+        //     array(
+        //         'required' => 'Le champs %s est obligatoire.',
+        //         'xss_clean' => 'Le  %schamps contient des caractères inappropriés.'
+        //     )
+        // );
 
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
+        // $this->form_validation->set_rules('experience', 'expérience', 'required|trim|numeric|xss_clean|strip_tags', 
+        //     array(
+        //         'required' => 'Le champs %s est obligatoire.',
+        //         'xss_clean' => 'Le  %schamps contient des caractères inappropriés.'
+        //     )
+        // );
+
+        // $this->form_validation->set_rules('imageUrl', 'imageUrl', 'required|trim|max_length[255]|xss_clean|strip_tags', 
+        //     array(
+        //         'required' => 'Le champs %s est obligatoire.',
+        //         'xss_clean' => 'Le  %schamps contient des caractères inappropriés.'
+        //     )
+        // );
         
         if($this->form_validation->run()) 
         {
-            $result = $this->activitymodel->add_activity($this->activity_data());
-            if($result == TRUE) {
-                echo 'Activity is added !';
+            $err = array(
+                'form_none_validated' => 'Vériifez les informations saisies',
+                'already_exist' => 'Le donnée existe déjà',
+            );
+            $result = $this->ActivityModel->add_activity($this->activity_data());
+            if($result == TRUE) { 
+                $this->load->view('index');
             } else {
-                echo 'Failed';
+                $this->load->view('publish_activity', $err);
             }
         } else {
             echo 'Failed at form validation !';
+            $this->view_activity();
         }
 
     }
+
+
+    /**
+     * get_domain()
+     *
+     * @return array
+     */
+    function get_domain() : array {
+        $id = $this->uri->segment(3);
+        $data['domain'] = $this->ActivityModel->get_where_domain($id);
+        return $data;
+    }
+
+    
+	public function view_activity()
+	{
+        $data['user'] = $this->UserModel->get_user_where_id($this->session->id);
+		$data['activity'] = $this->ActivityModel->get_where_activity($this->session->id);
+		$data['categories'] = $this->ActivityModel->get_categories();
+		$this->load->view('publish_activity', $data);
+	}
+
 
 
     function remove_activity() {
@@ -116,35 +145,35 @@ class Activity extends CI_Controller {
 
     function update_activity() {
         
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
+        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
             array(
                 '' => '',
                 '' => '',
                 '' => '',
             )
         );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
+        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
             array(
                 '' => '',
                 '' => '',
                 '' => '',
             )
         );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
+        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
             array(
                 '' => '',
                 '' => '',
                 '' => '',
             )
         );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
+        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
             array(
                 '' => '',
                 '' => '',
                 '' => '',
             )
         );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
+        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
             array(
                 '' => '',
                 '' => '',
