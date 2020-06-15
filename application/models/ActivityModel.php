@@ -36,11 +36,11 @@ class ActivityModel extends CI_Model {
 
     
     /**
-     * $table_category
+     * $table_domain
      *
      * @var string
      */
-    private $table_category = 'categories';
+    private $table_domain = 'categories';
     
     /**
      * $done
@@ -67,7 +67,7 @@ class ActivityModel extends CI_Model {
     /**
      * get_articles()
      *
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_articles() {
         return $this->db->get($this->table_article)->result(); 
@@ -185,7 +185,7 @@ class ActivityModel extends CI_Model {
      * @return void
      */
     public function get_domains() {
-        return $this->db->get($this->table_category); 
+        return $this->db->get($this->table_domain); 
     }
 
     /**
@@ -195,7 +195,7 @@ class ActivityModel extends CI_Model {
      * @return void
      */
     public function get_where_domain($id) {
-        return $this->db->where('id', $id)->get($this->table_category);
+        return $this->db->where('id', $id)->get($this->table_domain);
     } 
 
     /**
@@ -205,7 +205,7 @@ class ActivityModel extends CI_Model {
      */
     public function get_desc_domains() {
         $this->db->order_by('id', 'DESC');
-        return $this->db->get($this->table_category); 
+        return $this->db->get($this->table_domain); 
     }
 
 
@@ -215,7 +215,7 @@ class ActivityModel extends CI_Model {
      * @return integer
      */
     public function count_domains() : int {
-        return $this->db->count_all($this->table_category);
+        return $this->db->count_all($this->table_domain);
     }
 
     /**
@@ -224,8 +224,19 @@ class ActivityModel extends CI_Model {
      * @param [integer] $id
      * @return void
      */
-    public function get_category_where($id) {
-        return $this->db->where('id_category', $id)->get($this->table_article);
+    public function get_domain_where($id) {
+        return $this->db->where('id_category', $id)->get($this->table_domain);
+    }
+
+    /**
+     * get_all_domain_where_id($domain)
+     *
+     * @param [string] $domain
+     * @return CI_DB_mysqli_result Object
+     */
+    public function get_all_domain_where_id($domain) {
+        $this->db->where('CODE', $domain); 
+        return $this->db->get($this->table_domain)->result();
     }
 
 
@@ -250,12 +261,12 @@ class ActivityModel extends CI_Model {
     /**
      * get_activities()
      *
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_activities() {
         return $this->db->get($this->table_activity)->result(); 
     }
-
+ 
     /**
      * get_where_activity($id)
      *
@@ -265,7 +276,7 @@ class ActivityModel extends CI_Model {
     public function get_where_activity($id) {
         return $this->db->where('id_user', $id)->get($this->table_activity)->result();
     } 
-
+    
     /**
      * get_desc_activities()
      *

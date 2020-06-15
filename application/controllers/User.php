@@ -127,9 +127,7 @@ class User extends CI_Controller {
                 $arr[$key] = $value;
                 // array_push($arr, $value);
             }
-        } else {
-            $arr = NULL;
-        }
+        } 
         return $arr;
     }
 

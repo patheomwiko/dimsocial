@@ -3,20 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
-	public function index()
-	{
-		$data['articles'] = $this->ActivityModel->get_articles();
-		$data['activities'] = $this->ActivityModel->get_activities();
+	/**
+	 * data()
+	 * 
+	 * @return array
+	 */
+	private function data() : array {
+		$data['articles'] = $this->ActivityModel->get_desc_articles();
+		$data['activities'] = $this->ActivityModel->get_desc_activities();
 		$data['domains'] = $this->ActivityModel->get_domains();
-		$this->load->view('index', $data);
+		// $data['user'] = $this->user();
+		$data['user'] = $this->UserModel->get_user_where_id($this->session->id);
+		return $data;
 	}
 
-	public function list_activities() {
-		$data['articles'] = $this->ActivityModel->get_articles();
-		$data['activities'] = $this->ActivityModel->get_activities();
-		$data['domains'] = $this->ActivityModel->get_domains();
-		$data['activities'] = $this->ActivityModel->get_activities();
-		$this->load->view('list_activities', $data);
+	public function index() {
+		$this->load->view('index', $this->data());
+	}
+
+	public function list_activities() { 
+		$this->load->view('list_activities', $this->data());
 	}
 
 	public function login()
@@ -29,23 +35,18 @@ class Home extends CI_Controller {
 		$this->load->view('desc_blog');
 	}
 
-	public function publish_activity()
-	{
-		$data['domains'] = $this->ActivityModel->get_domains();
-		$this->load->view('publish_activity', $data);
+	public function publish_activity() 	{ 
+		$this->load->view('publish_activity', $this->data());
 	}
 
-	public function publish_article()
-	{
-		$data['domains'] = $this->ActivityModel->get_domains();
-		$this->load->view('publish_article', $data);
+	public function publish_article() { 
+		$this->load->view('publish_article', $this->data());
 	}
 
 	public function activity() 
 	{
-		$data['activity'] = $this->ActivityModel->get_where_activity($this->session->id);
-		$data['domains'] = $this->ActivityModel->get_domains();
-		$this->load->view('activity', $data);
+		$this->data()['activity'] = $this->ActivityModel->get_where_activity($this->session->id);
+		$this->load->view('activity', $this->data());
 	}
 
 	public function sign_in()

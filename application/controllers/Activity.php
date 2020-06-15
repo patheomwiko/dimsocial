@@ -109,6 +109,16 @@ class Activity extends CI_Controller {
 
     }
 
+    function show_all_domain() {
+        $domain = $this->uri->segment(3);
+        $domains = $this->ActivityModel->get_all_domain_where_id($domain);
+        if($domains != NULL || ! empty($domains)) {
+            echo 'TRUE';
+        } else {
+            echo 'FALSE';
+        }
+    }
+
 
     /**
      * get_domain()

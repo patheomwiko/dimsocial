@@ -111,11 +111,11 @@
         		<div class="testi_inner">
 					<div class="testi_slider owl-carousel"> 
                         <?php
-                            if(isset($categories)) 
+                            if(isset($domains)) 
                             {
-                                if($categories -> num_rows() > 0) 
+                                if($domains -> num_rows() > 0) 
                                 {
-                                    foreach ($categories -> result() as $row) 
+                                    foreach ($domains -> result() as $row) 
                                     {
                                         echo '
                                         <div class="item">
@@ -149,120 +149,84 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="blog_left_sidebar">
-                            <article class="row blog_item">
-                               <div class="col-md-3">
-                                   <div class="blog_info text-right">
-                                        <div class="post_tag">
-                                            <a href="#">Food,</a>
-                                            <a class="active" href="#">Technology,</a>
-                                            <a href="#">Politics,</a>
-                                            <a href="#">Lifestyle</a>
-                                        </div>
-                                        <ul class="blog_meta list">
-                                            <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                            <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                            <li><a href="#">0 Likes<i class="fa fa-heart "></i></a></li>
-                                        </ul>
-                                    </div>
-                               </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="<?=base_url('assets/img/blog/main-blog/m-blog-1.jpg');?>" alt="">
-                                        <div class="blog_details">
-                                            <a href="single-blog.html"><h2>Astronomy Binoculars A Great Alternative</h2></a>
-                                            <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
-                                            <a href="single-blog.html" class="white_bg_btn">View More</a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="row blog_item">
-                               <div class="col-md-3">
-                                   <div class="blog_info text-right">
-                                        <div class="post_tag">
-                                            <a href="#">Food,</a>
-                                            <a class="active" href="#">Technology,</a>
-                                            <a href="#">Politics,</a>
-                                            <a href="#">Lifestyle</a>
-                                        </div>
-                                        <ul class="blog_meta list">
-                                            <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                            <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                        </ul>
-                                    </div>
-                               </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="<?=base_url('assets/img/blog/main-blog/m-blog-2.jpg');?>" alt="">
-                                        <div class="blog_details">
-                                            <a href="single-blog.html"><h2>The Basics Of Buying A Telescope</h2></a>
-                                            <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
-                                            <a href="single-blog.html" class="white_bg_btn">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="row blog_item">
-                               <div class="col-md-3">
-                                   <div class="blog_info text-right">
-                                        <div class="post_tag">
-                                            <a href="#">Food,</a>
-                                            <a class="active" href="#">Technology,</a>
-                                            <a href="#">Politics,</a>
-                                            <a href="#">Lifestyle</a>
-                                        </div>
-                                        <ul class="blog_meta list">
-                                            <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                            <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                        </ul>
-                                    </div>
-                               </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="<?=base_url('assets/img/blog/main-blog/m-blog-3.jpg');?>" alt="">
-                                        <div class="blog_details">
-                                            <a href="single-blog.html"><h2>The Glossary Of Telescopes</h2></a>
-                                            <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
-                                            <a href="single-blog.html" class="white_bg_btn">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="row blog_item">
-                               <div class="col-md-3">
-                                   <div class="blog_info text-right">
-                                        <div class="post_tag">
-                                            <a href="#">Food,</a>
-                                            <a class="active" href="#">Technology,</a>
-                                            <a href="#">Politics,</a>
-                                            <a href="#">Lifestyle</a>
-                                        </div>
-                                        <ul class="blog_meta list">
-                                            <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                            <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                        </ul>
-                                    </div>
-                               </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="<?=base_url('assets/img/blog/main-blog/m-blog-4.jpg');?>" alt="">
-                                        <div class="blog_details">
-                                            <a href="single-blog.html"><h2>The Night Sky</h2></a>
-                                            <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
-                                            <a href="single-blog.html" class="white_bg_btn">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                           
+
+
+                            <?php
+
+                                if(isset($articles)) 
+                                {
+                                    if($articles -> num_rows() > 0) 
+                                    {
+                                        foreach ($articles -> result() as $row) 
+                                        {
+                                            echo
+                                            '
+                                            <article class="row blog_item">
+                                            <div class="col-md-3">
+                                                <div class="blog_info text-right">
+                                                     <div class="post_tag">
+                                                        '?>
+                                                        <?php 
+                                                            $domains_arr = $this->ActivityModel->get_domains();
+                                                            print_r($domains_arr->result()[0]->title);
+                                                            if(isset($domains)) 
+                                                            {
+                                                                if($domains -> num_rows() > 0) 
+                                                                {
+                                                                    foreach ($domains -> result() as $domain) 
+                                                                    {
+                                                                        if($domains_arr->result()[0]->CODE == $domain->CODE) {
+                                                                            echo '<a class="active" href="'.site_url('activity/show_all_domain/'.$domain->CODE) .'">'.$domain->title.'</a>';
+                                                                        } else {
+                                                                            echo 
+                                                                            '
+                                                                                <a href="'.site_url('activity/show_all_domain/'.$domain->CODE) .'">'.$domain->title.'</a>
+                                                                            ';                                                                       } 
+                                                                       
+                                                                    }
+                                                                }
+                                                            }
+                                                        ?> 
+                                                    </div>
+                                                     <ul class="blog_meta list">
+                                                        <?php
+                                                            echo 
+                                                            '
+                                                                <li><a href="'.site_url('user/show_user/'.$user[0]->id).'">'.$user[0]->name.'<i class="lnr lnr-user"></i></a></li>
+                                                                <li><a>'.$row->date.'<i class="lnr lnr-calendar-full"></i></a></li>
+                                                                <li><a href="#">'.$row->view.' M Views<i class="lnr lnr-eye"></i></a></li>
+                                                                <li><a href="#">0 Comments<i class="lnr lnr-bubble"></i></a></li>
+                                                                <li><a href="#">0 Likes<i class="fa fa-heart "></i></a></li>
+                                                            ';
+                                                        ?>
+
+                                                       
+                                                     </ul>
+                                                 </div>
+                                            </div>
+                                             <div class="col-md-9">
+                                                 <div class="blog_post">
+                                                    <?php
+                                                     echo '
+                                                     <img src="'.base_url().'upload/'.$row->imageUrl.'" alt="">
+                                                     <div class="blog_details">
+                                                         <a href="'.site_url('activity/show/'.$row->id).'"><h2>'.$row->title.'</h2></a>
+                                                         <p>'.$row->description.'</p>
+                                                         <a href="'.site_url('activity/show/'.$row->id).'" class="white_bg_btn">Voir plus</a>
+                                                         
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </article>
+             
+                                            ';
+                                        }
+                                    }
+                                }
+
+                            ?>
+
                             <article class="row blog_item">
                                <div class="col-md-3">
                                    <div class="blog_info text-right">
@@ -291,79 +255,50 @@
                                     </div>
                                 </div>
                             </article>
-                            <!-- <nav class="blog-pagination justify-content-center d-flex">
-		                        <ul class="pagination">
-		                            <li class="page-item">
-		                                <a href="#" class="page-link" aria-label="Previous">
-		                                    <span aria-hidden="true">
-		                                        <span class="lnr lnr-chevron-left"></span>
-		                                    </span>
-		                                </a>
-		                            </li>
-		                            <li class="page-item"><a href="#" class="page-link">01</a></li>
-		                            <li class="page-item active"><a href="#" class="page-link">02</a></li>
-		                            <li class="page-item"><a href="#" class="page-link">03</a></li>
-		                            <li class="page-item"><a href="#" class="page-link">04</a></li>
-		                            <li class="page-item"><a href="#" class="page-link">09</a></li>
-		                            <li class="page-item">
-		                                <a href="#" class="page-link" aria-label="Next">
-		                                    <span aria-hidden="true">
-		                                        <span class="lnr lnr-chevron-right"></span>
-		                                    </span>
-		                                </a>
-		                            </li>
-		                        </ul>
-		                    </nav> -->
+                          
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar"> 
                             <aside class="single_sidebar_widget popular_post_widget">
-                                <h3 class="widget_title" style="background: #1d3163;">Popular Posts</h3>
-                                <div class="media post_item">
-                                    <img src="<?=base_url('assets/img/blog/popular-post/post1.jpg');?>" alt="post">
-                                    <div class="media-body">
-                                        <a href="blog-details.html"><h3>Space The Final Frontier</h3></a>
-                                        <p>02 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="<?=base_url('assets/img/blog/popular-post/post2.jpg');?>" alt="post">
-                                    <div class="media-body">
-                                        <a href="blog-details.html"><h3>The Amazing Hubble</h3></a>
-                                        <p>02 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="<?=base_url('assets/img/blog/popular-post/post3.jpg');?>" alt="post">
-                                    <div class="media-body">
-                                        <a href="blog-details.html"><h3>Astronomy Or Astrology</h3></a>
-                                        <p>03 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="<?=base_url('assets/img/blog/popular-post/post4.jpg');?>" alt="post">
-                                    <div class="media-body">
-                                        <a href="blog-details.html"><h3>Asteroids telescope</h3></a>
-                                        <p>01 Hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget ads_widget">
-                                <a href="#"><img class="img-fluid" src="<?=base_url('assets/img/blog/add.jpg');?>" alt=""></a>
+                                <h3 class="widget_title" style="background: #1d3163;">Posts récents</h3>
+
+                                <?php
+
+                                    if(isset($articles)) 
+                                    {
+                                        $i = 0;
+                                        if($articles -> num_rows() > 0) 
+                                        {
+                                            foreach ($articles -> result() as $row) 
+                                            {
+                                                echo '
+                                                <div class="media post_item">
+                                                    <img src="'.base_url().'upload/'.$row->imageUrl.'" alt="post" class="w-25 rounded-0">
+                                                    <div class="media-body">
+                                                        <a href="'.site_url('activity/show_article/'.$row->id).'"><h3>'.$row->title.'r</h3></a>
+                                                        <p>'.$row->time.' Hours ago</p>
+                                                    </div>
+                                                </div>
+                                                ';
+                                            }
+                                        }
+                                    }
+
+                                ?>
+ 
                                 <div class="br"></div>
                             </aside>
                             <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title" style="background: #1d3163;">Post Catgories</h4>
+                                <!-- <h4 class="widget_title" style="background: #1d3163;">Post Catgories</h4> -->
                                 <ul class="list cat-list">
                                   
                                     <?php
-                                        if(isset($categories)) 
+                                        if(isset($domains)) 
                                         {
-                                            if($categories -> num_rows() > 0) 
+                                            if($domains -> num_rows() > 0) 
                                             {
-                                                foreach ($categories -> result() as $row) 
+                                                foreach ($domains -> result() as $row) 
                                                 {
                                                     echo '
                                                     <li>
@@ -383,15 +318,15 @@
                             </aside>
                             
                             <aside class="single-sidebar-widget tag_cloud_widget">
-                                <h4 class="widget_title" style="background: #1d3163;">Tag Clouds</h4>
+                                <!-- <h4 class="widget_title" style="background: #1d3163;">Tag Clouds</h4> -->
                                 <ul class="list">
                                    
                                     <?php
-                                        if(isset($categories)) 
+                                        if(isset($domains)) 
                                         {
-                                            if($categories -> num_rows() > 0) 
+                                            if($domains -> num_rows() > 0) 
                                             {
-                                                foreach ($categories -> result() as $row) 
+                                                foreach ($domains -> result() as $row) 
                                                 {
                                                     echo '<li><a href="'.site_url('activity/get_activity/' . $row->id ).'">'.$row->title.'</a></li>';
                                                 }
@@ -400,6 +335,11 @@
                                     ?> 				
 
                                 </ul>
+                            </aside>
+                            
+                            <aside class="single_sidebar_widget ads_widget">
+                                <a href="#"><img class="img-fluid" src="<?=base_url('assets/img/blog/add.jpg');?>" alt=""></a>
+                                <div class="br"></div>
                             </aside>
                         </div>
                     </div>
