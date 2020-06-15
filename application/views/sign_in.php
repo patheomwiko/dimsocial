@@ -70,9 +70,7 @@
                     <li class="nav-item">
                         <a class="nav-link active  text-light" href="<?=site_url()?>"><i class="fa fa-home"></i><small> <strong>Accueil</strong> </small> </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active  text-light" href="<?=site_url('home/activity')?>"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
-                    </li>
+                   
                     <?php
                         if(isset($this->session->name) || isset($this->session->email)) {
                             echo
@@ -86,7 +84,9 @@
                             <li class="nav-item">
                                 <a class="nav-link  text-light" href="'.site_url('user/logout').'"><i class="fa fa-user"></i><small> <strong>Se déconnecter</strong> </small> </a>
                             </li> 
-                           
+                            <li class="nav-item">
+                                <a class="nav-link active  text-light" href="'.site_url('home/activity').'"><i class="fa fa-book"></i><small> <strong>Votre activité</strong> </small> </a>
+                            </li>
                             ';
                         } else {
                             echo '
@@ -99,6 +99,7 @@
                             ';
                         }
                     ?> 
+                   
                 </ul>
             </div>
         </header> 
