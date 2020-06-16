@@ -43,7 +43,7 @@ class UserModel extends CI_Model {
     /**
      * get_user()
      *
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_user() {
         return $this->db->get($this->table_user); 
@@ -52,8 +52,8 @@ class UserModel extends CI_Model {
     /**
      * get_user_where_id($id)
      *
-     * @param [integer] $id
-     * @return void
+     * @param integer $id
+     * @return CI_DB_mysqli_result Object
      */
     public function get_user_where_id($id) {
         return $this->db->where('id', $id)->get($this->table_user)->result(); 
@@ -62,7 +62,7 @@ class UserModel extends CI_Model {
     /**
      *  get_where_user
      *
-     * @param [type] $data
+     * @param array $data
      * @return void
      */
     public function get_where_user($data) {
@@ -72,8 +72,8 @@ class UserModel extends CI_Model {
     /**
      * get_where_user_id($id)
      *
-     * @param [type] $id
-     * @return void
+     * @param integer $id
+     * @return CI_DB_mysqli_result Object
      */
     public function get_where_user_id($id) {
         return $this->db->where('id', $id)->get($this->table_user)->result();
@@ -82,19 +82,19 @@ class UserModel extends CI_Model {
     /**
      * get_desc_user()
      *
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_desc_user() {
         $this->db->order_by('id', 'DESC');
-        return $this->db->get($this->table_user); 
+        return $this->db->get($this->table_user)->result(); 
     }
 
 
     /**
      * get_where_desc_user($id)
      *
-     * @param [integer] $id
-     * @return void
+     * @param integer $id
+     * @return CI_DB_mysqli_result Object
      */
     public function get_where_desc_user($id) {
         $this->db->order_by('id', 'DESC');
@@ -115,7 +115,7 @@ class UserModel extends CI_Model {
     /**
      * add_user($data)
      *
-     * @param [array] $data
+     * @param array $data
      * @return boolean
      */
     public function add_user($data) : bool { 
@@ -132,7 +132,7 @@ class UserModel extends CI_Model {
     /**
      * replace_user($data)
      *
-     * @param [array] $data
+     * @param array $data
      * @return boolean
      */
     public function replace_user($data) : bool {
@@ -143,7 +143,7 @@ class UserModel extends CI_Model {
     /**
      * update_user($data)
      *
-     * @param [array] $data
+     * @param array $data
      * @return boolean
      */
     public function update_user($data) : bool {
@@ -153,7 +153,7 @@ class UserModel extends CI_Model {
     /**
      *  delete_user($id)
      *
-     * @param [int] $id
+     * @param integer $id
      * @return boolean
      */
     public function delete_user($id) : bool {
@@ -180,36 +180,36 @@ class UserModel extends CI_Model {
      /**
       * get_comment()
       *
-      * @return void
+      * @return CI_DB_mysqli_result Object
       */
     public function get_comment() {
-        return $this->db->get($this->table_comment); 
+        return $this->db->get($this->table_comment)->result(); 
     }
 
     /**
      * get_where_comment($id)
      *
-     * @param [integer] $id
-     * @return void
+     * @param integer $id
+     * @return CI_DB_mysqli_result Object
      */
     public function get_where_comment($id) {
-        return $this->db->where('id', $id)->get($this->table_comment);
+        return $this->db->where('id', $id)->get($this->table_comment)->result();
     } 
 
     /**
      * get_desc_comment()
      *
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_desc_comment() {
         $this->db->order_by('id', 'DESC');
-        return $this->db->get($this->table_comment); 
+        return $this->db->get($this->table_comment)->result(); 
     }
     
     /**
      * update_comment($data)
      *
-     * @param [array] $data
+     * @param array $data
      * @return boolean
      */
     public function update_comment($data) : bool {
@@ -219,7 +219,7 @@ class UserModel extends CI_Model {
     /**
      *  delete_comment($id)
      *
-     * @param [int] $id
+     * @param integer $id
      * @return boolean
      */
     public function delete_comment($id) : bool {

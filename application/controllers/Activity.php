@@ -3,12 +3,78 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Activity extends CI_Controller {
 
+
     /**
-     * activity_data()
+     * Views
+     * =====
+
+     * 5. articles
+     * 6. activities
+     * 7. user_articles
+     * 8. user_activity
+     * 
+     * 9. modify_article
+     * 10. modify_activity
+     */
+
+    /**
+     * view_articles()
+    *
+    * @return void
+    */
+    public function view_articles() {
+        $this->load->view('artciles', $this->data());
+    }
+
+    /**
+     * view_activities()
+     *
+     * @return void
+     */
+    public function view_activities() {
+        $this->load->view('activities', $this->data());
+    }
+
+    /**
+     * view_user_articles()
+     *
+     * @return void
+     */
+    public function view_user_articles() {
+        $id = $this->uri->segment(3);
+        $data['user'] = $this->UserModel->get_where_user_id($id);
+        if( ! empty($data) || $data != NULL) {
+            $this->load->view('user_articles', $this->data());
+        } else {
+            echo 'Data not found.';
+        }
+    }
+
+    /**
+     * iew_own_articles()
+     *
+     * @return void
+     */
+    public function view_own_articles() {
+        if(isset($this->session->id)){
+            $user_id = $this->session->id;
+            $data['own_articles'] = $this->ActivityModel->get_where_activity($user_id);
+            if( ! empty($data) || $data != NULL) {
+                $this->load->view('own_articles', $data);
+            } else {
+                echo 'Data not found.';
+            }
+        } else {
+            echo 'You are not connected.';
+        }
+    }
+
+    /**
+     * activity_input_data()
      *
      * @return array
      */
-    private function activity_data() : array 
+    private function activity_input_data() : array 
     {
         return array
         (
@@ -21,10 +87,54 @@ class Activity extends CI_Controller {
         );
     }
 
+    /**
+     * article_input_data()
+     *
+     * @return array
+     */
+    private function article_input_data() : array {
+        return array
+        (
+            'name' => $this->input->post('name', TRUE),
+            'domain' => $this->input->post('domain', TRUE),
+            'description' => $this->input->post('description', TRUE),
+            'imageUrl' => $this->input->post('imageUrl', TRUE),
+            'id_user' => $this->session->id
+        );
+    }
 
-    
-	public function upload_image() {
 
+    /**
+     * data()
+     *
+     * @return array
+     */
+    private function data() : array {
+        
+        $data = array();
+
+        if(isset($this->session->id) || isset($this->session->id)) {
+            $data['user'] = $this->UserModel->get_user_where_id($this->session->id);
+            $data['activity'] = $this->ActivityModel->get_where_activity($this->session->id);
+        }
+
+        $data['domains'] = $this->ActivityModel->get_domains();
+        $data['articles'] = $this->ActivityModel->get_articles();
+        $data['activities'] = $this->ActivityModel->get_activities();
+        
+        return $data;
+    }
+
+
+
+
+    /**
+     * upload_image()
+     *
+     * @return void
+     */
+    public function upload_image() 
+    {
         if(isset($_FILES['imageUrl']['name']))
         {
             $config['upload_path'] = './upload/';
@@ -41,10 +151,37 @@ class Activity extends CI_Controller {
 		}
 	}
 
+    /**
+     * publish_article()
+     *
+     * @return void
+     */
     function publish_article() {
 
+        $this->form_validation->set_rules('name', 'name', 'required|trim');
+        $this->form_validation->set_rules('domain', 'domaine', 'required|trim');
+        $this->form_validation->set_rules('description', 'description', 'required|trim');
+        $this->form_validation->set_rules('imageUrl', 'imageUrl', 'required|trim');
+
+        if($this->form_validation->run()) { 
+            $is_done = $this->ActivityModel->add_articles($this->article_input_data());
+            if($is_done == TRUE) {
+                $this->load->view('own_articles', $this->data());
+            } else {
+                echo 'Error on Database manipulations.';
+            }
+        } else {
+            echo 'Error on form validation.';
+        }
+    
     }
 
+
+    /**
+     * publish_activity()
+     *
+     * @return void
+     */
     function publish_activity() 
     {
         $this->form_validation->set_rules('name', 'name', 'required|trim');
@@ -96,7 +233,7 @@ class Activity extends CI_Controller {
                 'form_none_validated' => 'Vériifez les informations saisies',
                 'already_exist' => 'Le donnée existe déjà',
             );
-            $result = $this->ActivityModel->add_activity($this->activity_data());
+            $result = $this->ActivityModel->add_activity($this->activity_input_data());
             if($result == TRUE) { 
                 $this->load->view('index');
             } else {
@@ -104,12 +241,47 @@ class Activity extends CI_Controller {
             }
         } else {
             echo 'Failed at form validation !';
-            $this->view_activity();
         }
 
     }
 
-    function show_all_domain() {
+    /**
+     * modify_arctivity()
+     *
+     * @return void
+     */
+    public function modify_activity() {
+        $id = $this->uri->segment(3);
+        $data['activity'] = $this->ActivityModel->get_where_activity_id($id);
+        if( ! empty($data) || $data != NULL) {
+            $this->load->view('update_activity', $data);
+        } else {
+            echo 'Activity not found.';
+        }
+    }
+
+
+    /**
+     * modify_article()
+     *
+     * @return void
+     */
+    public function modify_article() {
+        $id = $this->uri->segment(3);
+        $data['article'] = $this->ActivityModel->get_where_activity_id($id);
+        if( ! empty($data) || $data != NULL) {
+            $this->load->view('update_article', $data);
+        } else {
+            echo 'Activity not found.';
+        }
+    }
+
+    /**
+     * show_all_domains() 
+     *
+     * @return void
+     */
+    function show_all_domains() {
         $domain = $this->uri->segment(3);
         $domains = $this->ActivityModel->get_all_domain_where_id($domain);
         if($domains != NULL || ! empty($domains)) {
@@ -118,6 +290,24 @@ class Activity extends CI_Controller {
             echo 'FALSE';
         }
     }
+
+ 
+    /**
+     * get_activity($id)
+     *
+     * @param integer $id
+     * @return void
+     */
+    function get_activity($id) {
+        $id = $this->uri->segment(4);
+        $data['activity'] = $this->activitymodel->get_activity_where($id);
+        if( ! empty($data) ) {
+            $this->load->view('own_activity', $data);
+        } else {
+            echo 'Fail to get activity ID : ' . $id;
+        }
+    }
+
 
 
     /**
@@ -130,16 +320,7 @@ class Activity extends CI_Controller {
         $data['domain'] = $this->ActivityModel->get_where_domain($id);
         return $data;
     }
-
-    
-	public function view_activity()
-	{
-        $data['user'] = $this->UserModel->get_user_where_id($this->session->id);
-		$data['activity'] = $this->ActivityModel->get_where_activity($this->session->id);
-		$data['categories'] = $this->ActivityModel->get_categories();
-		$this->load->view('publish_activity', $data);
-	}
-
+ 
 
 
     function remove_activity() {
@@ -193,7 +374,7 @@ class Activity extends CI_Controller {
     
         if($this->form_validation->run()) 
         {
-            $result = $this->activitymodel->update_activity($this->activity_data());
+            $result = $this->activitymodel->update_activity($this->activity_input_data());
             if($result == TRUE) 
             {
                 echo 'Activity is added !';
@@ -202,17 +383,6 @@ class Activity extends CI_Controller {
             }
         } else {
             echo 'Failed at form validation !';
-        }
-    }
-
-
-    function get_activity($id) {
-        $id = $this->uri->segment(4);
-        $result = $this->activitymodel->get_activity_where($id);
-        if( ! empty($result) ) {
-            print_r($result);
-        } else {
-            echo 'Fail to get activity ID : ' . $id;
         }
     }
 

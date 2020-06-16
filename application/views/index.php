@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="<?=base_url('assets/img/main/logo.png');?>');?>" type="image/png">
+        <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
         <title>DIM Social</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">

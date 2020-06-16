@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="<?=base_url('assets/img/favicon.png');?>" type="image/png">
+        <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
         <title>DIM Social - Inscrivez-vous et partagé votre activité</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
@@ -150,7 +150,7 @@
                                 
                                 <div class="form-group">
                                     <label for="imageUrl"> <small class="text-center">Votre photo</small> </label>
-                                    <input type="file" class="form-control" value="<?=set_value('imageUrl');?>" id="imageUrl" name="imageUrl">
+                                    <input type="file" class="form-control" value="<?=set_value('imageUrl');?>" id="imageUrl" name="imageUrl"><br>
                                     <div class="form-group">
                                         <div id="uploaded_image">
 
@@ -171,7 +171,7 @@
                                 </div> 
 
                                 <div class="form-group">
-                                    <button type="submit" value="submit" class="btn btn-sm btn-block text-light border-0" style="background-color: #1d3163;">Publier</button>
+                                    <button type="submit" value="submit" class="btn btn-sm btn-block text-light border-0" style="background-color: #1d3163;">S'inscrire</button>
                                 </div>
                             </div> 
                             
@@ -185,11 +185,11 @@
                                     <h4 class="widget_title" style="background-color: #1d3163;">Les plus actives</h4>
                                     <ul class="list">
                                         <?php
-                                            if(isset($categories)) 
+                                            if(isset($domains)) 
                                             {
-                                                if($categories -> num_rows() > 0) 
+                                                if($domains -> num_rows() > 0) 
                                                 {
-                                                    foreach ($categories -> result() as $row) 
+                                                    foreach ($domains -> result() as $row) 
                                                     {
                                                         echo '<li><a href="'.site_url('activity/get_activity/'.$row->id).'">'.$row->title.'</a></li>';
                                                     }
@@ -202,11 +202,11 @@
                                 <h4 class="widget_title" style="background-color: #1d3163;">Top Catgories</h4>
                                 <ul class="list cat-list">
                                     <?php
-                                        if(isset($categories)) 
+                                        if(isset($domains))
                                         {
-                                            if($categories -> num_rows() > 0) 
+                                            if($domains -> num_rows() > 0) 
                                             {
-                                                foreach ($categories -> result() as $row) 
+                                                foreach ($domains -> result() as $row) 
                                                 {
                                                     echo '
                                                     <li>
@@ -272,7 +272,7 @@ $(document).ready(function(){
     $('.contact_form').on('change', function(e){
         e.preventDefault();
         if($('#imageUrl').val() == '') {
-            alert('Please, select a file.');
+            // alert('Please, select a file.');
         } else {
             $.ajax({
                 url:"<?php echo base_url();?>activity/upload_image",

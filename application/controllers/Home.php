@@ -50,9 +50,8 @@ class Home extends CI_Controller {
 	}
 
 	public function sign_in()
-	{
-		$data['domains'] = $this->ActivityModel->get_domains();
-		$this->load->view('sign_in', $data);
+	{ 
+		$this->load->view('sign_in', $this->data());
 	}
 
 	public function politic()

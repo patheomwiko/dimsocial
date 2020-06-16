@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
-        <title>DIM Social - Se connecter</title>
+        <title>DIM Social - Votre profile</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -104,21 +104,24 @@
         <section class="blog_area single-post-area p_120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4">
                         <div class="blog_right_sidebar">
                             <aside class="single_sidebar_widget search_widget">
                                 <div class="input-group">
                                     <h4>Se connecter</h4>
                                     <small class="text-muted">Entrer en contact avec plusieurs entrepreneurs, partagez vos services</small>
-                                </div><!-- /input-group -->
-                                <div class="br"></div>
-                            </aside>
-                            <aside class="single_sidebar_widget author_widget">
+                                </div> -->
+                                <!-- /input-group -->
+                                <!-- <div class="br"></div>
+                            </aside> -->
+
+
+                            <!-- <aside class="single_sidebar_widget author_widget"> -->
 
 
 
                                 <!-- *** Login Form **** -->
-                                <form method="POST" action="<?=site_url('user/login');?>"    class="contact_form"  id="contact_form" novalidate="novalidate">
+                                <!-- <form method="POST" action="<?=site_url('user/login');?>"    class="contact_form"  id="contact_form" novalidate="novalidate">
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <input type="email" name="email" value="<?=set_value('email');?>" class="form-control rounded-0" id="email" placeholder="Email" required>
@@ -152,21 +155,22 @@
                                         <button type="submit" class="btn btn-primary btn-sm btn-block border-0" style="background: #1d3163;">Se connecter</button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> -->
                                 <!-- *** Login Form **** -->
 
 
 
-                            <div class="br"></div>
-                            </aside>
+                            <!-- <div class="br"></div>
+                            </aside> -->
                             
-                        </div>
-                    </div>
+                        <!-- </div>
+                    </div> -->
                     
-                    <div class="col-lg-8 posts-list">
+                    <div class="col-lg-6 posts-list">
                         <div class="single-post row">
                             <div class="col-lg-12">
                                 <div class="feature-img">
+                                    <h2 class="text-center">Votre profile</h2>
                                     <img class="img-fluid" src="<?=base_url('assets/img/main/news_post_5.jpg');?>" alt="">
                                 </div>									
                             </div>

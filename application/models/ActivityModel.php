@@ -40,7 +40,7 @@ class ActivityModel extends CI_Model {
      *
      * @var string
      */
-    private $table_domain = 'categories';
+    private $table_domain = 'domains';
     
     /**
      * $done
@@ -276,6 +276,17 @@ class ActivityModel extends CI_Model {
     public function get_where_activity($id) {
         return $this->db->where('id_user', $id)->get($this->table_activity)->result();
     } 
+
+    
+    /**
+     * get_where_activity_id($id)
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function get_where_activity_id($id) {
+        return $this->db->where('id', $id)->get($this->table_activity)->result();
+    }
     
     /**
      * get_desc_activities()

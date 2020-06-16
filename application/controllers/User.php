@@ -3,7 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
+    /**
+     * Views
+     * ======
+     * 1. login
+     * 2. sign_in
+     * 3. sign_out
+     * 4. logout
+     * 5. block_user
+     */
 
+
+     
     /**
      * user_data()
      *
@@ -25,6 +36,18 @@ class User extends CI_Controller {
     }
 
 
+     /**
+      * data()
+      *
+      * @return array
+      */
+    private function data() : array {
+        $data['domains'] = $this->ActivityModel->get_domains();
+        $data['articles'] = $this->ActivityModel->get_articles();
+
+        return $data;
+    }
+
     /**
      * user_login_data()
      *
@@ -38,13 +61,22 @@ class User extends CI_Controller {
     }
 
  
+    /**
+     * logout()
+     *
+     * @return void
+     */
 	public function logout() {
 		$this->session->unset_userdata($this->user_login_data()); 
 		$this->session->sess_destroy();
         redirect(base_url().'home');
     }
     
-
+    /**
+     * upload_image()
+     *
+     * @return void
+     */
     public function upload_image() {
 
         if(isset($_FILES['imageUrl']['name']))
@@ -131,7 +163,11 @@ class User extends CI_Controller {
         return $arr;
     }
 
-
+    /**
+     * my_account()
+     *
+     * @return void
+     */
     function my_account() {
         $id = $this->uri->segment(3);
         $data['user'] = $this->UserModel->get_where_user_id($id);
@@ -142,14 +178,15 @@ class User extends CI_Controller {
         }
     }
 
-    function sign_in() {
+    function sign_in() 
+    {
          
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
-                'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.',
+                'max_length' => 'Le  champs %s doit contenir au plus 45 caractères.',
+                'min_length' => 'Le champs %s doit contenir au mois 8 caractères.',
+                'strip_tags' => 'Le  champs %s contient des caractères inapropriés.',
                 'valid_email' => 'Entrez un e-mail valide.'
             )
         );
@@ -157,34 +194,35 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password', 'password', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
-                'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.'
+                'max_length' => 'Le champs %s doit contenir au plus 45 caractères.',
+                'min_length' => 'Le champs %s doit contenir au mois 8 caractères.',
+                'strip_tags' => 'Le champs %s contient des caractères inapropriés.'
             )
         );
         
-        $this->form_validation->set_rules('confirm', 'confirmation', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
+        $this->form_validation->set_rules('confirm', 'confirmation', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags|matches[password]', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
-                'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.'
+                'max_length' => 'Le champs %s doit contenir au plus 45 caractères.',
+                'min_length' => 'Le champs %s doit contenir au mois 8 caractères.',
+                'strip_tags' => 'Le champs %s contient des caractères inapropriés.',
+                'matches' => ''
             )
         );
  
         $this->form_validation->set_rules('name', 'nom', 'required|trim|max_length[45]|xss_clean|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.'
+                'max_length' => 'Le champs %sdoit contenir au plus 45 caractères.',
+                'strip_tags' => 'Le champs %scontient des caractères inapropriés.'
             )
         );
 
         $this->form_validation->set_rules('address', 'addresse', 'required|trim|max_length[255]|xss_clean|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.'
+                'max_length' => 'Le champs %sdoit contenir au plus 45 caractères.',
+                'strip_tags' => 'Le champs %scontient des caractères inapropriés.'
             )
         );
 
@@ -194,40 +232,63 @@ class User extends CI_Controller {
             )
         );
 
-        $this->form_validation->set_rules('bio', 'bio', 'required|trim|xss_clean|strip_tags', 
+        $this->form_validation->set_rules('bio', 'bio', 'trim|xss_clean|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.'
+                'strip_tags' => 'Le champs %s contient des caractères inapropriés.'
             )
         );       
 
         $this->form_validation->set_rules('photo', 'photo', 'required|trim|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.'
+                'strip_tags' => 'Le champs %s contient des caractères inapropriés.'
             )
         );  
 
         $this->form_validation->set_rules('phone', 'phone', 'required|trim|max_length[15]|min_length[10]|xss_clean|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
-                'max_length' => 'Le  %s champs doit contenir au plus 45 caractères.',
-                'min_length' => 'Le %s champs doit contenir au mois 8 caractères.',
-                'strip_tags' => 'Le  %s champs contient des caractères inapropriés.'
+                'max_length' => 'Le  champs  %s doit contenir au plus 45 caractères.',
+                'min_length' => 'Le champs  %s doit contenir au mois 8 caractères.',
+                'strip_tags' => 'Le champs  %s contient des caractères inapropriés.'
             )
         );
 
         if($this->form_validation->run()) {
-            $result = $this->UserModel->add_entrepreneur($this->user_data());
-            if($result == TRUE) {
-                echo 'Account is created !';
-            } else {
-                echo 'Failed';
-            }
+            print_r($this->user_data());
+            // $result = $this->UserModel->add_entrepreneur($this->user_data());
+            // if($result == TRUE) {
+            //     echo 'Account is created !';
+            // } else {
+            //     echo 'Failed';
+            // }
         } else {
+            print_r($this->user_data());
             echo 'Failed at form validation !';
+            redirect(base_url().'user/sign_in_view');
         }
 
     }
+
+
+
+    function sign_in_view() {
+        $this->load->view('sign_in', $this->data());
+    }
+
+    function profile() {
+        $this->load->view('profile', $this->user_data());
+    }
+
+    public function publish_activity() 	{ 
+		$this->load->view('publish_activity', $this->data());
+	}
+
+	public function publish_article() { 
+		$this->load->view('publish_article', $this->data());
+	}
+
+
 
 }
