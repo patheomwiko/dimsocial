@@ -111,6 +111,7 @@
                     <div class="col-lg-9">
                         
                         <form class="row contact_form" action="<?=site_url('user/sign_in');?>" method="post"  id="contact_form" novalidate="novalidate">
+                        <?php echo validation_errors(); ?>
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <h4 class="text-muted">S'inscrivez-vous et partagez votre activité</h4>
@@ -150,7 +151,7 @@
                                 
                                 <div class="form-group">
                                     <label for="imageUrl"> <small class="text-center">Votre photo</small> </label>
-                                    <input type="file" class="form-control" value="<?=set_value('imageUrl');?>" id="imageUrl" name="imageUrl"><br>
+                                    <input type="file"  value="<?=set_value('imageUrl');?>" id="imageUrl" name="imageUrl"><br>
                                     <div class="form-group">
                                         <div id="uploaded_image">
 
@@ -171,7 +172,7 @@
                                 </div> 
 
                                 <div class="form-group">
-                                    <button type="submit" value="submit" class="btn btn-sm btn-block text-light border-0" style="background-color: #1d3163;">S'inscrire</button>
+                                    <button type="submit" value="submit" class="btn btn-sm btn-block text-light border-0 rounded-0" style="background-color: #1d3163;">S'inscrire</button>
                                 </div>
                             </div> 
                             
@@ -179,10 +180,10 @@
 
                             <!-- *** SIDEBAR *** -->
                             <div class="col-lg-5">
-                                <div class="blog_right_sidebar"> 
+                                <div class="blog_right_sidebar" > 
                                 
                                 <aside class="single-sidebar-widget tag_cloud_widget">
-                                    <h4 class="widget_title" style="background-color: #1d3163;">Les plus actives</h4>
+                                    <h4 class="widget_title p-0 text-left text-muted border-bottom" style="background-color: transparent;"> <small>Les plus actives</small> </h4>
                                     <ul class="list">
                                         <?php
                                             if(isset($domains)) 
@@ -198,31 +199,7 @@
                                         ?> 
                                     </ul>
                                 </aside>
-                                <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title" style="background-color: #1d3163;">Top Catgories</h4>
-                                <ul class="list cat-list">
-                                    <?php
-                                        if(isset($domains))
-                                        {
-                                            if($domains -> num_rows() > 0) 
-                                            {
-                                                foreach ($domains -> result() as $row) 
-                                                {
-                                                    echo '
-                                                    <li>
-                                                        <a href="'.site_url('activity/get_activity/'.$row->id).'" class="d-flex justify-content-between">
-                                                            <p>'.$row->title.'</p>
-                                                            <p>0</p>
-                                                        </a>
-                                                    </li>
-                                                    ';
-                                                }
-                                            }
-                                        } 
-                                    ?> 										
-                                </ul>
-                                <div class="br"></div>
-                            </aside>
+                                
                               
                                 </div>
                             </div>

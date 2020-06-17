@@ -325,7 +325,7 @@ class ActivityModel extends CI_Model {
     /**
      * add_activity($data)
      *
-     * @param [array] $data
+     * @param array $data
      * @return boolean
      */
     public function add_activity($data) : bool { 
@@ -335,7 +335,7 @@ class ActivityModel extends CI_Model {
             return $this->done = FALSE;    
         }  
 
-        if( ! in_array($data['name'], $this->cast_object_to_array($arr[0]))) {
+        if( ! in_array($data['name'], $this->names())) {
             $this->db->insert($this->table_activity, $data);
             $this->done = TRUE;
         } else {
@@ -345,11 +345,30 @@ class ActivityModel extends CI_Model {
     }
  
 
+    /**
+     * names()
+     *
+     * @return array
+     */
+    private function names() : array {
+        $arr = $this->get_activities();
+        $names = array();
+
+        if(empty($arr)  || $arr == NULL) {
+            return $names;
+        } else {
+            foreach ($arr as $item) {
+                array_push($names, $item->email);
+            }
+            return $names;
+        }
+    }
+
 
     /**
      * replace_activity($data)
      *
-     * @param [array] $data
+     * @param array $data
      * @return boolean
      */
     public function replace_activity($data) : bool {
@@ -360,7 +379,7 @@ class ActivityModel extends CI_Model {
     /**
      * update_activity($data)
      *
-     * @param [array] $data
+     * @param array $data
      * @return boolean
      */
     public function update_activity($data) : bool {
@@ -370,12 +389,17 @@ class ActivityModel extends CI_Model {
     /**
      *  delete_activity($id)
      *
-     * @param [int] $id
+     * @param integer $id
      * @return boolean
      */
     public function delete_activity($id) : bool {
         return $this->db->delete($this->table_activity, array('id' => $id));  
     }
+
+
+    // public function count_all_likes() : int {
+
+    // }
 
     /**
      * count_likes()

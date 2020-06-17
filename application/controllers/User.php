@@ -30,8 +30,7 @@ class User extends CI_Controller {
             'gender' => $this->input->post('gender', TRUE),
             'bio' => $this->input->post('bio', TRUE),
             'imageUrl' => $this->input->post('imageUrl', TRUE),
-            'password' => $this->input->post('password', TRUE),
-            'is_connected' => FALSE
+            'password' => $this->input->post('password', TRUE)
         );
     }
 
@@ -180,7 +179,8 @@ class User extends CI_Controller {
 
     function sign_in() 
     {
-         
+
+
         $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
@@ -239,7 +239,7 @@ class User extends CI_Controller {
             )
         );       
 
-        $this->form_validation->set_rules('photo', 'photo', 'required|trim|strip_tags', 
+        $this->form_validation->set_rules('imageUrl', 'image', 'required|trim|strip_tags', 
             array(
                 'required' => 'Le champs %s est obligatoire.',
                 'strip_tags' => 'Le champs %s contient des caractères inapropriés.'
@@ -256,17 +256,17 @@ class User extends CI_Controller {
         );
 
         if($this->form_validation->run()) {
-            print_r($this->user_data());
-            // $result = $this->UserModel->add_entrepreneur($this->user_data());
-            // if($result == TRUE) {
-            //     echo 'Account is created !';
-            // } else {
-            //     echo 'Failed';
-            // }
+            // print_r($this->user_data());
+            $result = $this->UserModel->add_user($this->user_data());
+            if($result == TRUE) {
+                echo 'Account is created !';
+            } else {
+                echo 'Failed';
+            }
         } else {
             print_r($this->user_data());
             echo 'Failed at form validation !';
-            redirect(base_url().'user/sign_in_view');
+            // redirect(base_url().'user/sign_in_view');
         }
 
     }

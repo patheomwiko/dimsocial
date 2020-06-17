@@ -111,6 +111,25 @@ class UserModel extends CI_Model {
         return $this->db->count_all($this->table_user);
     }
 
+    /**
+     * emails()
+     *
+     * @return array
+     */
+    private function emails() : array {
+        $arr = $this->get_user()->result();
+        $emails = array();
+
+        if(empty($arr)  || $arr == NULL) {
+            return $emails;
+        } else {
+            foreach ($arr as $item) {
+                array_push($emails, $item->email);
+            }
+            return $emails;
+        }
+    }
+
 
     /**
      * add_user($data)
@@ -119,15 +138,20 @@ class UserModel extends CI_Model {
      * @return boolean
      */
     public function add_user($data) : bool { 
-        $arr = array($data['email']);
-        if( ! $this->db->where_not_in('email', $arr) == TRUE) {
+        $arr = $this->get_user()->result();
+
+        if(empty($arr)) {
+            return $this->done = FALSE;    
+        }  
+        if( ! in_array($data['email'], $this->emails())) {
             $this->db->insert($this->table_user, $data);
             $this->done = TRUE;
         } else {
             $this->done = FALSE;
         }
-        return $this->done;
+        return $this->done; 
     }
+
 
     /**
      * replace_user($data)
@@ -225,6 +249,27 @@ class UserModel extends CI_Model {
     public function delete_comment($id) : bool {
         return $this->db->delete($this->table_comment, array('id' => $id));  
     }
+
+
+
+
+    /**
+     * cast_object_to_array($obj)
+     *
+     * @param CI_DB_mysqli_result Object $obj
+     * @return array
+     */
+    private function cast_object_to_array($obj) : array {
+        $arr = array();
+        if (is_object($obj)) {
+            foreach ($obj as $key => $value) {
+                $arr[$key] = $value;
+                // array_push($arr, $value);
+            }
+        }
+        return $arr;
+    }
+
 
 }
  

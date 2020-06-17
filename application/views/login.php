@@ -133,23 +133,11 @@
                                               
                                             </small>
                                         </div>
-                                    </div>
-                                    <fieldset class="form-group">
-                                        <div class="row"> 
-                                            <div class="col-sm-12">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="stay_connect" id="stay_connect1" value="option1" checked>
-                                                    <label class="form-check-label text-left" for="stay_connect1">
-                                                    <small class="text-muted">Me garder connecter</small> 
-                                                    </label>
-                                                </div> 
-                                            </div>
-                                        </div>
-                                    </fieldset>
+                                    </div> 
                                     
                                     <div class="form-group row">
                                         <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-primary btn-sm btn-block border-0" style="background: #1d3163;">Se connecter</button>
+                                            <button type="submit" class="btn btn-primary btn-sm btn-block border-0 rounded-0" style="background: #1d3163;">Se connecter</button>
                                         </div>
                                     </div>
                                 </form>

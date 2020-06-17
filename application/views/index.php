@@ -117,14 +117,14 @@
                                         // <a href="#"><i class="fa fa-star-half-o"></i></a>
 
                                         echo '
-                                        <div class="item">
-                                            <div class="testi_item" style="background: #1d3163;">
-                                                <a href="#"><h4 class="text-light">'.$row->title.'</h4></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
+                                        <div class="item rounded-0">
+                                            <div class="testi_item rounded-0">
+                                                <a href="'.site_url('activity/show_articles/'.$row->CODE).'"><h4 class="text-muted">'.$row->title.'</h4></a>
+                                                <a href=""><i class="fa fa-star"></i></a>
+                                                <a href=""><i class="fa fa-star"></i></a>
+                                                <a href=""><i class="fa fa-star"></i></a>
+                                                <a href=""><i class="fa fa-star"></i></a>
+                                                <a href=""><i class="fa fa-star"></i></a>
                                             </div>
                                         </div>
                                         ';
@@ -229,8 +229,8 @@
                           
                         </div>
                     </div>
-                    <div class="col-lg-4 mt-25">
-                        <div class="blog_right_sidebar mt-25  sticky-top"> 
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar sticky-top border-0"  style="background-color: #fff;"> 
                             <aside class="single_sidebar_widget popular_post_widget mt-25">
                                 
                                 <!-- Button trigger modal -->
@@ -276,7 +276,7 @@
                                 <!-- *** MODAL MENU *** -->
                                 
                                 
-                                <h3 class="widget_title" style="background: #1d3163;">Posts récents</h3>
+                                <h3 class="widget_title border-bottom text-left text-muted p-0" style="background: #FFF;"> <small>Posts récents</small> </h3>
 
                                 <?php
 

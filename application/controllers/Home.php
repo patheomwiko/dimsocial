@@ -14,6 +14,10 @@ class Home extends CI_Controller {
 		$data['domains'] = $this->ActivityModel->get_domains();
 		// $data['user'] = $this->user();
 		$data['user'] = $this->UserModel->get_user_where_id($this->session->id);
+		// $data['likes'] = $this->ActivityModel->count_likes();
+		// $data['comments'] = $this->ActivityModel->count_comments();
+		// $data['views'] = $this->ActivityModel->count_views();
+		
 		return $data;
 	}
 
