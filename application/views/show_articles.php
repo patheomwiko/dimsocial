@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
-        <title>DIM Social</title>
+        <title>DIM Social - Articles</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -108,27 +108,27 @@
         		<div class="testi_inner">
 					<div class="testi_slider owl-carousel"> 
                         <?php
-                            if(isset($domains)) 
-                            {
-                                if($domains -> num_rows() > 0) 
-                                {
-                                    foreach ($domains -> result() as $row) 
-                                    {
-                                        echo '
-                                        <div class="item">
-                                            <div class="testi_item" style="background: #1d3163;">
-                                                <a href="#"><h4 class="text-light">'.$row->title.'</h4></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star-half-o"></i></a>
-                                            </div>
-                                        </div>
-                                        ';
-                                    }
-                                }
-                            } 
+                            // if(isset($domains)) 
+                            // {
+                            //     if($domains -> num_rows() > 0) 
+                            //     {
+                            //         foreach ($domains -> result() as $row) 
+                            //         {
+                            //             echo '
+                            //             <div class="item">
+                            //                 <div class="testi_item" style="background: #1d3163;">
+                            //                     <a href="#"><h4 class="text-light">'.$row->title.'</h4></a>
+                            //                     <a href="#"><i class="fa fa-star"></i></a>
+                            //                     <a href="#"><i class="fa fa-star"></i></a>
+                            //                     <a href="#"><i class="fa fa-star"></i></a>
+                            //                     <a href="#"><i class="fa fa-star"></i></a>
+                            //                     <a href="#"><i class="fa fa-star-half-o"></i></a>
+                            //                 </div>
+                            //             </div>
+                            //             ';
+                            //         }
+                            //     }
+                            // } 
                         ?> 				
 
                     
@@ -179,8 +179,8 @@
                                                                             echo 
                                                                             '
                                                                                 <a href="'.site_url('activity/show_all_domain/'.$domain->CODE) .'">'.$domain->title.'</a>
-                                                                            ';                                                                       } 
-                                                                       
+                                                                            ';                                                                       
+                                                                        } 
                                                                     }
                                                                 }
                                                             }

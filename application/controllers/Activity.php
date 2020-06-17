@@ -176,6 +176,41 @@ class Activity extends CI_Controller {
     
     }
 
+    
+
+    /**
+     * show_article()
+     *
+     * @return void
+     */
+    function show_article() {
+        $id = $this->uri->segment(3);
+        $data['article'] = $this->ActivityModel->get_where_desc_articles($id);
+        $data['domains'] = $this->ActivityModel->get_domains();
+        if(empty($data) || $data != NULL) {
+            $id_user = $data['article']->result()[0]->id_user;
+            $id_category = $data['article']->result()[0]->id_category;
+            $data['user'] = $this->UserModel->get_user_where_id($id_user);
+            $data['category'] = $this->ActivityModel->get_where_domain($id_category); 
+            $this->load->view('show_article', $data);
+        } else {
+            echo 'Article ID not found.';
+        }
+    }
+
+
+    function show_articles() {
+        $CODE_DOMAIN = $this->uri->segment(3);
+        $data['articles'] = $this->ActivityModel->get_where_desc_articles($CODE_DOMAIN);
+        if(empty($data) || $data != NULL) {
+            $this->load->view('show_articles', $data);
+        } else {
+            echo 'Data articles ID not found.';
+        }
+    }
+
+    
+
 
     /**
      * publish_activity()
@@ -335,43 +370,7 @@ class Activity extends CI_Controller {
 
 
     function update_activity() {
-        
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
-        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|strip_tags', 
-            array(
-                '' => '',
-                '' => '',
-                '' => '',
-            )
-        );
-    
+         
         if($this->form_validation->run()) 
         {
             $result = $this->activitymodel->update_activity($this->activity_input_data());

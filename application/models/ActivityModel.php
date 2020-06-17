@@ -195,7 +195,7 @@ class ActivityModel extends CI_Model {
      * @return void
      */
     public function get_where_domain($id) {
-        return $this->db->where('id', $id)->get($this->table_domain);
+        return $this->db->where('id', $id)->get($this->table_domain)->result();
     } 
 
     /**
