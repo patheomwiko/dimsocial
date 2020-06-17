@@ -137,9 +137,9 @@
                                                                 foreach ($domains->result() as $domain) {
                                                                     // echo $domain->title;
                                                                     if($category[0]->CODE == $domain->CODE) {
-                                                                        echo '<a class="active" href="'.site_url('activity/show_all_articles_id/'.$domain->CODE).'">'.$category[0]->title.', </a>';
+                                                                        echo '<a class="active" href="'.site_url('activity/show_all_articles_id/'.$domain->CODE).'">'.$category[0]->title.' </a>';
                                                                     } else {
-                                                                        echo '<a href="'.site_url('activity/show_all_articles_id/'.$domain->CODE).'">'.$domain->title.', </a>';
+                                                                        echo '<a href="'.site_url('activity/show_all_articles_id/'.$domain->CODE).'">'.$domain->title.' </a>';
                                                                     }
                                                                     
                                                                 }

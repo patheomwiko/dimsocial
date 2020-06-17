@@ -377,6 +377,33 @@ class ActivityModel extends CI_Model {
         return $this->db->delete($this->table_activity, array('id' => $id));  
     }
 
+    /**
+     * count_likes()
+     *
+     * @return integer
+     */
+    public function count_likes($id) : int {
+        return $this->db->where('id', $id)->get($this->table_article)->result(); 
+    }
+
+    /**
+     * count_comments()
+     *
+     * @return integer
+     */
+    public function count_comments($id) : int {
+        return $this->db->where('id', $id)->get($this->table_article)->result(); 
+    }
+
+    /**
+     * count_views()
+     *
+     * @return integer
+     */
+    public function count_views($id) : int {
+        return $this->db->where('id', $id)->get($this->table_article)->result(); 
+    }
+
 
     
     /**
