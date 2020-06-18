@@ -193,6 +193,10 @@ class Activity extends CI_Controller {
             $id_category = $data['article']->result()[0]->id_category;
             $data['user'] = $this->UserModel->get_user_where_id($id_user);
             $data['category'] = $this->ActivityModel->get_where_domain($id_category); 
+            
+            # Increment articles views
+            $this->ActivityModel->increment_views((int) $data['article']->result()[0]->id);
+
             $this->load->view('show_article', $data);
         } else {
             echo 'Article ID not found.';

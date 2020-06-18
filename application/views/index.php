@@ -226,7 +226,7 @@
                                                             '
                                                                 <li><a>'.$users[$i][0]->name.'<i class="lnr lnr-user"></i></a></li>
                                                                 <li><a>'.$row->date.'<i class="lnr lnr-calendar-full"></i></a></li>
-                                                                <!-- <li><a href="'.site_url('activity/show_article/'.$row->id).'">'.$row->view.' M Views<i class="lnr lnr-eye"></i></a></li> -->
+                                                                <li><a>'.$row->view.' Vues<i class="lnr lnr-eye"></i></a></li>
                                                                 <li><a href="'.site_url('activity/show_article/'.$row->id).'">0 Comments<i class="lnr lnr-bubble"></i></a></li>
                                                                 <!-- <li><a href="'.site_url('activity/show_article/'.$row->id).'">0 Likes<i class="fa fa-heart "></i></a></li> -->
                                                             '
@@ -391,6 +391,7 @@
             </div>
         </section>
         <!--================Blog Area =================-->
+
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -409,5 +410,8 @@
         <script src="<?=base_url('assets/vendors/counter-up/jquery.counterup.min.js');?>"></script>
         <script src="<?=base_url('assets/js/mail-script.js');?>"></script>
         <script src="<?=base_url('assets/js/theme.js');?>"></script>
+        <script>
+            
+        </script>
     </body>
 </html>

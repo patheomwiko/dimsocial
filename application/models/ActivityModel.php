@@ -472,6 +472,19 @@ class ActivityModel extends CI_Model {
         return $this->db->where('id', $id)->get($this->table_article)->result(); 
     }
 
+    /**
+     * increment_views($id_article)
+     *
+     * @param integer $id_article
+     * @return void
+     */
+    public function increment_views(int $id_article)  {
+        $article_view = (int) $this ->db->where('id', $id_article)->get($this->table_article)->result()[0]->view; 
+        $article = $this->db->where('id', $id_article)->get($this->table_article)->result();
+        $article[0]->view = ++$article_view;
+        return $this->db->update($this->table_article, $article[0], 'id = ' . (int) $id_article);
+    }
+
 
     
     /**
