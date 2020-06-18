@@ -63,7 +63,7 @@ class Home extends CI_Controller {
 
 	public function politic()
 	{
-		echo 'Politics';
+		$this->load->view('politic');
 	}
 
 

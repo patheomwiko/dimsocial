@@ -31,6 +31,13 @@ class UserModel extends CI_Model {
      * @var string
      */
     private $table_comment = 'comments';
+
+    /**
+     * $table_newletter
+     *
+     * @var string
+     */
+    private $table_newsletter = 'newsletters';
     
     /**
      * $done
@@ -69,6 +76,39 @@ class UserModel extends CI_Model {
         return $this->db->where($data)->get($this->table_user)->result();
     } 
 
+
+    /*
+    | -------------------------------------------------------------------
+    | NEWSLETTER QUERIES
+    | -------------------------------------------------------------------
+    */
+
+    function get_newsletters()
+    {
+        return $this->db->get($this->table_newsletter)->result(); 
+    }
+
+    /**
+     * add_user_newsletter($email)
+     *
+     * @param string $email
+     * @return boolean
+     */
+    public function add_user_newsletter($email) : bool
+    {
+        $arr = $this->get_newsletters();
+        if(empty($arr)) {
+            return $this->done = FALSE;
+        } 
+        if( ! in_array($email, $arr)) {
+            $this->db->insert($this->table_newsletter, $email);
+            $this->done = TRUE;
+        } else {
+            $this->done = FALSE;
+        }
+        return $this->done;
+    }
+ 
     /**
      * get_where_user_id($id)
      *

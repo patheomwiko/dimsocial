@@ -260,6 +260,34 @@ class User extends CI_Controller {
     }
 
 
+    function newsletter() 
+    {
+        $this->form_validation->set_rules('email', 'email', 'required|trim|max_length[45]|min_length[8]|xss_clean|valid_email|strip_tags', 
+            array(
+                'required' => 'Le champs %s est obligatoire.',
+                'max_length' => 'Le  champs %s doit contenir au plus 45 caractères.',
+                'min_length' => 'Le champs %s doit contenir au mois 8 caractères.',
+                'strip_tags' => 'Le  champs %s contient des caractères inapropriés.',
+                'valid_email' => 'Entrez un e-mail valide.'
+            )
+        );
+
+        if($this->form_validation->run()) {
+            $email = $this->input->post('email', TRUE); 
+            if($this->UserModel->add_user_newsletter($email) == TRUE) {
+                echo 'You\'re souscribe to newsletter';
+            } else {
+                echo 'Failed';
+            }
+        } else {
+            print_r($this->user_data());
+            echo 'Failed at form validation !';
+            // redirect(base_url().'user/sign_in_view');
+        }
+
+    }
+
+
     /**
      * delete_account()
      *
