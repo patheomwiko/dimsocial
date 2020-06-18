@@ -282,6 +282,17 @@ class User extends CI_Controller {
         $this->load->view('sign_in', $this->data());
     }
 
+    function show_user() 
+    {
+        $id_user = $this->uri->segment(3);
+        $data['user'] = $this->UserModel->get_where_user_id($id_user);
+        if( ! empty($data) || $data != NULL) {
+            $this->load->view('show_user', $data);
+        } else {
+            echo 'User not found';
+        }
+    }
+
     function profile() {
         if($this->session->id){
             $data['user'] = $this->UserModel->get_where_user_id($this->session->id);

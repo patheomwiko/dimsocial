@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
-        <title>DIM Social - Votre profile</title>
+        <title>DIM Social - (Profile)</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -152,7 +152,7 @@
                                         return $item;
                                     }
                                 }
-
+                            
                                 if(isset($user)) {
                                     echo
                                     // <img class="img-fluid" src="'.base_url().'upload/'.$user[0]->imageUrl.'" alt="">
@@ -172,7 +172,7 @@
                                                 <li><a>'.$user[0]->email.'<i class="fa fa-send"></i></a></li>
                                                 <li><a>'.$user[0]->address.'<i class="fa fa-map-marker"></i></a></li>
                                                 <li><a>'.$user[0]->phone.'<i class="lnr lnr-phone"></i></a></li>
-                                                <li><a>'. if_isset($user[0]->site).'<i class="fa fa-tag"></i></a></li>
+                                                <li><a>'. if_isset($user[0]->site) .'<i class="fa fa-tag"></i></a></li>
                                                 <li><a class="excert text-right">'. if_isset($user[0]->bio) .'<i class="fa fa-book"></i></a></li>
                                             </ul>
                                             <ul class="social-links">
