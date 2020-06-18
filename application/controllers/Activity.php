@@ -99,6 +99,7 @@ class Activity extends CI_Controller {
             'domain' => $this->input->post('domain', TRUE),
             'description' => $this->input->post('description', TRUE),
             'imageUrl' => $this->input->post('imageUrl', TRUE),
+            'date' => date('Y-m-d'),
             'id_user' => $this->session->id
         );
     }
@@ -219,12 +220,22 @@ class Activity extends CI_Controller {
      *
      * @return void
      */
-    function user_activity() {
+    function user_activity() 
+    {
         $id_user = $this->uri->segment(3);
-        $result = $this->ActivityModel->get_activity_where_user($id_user);
-        if( ! empty($result) || $result != NULL) {
-            print_r($result);
-        } else {
+        $data['activity'] = $this->ActivityModel->get_activity_where_user($id_user);
+        $data['user'] = $this->UserModel->get_user_where_id($id_user);
+        
+        # Supplementaries
+        $data['activities'] = $this->ActivityModel->get_activities() ; 
+
+        if( ! empty($data) || $data != NULL) 
+        { 
+            // print_r($data['activity'][0]->name);
+            $this->load->view('own_activity', $data);
+        } 
+        else 
+        {
             echo 'Data activity user not found';
         }
     }
@@ -352,7 +363,7 @@ class Activity extends CI_Controller {
      * @return void
      */
     function get_activity($id) {
-        $id = $this->uri->segment(4);
+        $id = $this->uri->segment(3);
         $data['activity'] = $this->activitymodel->get_activity_where($id);
         if( ! empty($data) ) {
             $this->load->view('own_activity', $data);

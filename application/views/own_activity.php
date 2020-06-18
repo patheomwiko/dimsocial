@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
-        <title>DIM Social - </title>
+        <title>DIM Social - Votre activité</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -189,10 +189,17 @@
                                 // }
                             ?>
                             <!-- *** USER ACTIVITY *** -->    
-                           
-                            <div class="col-lg-12">
+
+
+                            <?php 
+ 
+                                if(isset($user) && isset($activity)) 
+                                {
+                                    echo 
+                                    '
+                                    <div class="col-lg-12">
                                         <div class="feature-img">
-                                            <img class="img-fluid" src="<?=base_url('assets/img/main/news_post_5.jpg')?>"  />
+                                        <img class="img-fluid" src="'.base_url().'upload/'.$activity[0]->imageUrl.'" alt="">
                                         </div>									
                                     </div>
 
@@ -202,32 +209,41 @@
                                                 <a class="active" href="'.site_url('activity/get_domain/').$activity[0]->domain.'">Technologie</a>  
                                             </div>
                                             <ul class="blog_meta list">
-                                                <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                                <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                                <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                                <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+                                                <li><a href="#">'.$user[0]->name.'<i class="lnr lnr-user"></i></a></li>
+                                                <!--<li><a href="#">'.$activity[0]->experience.' mois d\'expériences<i class="lnr lnr-calendar-full"></i></a></li>
+                                                 <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                                                <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li> -->
                                             </ul>
+                                            <!--
                                             <ul class="social-links">
                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-github"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-behance"></i></a></li>
                                             </ul>
+                                            -->
                                         </div>
                                     </div>
                                     
                            
-                                    <div class="col-lg-9 col-md-9 blog_details">
-                                    
-                                        <h2>Titre de l'article</h2>
+                                    <div class="col-lg-9 col-md-9 blog_details"> 
+                                        <h2>'.$activity[0]->name.'</h2>
                                         <p class="excert">
-                                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
+                                        '.$activity[0]->description.'
                                         </p>
-                                    </div>
+                                    </div> 
+                                    ';
+                                }
+                                else 
+                                {
+                                    echo 'Activity or user not found';
+                                }
                             
-                            
-
+                            ?>
+                           
+                                    
                         </div>
+
                         <div class="navigation-area">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">

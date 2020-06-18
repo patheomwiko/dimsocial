@@ -58,6 +58,17 @@ class ActivityModel extends CI_Model {
     private $none = array();
 
 
+
+
+
+
+
+
+
+
+
+
+
     /*
     | -------------------------------------------------------------------
     | ARTICLES QUERIES
@@ -116,7 +127,6 @@ class ActivityModel extends CI_Model {
     }
 
 
-
     /**
      * add_article($data)
      *
@@ -139,7 +149,6 @@ class ActivityModel extends CI_Model {
         return $this->done;
     }
 
-   
 
     /**
      * replace_article($data)
@@ -171,6 +180,16 @@ class ActivityModel extends CI_Model {
     public function delete_article($id) : bool {
         return $this->db->delete($this->table_article, array('id' => $id));  
     }
+
+
+
+
+
+
+
+
+
+
 
 
     /*
@@ -241,6 +260,20 @@ class ActivityModel extends CI_Model {
 
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     | -------------------------------------------------------------------
     | ACTIVITIES QUERIES
@@ -282,16 +315,26 @@ class ActivityModel extends CI_Model {
      * get_where_activity_id($id)
      *
      * @param integer $id
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_where_activity_id($id) {
         return $this->db->where('id', $id)->get($this->table_activity)->result();
+    }
+
+    /**
+     * get_activity_where_user($id)
+     *
+     * @param integer $id
+     * @return CI_DB_mysqli_result Object
+     */
+    public function get_activity_where_user($id) {
+        return $this->db->where('id_user', (int)$id)->get($this->table_activity)->result(); 
     }
     
     /**
      * get_desc_activities()
      *
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_desc_activities() {
         $this->db->order_by('id', 'DESC');
@@ -303,7 +346,7 @@ class ActivityModel extends CI_Model {
      * get_where_desc_activities($id)
      *
      * @param [integer] $id
-     * @return void
+     * @return CI_DB_mysqli_result Object
      */
     public function get_where_desc_activities($id) {
         $this->db->order_by('id', 'DESC');
@@ -419,6 +462,7 @@ class ActivityModel extends CI_Model {
         return $this->db->where('id', $id)->get($this->table_article)->result(); 
     }
 
+     
     /**
      * count_views()
      *
