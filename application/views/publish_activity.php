@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
-        <title>DIM Social - Publier votre project</title>
+        <title>DIM Social - Publier votre activité</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -68,7 +68,7 @@
 
 
 <!-- *** NAVBAR *** -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top text-light" style="background: #1d3163;">
+<nav class="navbar navbar-expand-lg navbar-light  text-light" style="background: #1d3163;">
     <a class="navbar-brand" href="<?=site_url();?>"><img src="<?=site_url('assets/img/main/logodim.png');?>" width="40" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

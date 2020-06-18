@@ -63,7 +63,7 @@
 
 
 <!-- *** NAVBAR *** -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top text-light" style="background: #1d3163;">
+<nav class="navbar navbar-expand-lg navbar-light text-light" style="background: #1d3163;">
     <a class="navbar-brand" href="<?=site_url();?>"><img src="<?=site_url('assets/img/main/logodim.png');?>" width="40" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -206,14 +206,22 @@
                                 }
                             
                             ?>
-
-                            
-                          
-
+ 
                         </div>
+
+
+                        <!-- <div class="comments-area">
+                            <h4> 
+                            <?php
+                                if(isset($comments)) {
+                                    echo count($comments);
+                                } 
+                            ?>  Commentaires</h4>
+                        </div> -->
+
                     </div>
-                    <div class="col-lg-4">
-                        <div class="blog_right_sidebar"> 
+                    <div class="col-lg-4" >
+                        <div class="blog_right_sidebar border-0 border-left" style="background-color: #FFF;"> 
                             <aside class="single_sidebar_widget popular_post_widget">
                                 
                                 <!-- Button trigger modal -->

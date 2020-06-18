@@ -63,7 +63,7 @@
 
 
 <!-- *** NAVBAR *** -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top text-light" style="background: #1d3163;">
+<nav class="navbar navbar-expand-lg navbar-light text-light" style="background: #1d3163;">
     <a class="navbar-brand" href="<?=site_url();?>"><img src="<?=site_url('assets/img/main/logodim.png');?>" width="40" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

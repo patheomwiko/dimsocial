@@ -41,6 +41,13 @@ class ActivityModel extends CI_Model {
      * @var string
      */
     private $table_domain = 'domains';
+
+    /**
+     * $table_comment
+     *
+     * @var string
+     */
+    private $table_comment = 'comments';
     
     /**
      * $done
@@ -460,6 +467,16 @@ class ActivityModel extends CI_Model {
      */
     public function count_comments($id) : int {
         return $this->db->where('id', $id)->get($this->table_article)->result(); 
+    }
+
+    /**
+     * count_comments_article(int $id)
+     *
+     * @param integer $id_article
+     * @return void
+     */
+    public function get_comments_article(int $id_article)  {
+        return $this->db->where('id_article', $id_article)->get($this->table_comment)->result();
     }
 
      

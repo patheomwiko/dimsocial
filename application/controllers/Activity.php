@@ -193,6 +193,7 @@ class Activity extends CI_Controller {
             $id_category = $data['article']->result()[0]->id_category;
             $data['user'] = $this->UserModel->get_user_where_id($id_user);
             $data['category'] = $this->ActivityModel->get_where_domain($id_category); 
+            $data['comments'] = $this->ActivityModel->get_comments_article($data['article']->result()[0]->id);
             
             # Increment articles views
             $this->ActivityModel->increment_views((int) $data['article']->result()[0]->id);

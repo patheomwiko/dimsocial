@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="<?=base_url('assets/img/main/logodim.png');?>" type="image/png">
-        <title>DIM Social</title>
+        <title>DIM Social - Accueil</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.css');?>">
         <link rel="stylesheet" href="<?=base_url('assets/vendors/linericon/style.css');?>">
@@ -63,7 +63,7 @@
 
 
             <!-- *** NAVBAR *** -->
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top text-light" style="background: #1d3163;">
+            <nav class="navbar navbar-expand-lg navbar-light  text-light" style="background: #1d3163;">
                 <a class="navbar-brand" href="<?=site_url();?>"><img src="<?=site_url('assets/img/main/logodim.png');?>" width="40" alt="" srcset=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -206,6 +206,13 @@
                                                                 {
                                                                     foreach ($domains -> result() as $domain) 
                                                                     {
+
+                                                                        // if($category[0]->CODE == $domain->CODE) {
+                                                                        //     echo '<a class="active" href="'.site_url('activity/show_all_articles_id/'.$domain->CODE).'">'.$category[0]->title.' </a>';
+                                                                        // } else {
+                                                                        //     echo '<a href="'.site_url('activity/show_all_articles_id/'.$domain->CODE).'">'.$domain->title.' </a>';
+                                                                        // }
+
                                                                         if($domains_arr->result()[0]->CODE == $domain->CODE) {
                                                                             echo '<a class="active" href="'.site_url('activity/show_all_domain/'.$domain->CODE) .'">'.$domain->title.'</a>';
                                                                         } else {
@@ -266,6 +273,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar sticky-top border-0"  style="background-color: #fff;"> 
+                            <!-- <aside class="single_sidebar_widget popular_post_widget mt-25"> -->
                             <aside class="single_sidebar_widget popular_post_widget mt-25">
                             
                                 <!-- *** MODAL MENU *** -->
@@ -305,7 +313,8 @@
                                 <!-- *** MODAL MENU *** -->
                                 
                                 
-                                <h3 class="widget_title border-bottom text-left text-muted p-0 mt-5" style="background: #FFF;"> <small>Posts récents</small> </h3>
+                                <h3 class="widget_title border-bottom text-left text-muted p-0" style="background: #FFF;"> <small>Posts récents</small> </h3>
+                                <!-- <h3 class="widget_title border-bottom text-left text-muted p-0 mt-5" style="background: #FFF;"> <small>Posts récents</small> </h3> -->
 
                                 <?php
 
