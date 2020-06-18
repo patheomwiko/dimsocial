@@ -79,16 +79,16 @@
             if(isset($this->session->name) || isset($this->session->email)) {
                 echo '
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mon compte
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="'.site_url('user/profile/'.$this->session->id).'"><i class="fa fa-user-circle-o"> Voir mon compte</a> 
-                        <a class="dropdown-item" href="'.site_url('activity/ user_activity/'.$this->session->id).'"><i class="fa fa-user-circle-o"> Mon activité</a> 
-                    <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="'.site_url('user/logout').'"><i class="fa fa-sign-out">  Se déconnecter</a>
-                    </div>
-                </li> 
+                                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user"></i> '.$this->session->name.'
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="'.site_url('user/profile/'.$this->session->id).'"><i class="fa fa-user-circle-o"></i> Voir mon compte</a> 
+                                    <a class="dropdown-item" href="'.site_url('activity/ user_activity/'.$this->session->id).'"><i class="fa fa-user-newspaper-o"></i> Mon activité</a> 
+                                <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="'.site_url('user/logout').'"><i class="fa fa-power-off"></i>  Se déconnecter</a>
+                                </div>
+                            </li> 
                 ';
             } else {
                 echo '
