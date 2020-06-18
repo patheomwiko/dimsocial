@@ -189,7 +189,7 @@
                             <aside class="single_sidebar_widget popular_post_widget">
                                 
                                 <!-- Button trigger modal -->
-                                <a href="#" class="btn widget_title btn btn-block rounded-0" style="background: #1d3163;" data-toggle="modal" data-target="#exampleModalCenter">
+                                <a href="#" class="btn widget_title btn-block rounded-0 border text-muted" style="background: transparent;" data-toggle="modal" data-target="#exampleModalCenter">
                                     Offres et publicités
                                 </a>
 
@@ -256,10 +256,10 @@
                                 </ul>
                             </aside>
                             
-                            <aside class="single_sidebar_widget ads_widget">
+                            <!-- <aside class="single_sidebar_widget ads_widget">
                                 <a href="#"><img class="img-fluid" src="<?=base_url('assets/img/blog/add.jpg');?>" alt=""></a>
                                 <div class="br"></div>
-                            </aside>
+                            </aside> -->
                         </div>
                     </div>
                 </div>

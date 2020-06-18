@@ -80,6 +80,16 @@ class UserModel extends CI_Model {
     } 
 
     /**
+     * get_where_user_email($email)
+     *
+     * @param string $email
+     * @return void
+     */
+    public function get_where_user_email($email) {
+        return $this->db->where('email', $email)->get($this->table_user)->result();
+    }
+
+    /**
      * get_desc_user()
      *
      * @return CI_DB_mysqli_result Object

@@ -199,6 +199,11 @@ class Activity extends CI_Controller {
     }
 
 
+    /**
+     * show_articles()
+     *
+     * @return void
+     */
     function show_articles() {
         $CODE_DOMAIN = $this->uri->segment(3);
         $data['articles'] = $this->ActivityModel->get_where_desc_articles($CODE_DOMAIN);
@@ -209,7 +214,20 @@ class Activity extends CI_Controller {
         }
     }
 
-    
+    /**
+     *  user_activity()
+     *
+     * @return void
+     */
+    function user_activity() {
+        $id_user = $this->uri->segment(3);
+        $result = $this->ActivityModel->get_activity_where_user($id_user);
+        if( ! empty($result) || $result != NULL) {
+            print_r($result);
+        } else {
+            echo 'Data activity user not found';
+        }
+    }
 
 
     /**

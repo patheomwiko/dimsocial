@@ -70,7 +70,8 @@ class User extends CI_Controller {
 		$this->session->sess_destroy();
         redirect(base_url().'home');
     }
-    
+
+
     /**
      * upload_image()
      *
@@ -259,7 +260,8 @@ class User extends CI_Controller {
             // print_r($this->user_data());
             $result = $this->UserModel->add_user($this->user_data());
             if($result == TRUE) {
-                echo 'Account is created !';
+                $data['user'] = $this->UserModel->get_where_user_email($this->data()['email']);
+                $this->load->view('profile', $data);
             } else {
                 echo 'Failed';
             }
@@ -272,13 +274,34 @@ class User extends CI_Controller {
     }
 
 
+    /**
+     * delete_account()
+     *
+     * @return void
+     */
+    function delete_account() {
+        $id = $this->uri->segment(3);
+        $result = $this->UserModel->delete_user($id);
+        if($result == TRUE) {
+            echo 'Data deleted';
+            $this->logout();
+            $this->load->view('index');
+        } else {
+            echo 'Error, cannot delete data.';
+        }
+    }
+
 
     function sign_in_view() {
         $this->load->view('sign_in', $this->data());
     }
 
     function profile() {
-        $this->load->view('profile', $this->user_data());
+        if($this->session->id){
+            $data['user'] = $this->UserModel->get_where_user_id($this->session->id);
+            // print_r($data);
+            $this->load->view('profile', $data);
+        } 
     }
 
     public function publish_activity() 	{ 
