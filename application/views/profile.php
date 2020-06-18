@@ -146,7 +146,7 @@
                                         <div class="feature-img justify-content-end text-right">
                                             <figure class="figure">
                                                 <img src="'.base_url().'upload/'.$user[0]->imageUrl.'" class="figure-img img-fluid rounded" alt="...">
-                                                <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
+                                                <figcaption class="figure-caption text-right">'.$user[0]->name.'</figcaption>
                                             </figure>
                                             
                                         </div>									
@@ -154,22 +154,21 @@
 
                                     <div class="col-lg-12  col-md-4">
                                         <div class="blog_info text-right">
-                                            <ul class="blog_meta list">
-                                                <li><a>'.$user[0]->name.'<i class="lnr lnr-user"></i></a></li> 
-                                                <li><a>'.$user[0]->email.'<i class="lnr lnr-email"></i></a></li>
-                                                <li><a>'.$user[0]->address.'<i class="lnr lnr-way"></i></a></li>
+                                            <ul class="blog_meta list"> 
+                                                <li><a>'.$user[0]->email.'<i class="fa fa-send"></i></a></li>
+                                                <li><a>'.$user[0]->address.'<i class="fa fa-map-marker"></i></a></li>
                                                 <li><a>'.$user[0]->phone.'<i class="lnr lnr-phone"></i></a></li>
-                                                <li><a>'.$user[0]->site.'<i class="lnr lnr-social"></i></a></li>
+                                                <li><a>'.$user[0]->site.'<i class="fa fa-tag"></i></a></li>
                                                 <li><p class="excert text-justify">'.$user[0]->bio.'</p></li>
                                             </ul>
                                             <ul class="social-links">
-                                                <li><a href="https://web.facebook.com/dimeurclub/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a></li>
+                                            <!-- <li><a href="https://web.facebook.com/dimeurclub/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a></li>
                                                 <li> <a href="https://www.linkedin.com/in/dim-business-ab9221185" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-linkedin"><i class="sr-only">LikedIn</i></span></a></li>
                                                 <li><a href="https://twitter.com/Danieldimilung1" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a></li>
                                                 <li> <a href="https://www.instagram.com/dimbusinessfamily/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a></li>
                                                 <li> <a href="https://www.youtube.com/channel/UCCWswgrLvQ2HqJo-HnSZasQ" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-youtube"><i class="sr-only">Youtube</i></span></a></li>
                                                 
-                                                <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-github"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-behance"></i></a></li> -->

@@ -163,21 +163,7 @@ class User extends CI_Controller {
         return $arr;
     }
 
-    /**
-     * my_account()
-     *
-     * @return void
-     */
-    function my_account() {
-        $id = $this->uri->segment(3);
-        $data['user'] = $this->UserModel->get_where_user_id($id);
-        if( ! empty($data) ) {
-            $this->load->view('my_account', $data);
-        } else {
-            echo 'Error, user not found';
-        }
-    }
-
+    
     function sign_in() 
     {
 

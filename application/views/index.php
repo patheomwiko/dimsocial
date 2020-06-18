@@ -79,7 +79,7 @@
                         if(isset($this->session->name) || isset($this->session->email)) {
                             echo '
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-light" href="'.site_url('user/profile/'.$this->session->id).'" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i> '.$this->session->name.'
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -180,7 +180,7 @@
 
 
                             <?php
-
+                                $i = 0;
                                 if(isset($articles)) 
                                 {
                                     if($articles -> num_rows() > 0) 
@@ -195,6 +195,9 @@
                                                      <div class="post_tag">
                                                         '?>
                                                         <?php 
+
+                                                            
+
                                                             $domains_arr = $this->ActivityModel->get_domains();
                                                             // print_r($domains_arr->result()[0]->title);
                                                             if(isset($domains)) 
@@ -221,11 +224,14 @@
                                                             //<li><a href="'.site_url('user/show_user/'.$user[0]->id).'">'.$user[0]->name.'<i class="lnr lnr-user"></i></a></li>
                                                             echo 
                                                             '
+                                                                <li><a>'.$users[$i][0]->name.'<i class="lnr lnr-user"></i></a></li>
                                                                 <li><a>'.$row->date.'<i class="lnr lnr-calendar-full"></i></a></li>
-                                                                <li><a href="'.site_url('activity/show_article/'.$row->id).'">'.$row->view.' M Views<i class="lnr lnr-eye"></i></a></li>
+                                                                <!-- <li><a href="'.site_url('activity/show_article/'.$row->id).'">'.$row->view.' M Views<i class="lnr lnr-eye"></i></a></li> -->
                                                                 <li><a href="'.site_url('activity/show_article/'.$row->id).'">0 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                                                <li><a href="'.site_url('activity/show_article/'.$row->id).'">0 Likes<i class="fa fa-heart "></i></a></li>
-                                                            ';
+                                                                <!-- <li><a href="'.site_url('activity/show_article/'.$row->id).'">0 Likes<i class="fa fa-heart "></i></a></li> -->
+                                                            '
+                                                            
+                                                            ;
                                                         ?>
 
                                                        
@@ -248,6 +254,7 @@
                                          </article>
              
                                             ';
+                                            ++$i;
                                         }
                                     }
                                 }
@@ -259,18 +266,8 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar sticky-top border-0"  style="background-color: #fff;"> 
-                            <aside class="single_sidebar_widget popular_post_widget mt-25 mt-lg-25">
-                                
-                                <!-- Button trigger modal -->
-                                <a href="offers" class="btn widget_title bg-light btn btn-block rounded-0 text-muted border"  data-toggle="modal" data-target="#exampleModalCenter">
-                                    Offres et publicités
-                                </a>
-                                <!-- Button trigger modal -->
-                                <a href="offers" class="btn widget_title bg-light btn btn-block rounded-0 text-muted border">
-                                    Promouvoir vos activités
-                                </a>
-
-                                
+                            <aside class="single_sidebar_widget popular_post_widget mt-25">
+                            
                                 <!-- *** MODAL MENU *** -->
 
                                     <!-- Modal -->
@@ -308,7 +305,7 @@
                                 <!-- *** MODAL MENU *** -->
                                 
                                 
-                                <h3 class="widget_title border-bottom text-left text-muted p-0" style="background: #FFF;"> <small>Posts récents</small> </h3>
+                                <h3 class="widget_title border-bottom text-left text-muted p-0 mt-5" style="background: #FFF;"> <small>Posts récents</small> </h3>
 
                                 <?php
 
