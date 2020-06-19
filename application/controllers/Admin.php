@@ -28,6 +28,5 @@ class Admin extends CI_Controller {
 	public function deconnexion(){
 		$this->load->view('admin/deconnexion');
 	}
- 
-    
+	  
 }
