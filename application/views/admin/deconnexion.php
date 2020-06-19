@@ -77,7 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
                 <ul class="nav" id="side-menu">
-                    <li style="padding: 10px 0 0;">
+                    <!-- <li style="padding: 10px 0 0;">
                         <a href="<?=site_url('admin');?>" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Tableau de bord</span></a>
                     </li>
                     <li>
@@ -100,16 +100,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li>
                         <a href="<?=site_url('admin/utilisateur');?>" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i><span class="hide-menu">Utilisateur</span></a>
-                    </li>
+                    </li> -->
                     <!-- <li>
                         <a href="" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i><span class="hide-menu">Icons</span></a>
                     </li> -->
                     <!-- <li>
                         <a href="" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Google Map</span></a>
                     </li> -->
-                    <li>
+                    <!-- <li>
                         <a href="<?=site_url('admin/manuel');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Manuel d'utilisation</span></a>
-                    </li>
+                    </li> -->
                     <!-- <li>
                         <a href="" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i><span class="hide-menu">Error 404</span></a>
                     </li> -->
