@@ -12,15 +12,10 @@ class Admin extends CI_Controller {
 	public function promouvoir() {
 		$this -> load -> view('admin/promouvoir');
 	} 
-	public function gerer_investisseurs() {
-		$this -> load -> view('admin/gerer_investisseurs');
-	} 
 	public function gerer_entrepreneurs() {
 		$this -> load -> view('admin/gerer_entrepreneurs');
 	} 
-	public function gerer_projets() {
-		$this -> load -> view('admin/gerer_projets');
-	}
+
     public function profile() {
 		$this -> load -> view('admin/profile');
 	} 
