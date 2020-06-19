@@ -81,20 +81,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="<?=site_url('admin');?>" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Tableau de bord</span></a>
                     </li>
                     <li>
-                        <a href="<?=site_url('admin/valider_projet');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Valider projet</span></a>
+                        <a href="<?=site_url('admin/valider_projet');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Valider  la publicité</span></a>
                     </li>
                     <li>
-                        <a href="<?=site_url('admin/promouvoir');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Promouvoir un projet</span></a>
+                        <a href="<?=site_url('admin/promouvoir');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Promouvoir vos activités </span></a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?=site_url('admin/gerer_investisseurs');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Gerer les investisseurs</span></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="<?=site_url('admin/gerer_entrepreneurs');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Gerer lesentrepreneurs</span></a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?=site_url('admin/gerer_projets');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Gerer les projets</span></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="<?=site_url('admin/profile');?>" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Profile</span></a>
                     </li>
@@ -128,11 +128,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Valider Projet </h4> </div>
+                        <h4 class="page-title">Valider  la publicité </h4> </div>
                     <!-- <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Upgrade to Pro</a> -->
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Valider Projet</li>
+                            <li class="active">Valider  la publicité</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -140,7 +140,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Valider Projet</h3> </div>
+                            <h3 class="box-title">Valider  la publicité</h3> </div>
                     </div>
                 </div>
             </div>
