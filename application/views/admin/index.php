@@ -77,7 +77,7 @@
                         <a href="<?=site_url('admin');?>" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Tableau de bord</span></a>
                     </li>
                     <li>
-                        <a href="<?=site_url('admin/valider_projet');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Valider  la publicité</span></a>
+                        <a href="<?=site_url('admin/valider_pub');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Valider  la publicité</span></a>
                     </li>
                     <li>
                         <a href="<?=site_url('admin/promouvoir');?>" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Promouvoir vos activités</span></a>
