@@ -6,8 +6,8 @@ class Admin extends CI_Controller {
 	public function index() {
 		$this->load->view('admin/index');
     }
-	public function valider_projet() {
-		$this -> load -> view('admin/valider_projet');
+	public function valider_pub() {
+		$this -> load -> view('admin/valider_pub');
 	}  
 	public function promouvoir() {
 		$this -> load -> view('admin/promouvoir');
