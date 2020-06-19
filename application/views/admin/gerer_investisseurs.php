@@ -45,7 +45,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
-            <div class="top-left-part"><a class="logo" href="index.html"><b><img src="<?=base_url('assets/admin/images/logo-dim');?>" alt="Dim" /></b><span class="hidden-xs"><img src="<?=base_url('assets/admin/images/logo');?>" alt=" CrowdFunding" /></span></a></div>                <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
+            <div class="top-left-part">
+                    <a class="logo" href="index.html">
+                        <b> 
+                            DIM
+                            <!-- <img src="<?=base_url('assets/admin/plugins/images/pixeladmin-logo.png');?>" alt="home" /> -->
+                        </b>
+                        <span class="hidden-xs">
+                            social
+                            <!-- <img src="<?=base_url('assets/admin/plugins/images/pixeladmin-text.png');?>" alt="home" /> -->
+                        </span>
+                    </a>
+                </div>
                     <li>
                         <!-- <form role="search" class="app-search hidden-xs">
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a>
