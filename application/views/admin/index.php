@@ -195,7 +195,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Recent Comments</h3>
+                            <h3 class="box-title">CLIENTS</h3>
                             <div class="comment-center">
                                 <div class="comment-body">
                                     <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
