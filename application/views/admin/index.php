@@ -193,63 +193,61 @@
                 <!-- /.row -->
                 <!-- row -->
                 <div class="row">
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">CLIENTS</h3>
-                            <div class="comment-center">
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
-                                    <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5> <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
-                                </div>
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Sonu Nigam</h5> <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
-                                </div>
-                                <div class="comment-body b-none">
-                                    <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Arijit Sinh</h5> <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. </span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">You have 5 new messages</h3>
-                            <div class="message-center">
-                                <a href="#">
-                                    <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
-                                </a>
-                                <a href="#">
-                                    <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                </a>
-                                <a href="#">
-                                    <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
-                                </a>
-                                <a href="#">
-                                    <div class="user-img"> <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Genelia Deshmukh</h5> <span class="mail-desc">I love to do acting and dancing</span> <span class="time">9:08 AM</span> </div>
-                                </a>
-                                <a href="#" class="b-none">
-                                    <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
+
+
+<div class="col-md-12 col-lg-6 col-sm-12">
+    <div class="white-box"> 
+        <h3 class="box-title">Entrepreneur de la semaine</h3> 
+        <form method="POST" action="<?=site_url('admin/upload_entrepreneur');?>" class="form-horizontal form-material">
+
+            <div class="form-group">
+                <label class="col-md-12">Chosissez une image</label>
+                <div class="col-md-12">
+                    <input type="file" name="files" id="files" class="btn bg-primary"><br>
+                    <small class="form-text text-danger"><?= form_error('files','<em>','</em>') ?></small><br>
+                </div> 
+                <div class="col-md-12" id="uploaded_images">
+                    
+                </div> 
             </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Nom de l'entrepreneur</label>
+                <div class="col-md-12">
+                    <input type="text" value="<?=set_value('name');?>" name="name" class="form-control form-control-line"> 
+                    <small class="form-text text-danger"><?= form_error('name','<em>','</em>') ?></small><br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Titre du projet</label>
+                <div class="col-md-12">
+                    <input type="text" value="<?=set_value('titre');?>" name="titre" class="form-control form-control-line"> 
+                    <small class="form-text text-danger"><?= form_error('titre','<em>','</em>') ?></small><br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="example-description" class="col-md-12">Description du projet</label>
+                <div class="col-md-12">
+                    <textarea  rows="4" type="text"  value="<?=set_value('description');?>"  class="form-control form-control-line" name="description" id="example-description"></textarea> 
+                    <small class="form-text text-danger"><?= form_error('description','<em>','</em>') ?></small><br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-12">Date de l'evenement</label>
+                <div class="col-md-12">
+                    <input type="date"  name="date" value="<?=set_value('date');?>" class="form-control form-control-line"> </div>
+                    <small class="form-text text-danger"><?= form_error('date','<em>','</em>') ?></small><br>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn btn-success">Publier l'entrepreneur</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2020 &copy; Andrea Medias Tech </footer>
         </div>
