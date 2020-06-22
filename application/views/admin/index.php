@@ -192,62 +192,80 @@
       
                 <!-- /.row -->
                 <!-- row -->
+                <!-- /row -->
                 <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <small class="text-danger"><?php if(isset($msg)) echo $msg; ?></small>
+                            <h3 class="box-title">Entrepreneurs de la semaine publiés</h3>
+                            <!-- <p class="text-muted">Add class <code>.table</code></p> -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th width="100">Nom complet</th>
+                                            <th width="150">Titre du projet</th>
+                                            <th width="150">Description du projet</th> 
+                                            <th>Date</th> 
+                                            <th width="150">Image</th> 
+                                            <th>Etat</th> 
+                                            <th>Option</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
 
+                                        function state($state, $id) {
+                                            if($state == 1){
+                                                return '<a class="btn btn-sm btn-primary" href="'.site_url('admin/desable_comment/'. $id).'" role="button">Retirer</a>';
+                                            } 
+                                            else { 
+                                                return '<a class="btn btn-sm btn-primary" href="'.site_url('admin/enable_comment/'. $id).'" role="button">Publier</a>'; 
+                                            }
+                                        }
 
-<div class="col-md-12 col-lg-6 col-sm-12">
-    <div class="white-box"> 
-        <h3 class="box-title">Entrepreneur de la semaine</h3> 
-        <form method="POST" action="<?=site_url('admin/upload_entrepreneur');?>" class="form-horizontal form-material">
+                                        function poster_state($state) {
+                                            if($state == 1) return 'En cours';
+                                            else return 'Publier';
+                                        }
+               
+                                        $i = 1;
+                                        if(isset($entrepreneurs)) {
+                                            if($entrepreneurs -> num_rows() > 0) {
+                                                foreach ($entrepreneurs -> result() as $row) {
+                                                    echo '
+                                                        <tr>
+                                                        <td>'.$i++.'</td>
+                                                        <td>'.$row -> name.'</td>
+                                                        <td>'.$row -> titre.'</td>
+                                                        <td>'.$row -> description.'</td>
+                                                        <td>'.$row -> date.'</td>
+                                                        <td>'.$row -> image.'</td>
+                                                        <td>'.$row -> state.'</td>
+                                                        <td colspan="3">
+                                                            <a class="btn btn-sm btn-primary" href="'.site_url('admin/update_entrepreneur/'. $row -> id).'" role="button">Modifier </a>
+                                                            <a class="btn btn-sm btn-primary" href="'.site_url('admin/enable_entrepreneur/'. $row -> id).'" role="button">'.poster_state($row -> state).'</a>
+                                                            <a class="btn btn-sm btn-danger" href="'.site_url('admin/delete_entrepreneur/'. $row -> id).'" role="button">Supprimer</a> 
+                                                        </td> 
+                                                        
+                                                    </tr> ';
+                                                } 
+                                            } else {
+                                                echo ''; 
+                                            }
+                                        } else {
 
-            <div class="form-group">
-                <label class="col-md-12">Chosissez une image</label>
-                <div class="col-md-12">
-                    <input type="file" name="files" id="files" class="btn bg-primary"><br>
-                    <small class="form-text text-danger"><?= form_error('files','<em>','</em>') ?></small><br>
-                </div> 
-                <div class="col-md-12" id="uploaded_images">
-                    
-                </div> 
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-12">Nom de l'entrepreneur</label>
-                <div class="col-md-12">
-                    <input type="text" value="<?=set_value('name');?>" name="name" class="form-control form-control-line"> 
-                    <small class="form-text text-danger"><?= form_error('name','<em>','</em>') ?></small><br>
+                                        } 
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <!-- /.row -->
 
-            <div class="form-group">
-                <label class="col-md-12">Titre du projet</label>
-                <div class="col-md-12">
-                    <input type="text" value="<?=set_value('titre');?>" name="titre" class="form-control form-control-line"> 
-                    <small class="form-text text-danger"><?= form_error('titre','<em>','</em>') ?></small><br>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="example-description" class="col-md-12">Description du projet</label>
-                <div class="col-md-12">
-                    <textarea  rows="4" type="text"  value="<?=set_value('description');?>"  class="form-control form-control-line" name="description" id="example-description"></textarea> 
-                    <small class="form-text text-danger"><?= form_error('description','<em>','</em>') ?></small><br>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-12">Date de l'evenement</label>
-                <div class="col-md-12">
-                    <input type="date"  name="date" value="<?=set_value('date');?>" class="form-control form-control-line"> </div>
-                    <small class="form-text text-danger"><?= form_error('date','<em>','</em>') ?></small><br>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <button class="btn btn-success">Publier l'entrepreneur</button>
-                </div>
-            </div>
-        </form>  
-    </div>
-</div> 
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2020 &copy; Andrea Medias Tech </footer>
         </div>
