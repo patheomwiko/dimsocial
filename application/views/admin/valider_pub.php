@@ -143,6 +143,75 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <h3 class="box-title">Valider  la publicité</h3> </div>
                     </div>
                 </div>
+                     <!-- /row -->
+                     <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <small class="text-danger"><?php if(isset($msg)) echo $msg; ?></small>
+                            <h3 class="box-title">NOUVEAUX CLIENTS</h3>
+                            <!-- <p class="text-muted">Add class <code>.table</code></p> -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th width="150">Image</th> 
+                                            <th width="100">Nom </th>
+                                            <th>Etat</th> 
+                                            <th>Date</th> 
+                                            <th>Option</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+
+                                        function state($state, $id) {
+                                            if($state == 1){
+                                                return '<a class="btn btn-sm btn-primary" href="'.site_url('admin/desable_comment/'. $id).'" role="button">Retirer</a>';
+                                            } 
+                                            else { 
+                                                return '<a class="btn btn-sm btn-primary" href="'.site_url('admin/enable_comment/'. $id).'" role="button">Publier</a>'; 
+                                            }
+                                        }
+
+                                        function poster_state($state) {
+                                            if($state == 1) return 'En cours';
+                                            else return 'Publier';
+                                        }
+               
+                                        $i = 1;
+                                        if(isset($entrepreneurs)) {
+                                            if($entrepreneurs -> num_rows() > 0) {
+                                                foreach ($entrepreneurs -> result() as $row) {
+                                                    echo '
+                                                        <tr>
+                                                        <td>'.$i++.'</td>
+                                                        <td>'.$row -> name.'</td>
+                                                        <td>'.$row -> date.'</td>
+                                                        <td>'.$row -> image.'</td>
+                                                        <td>'.$row -> state.'</td>
+                                                        <td colspan="3">
+                                                            <a class="btn btn-sm btn-primary" href="'.site_url('admin/update_entrepreneur/'. $row -> id).'" role="button">Modifier </a>
+                                                            <a class="btn btn-sm btn-primary" href="'.site_url('admin/enable_entrepreneur/'. $row -> id).'" role="button">'.poster_state($row -> state).'</a>
+                                                            <a class="btn btn-sm btn-danger" href="'.site_url('admin/delete_entrepreneur/'. $row -> id).'" role="button">Supprimer</a> 
+                                                        </td> 
+                                                        
+                                                    </tr> ';
+                                                } 
+                                            } else {
+                                                echo ''; 
+                                            }
+                                        } else {
+
+                                        } 
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2017 &copy;  Andrea Medias Tech </footer>
