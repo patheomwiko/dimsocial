@@ -188,95 +188,62 @@
                 </div>
                 <!-- /.row -->
                 <!--row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Sales Difference</h3>
-                            <ul class="list-inline text-right">
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #dadada;"></i>Site A View</h5>
-                                </li>
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #aec9cb;"></i>Site B View</h5>
-                                </li>
-                            </ul>
-                            <div id="morris-area-chart2" style="height: 370px;"></div>
-                        </div>
-                    </div>
-                </div>
-                <!--row -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Recent sales
-                                <div class="col-md-2 col-sm-4 col-xs-12 pull-right">
-                                    <select class="form-control pull-right row b-none">
-                                        <option>March 2016</option>
-                                        <option>April 2016</option>
-                                        <option>May 2016</option>
-                                        <option>June 2016</option>
-                                        <option>July 2016</option>
-                                    </select>
+
+         <div class="row">
+                <div class="col-md-12 col-lg-6 col-sm-12">
+                    <div class="white-box"> 
+                        <h3 class="box-title">Entrepreneur de la semaine</h3> 
+                        <form method="POST" action="<?=site_url('admin/upload_entrepreneur');?>" class="form-horizontal form-material">
+
+                            <div class="form-group">
+                                <label class="col-md-12">Chosissez une image</label>
+                                <div class="col-md-12">
+                                    <input type="file" name="files" id="files" class="btn bg-primary"><br>
+                                    <small class="form-text text-danger"><?= form_error('files','<em>','</em>') ?></small><br>
+                                </div> 
+                                <div class="col-md-12" id="uploaded_images">
+                                    
+                                </div> 
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-12">Nom de l'entrepreneur</label>
+                                <div class="col-md-12">
+                                    <input type="text" value="<?=set_value('name');?>" name="name" class="form-control form-control-line"> 
+                                    <small class="form-text text-danger"><?= form_error('name','<em>','</em>') ?></small><br>
                                 </div>
-                            </h3>
-                            <div class="table-responsive">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
-                                            <th>NAME</th>
-                                            <th>STATUS</th>
-                                            <th>DATE</th>
-                                            <th>PRICE</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="txt-oflo">Pixel admin</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 18</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Real Homes</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Medical Pro</td>
-                                            <td>TAX</td>
-                                            <td class="txt-oflo">April 20</td>
-                                            <td><span class="text-danger">-$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Hosting press</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 21</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Helping Hands</td>
-                                            <td>MEMBER</td>
-                                            <td class="txt-oflo">April 22</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Digital Agency</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 23</td>
-                                            <td><span class="text-danger">-$14</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Helping Hands</td>
-                                            <td>MEMBER</td>
-                                            <td class="txt-oflo">April 22</td>
-                                            <td><span class="text-success">$64</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table> <a href="#">Check all the sales</a> </div>
-                        </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-12">Titre du projet</label>
+                                <div class="col-md-12">
+                                    <input type="text" value="<?=set_value('titre');?>" name="titre" class="form-control form-control-line"> 
+                                    <small class="form-text text-danger"><?= form_error('titre','<em>','</em>') ?></small><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-description" class="col-md-12">Description du projet</label>
+                                <div class="col-md-12">
+                                    <textarea  rows="4" type="text"  value="<?=set_value('description');?>"  class="form-control form-control-line" name="description" id="example-description"></textarea> 
+                                    <small class="form-text text-danger"><?= form_error('description','<em>','</em>') ?></small><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Date de l'evenement</label>
+                                <div class="col-md-12">
+                                    <input type="date"  name="date" value="<?=set_value('date');?>" class="form-control form-control-line"> </div>
+                                    <small class="form-text text-danger"><?= form_error('date','<em>','</em>') ?></small><br>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success">Publier l'entrepreneur</button>
+                                </div>
+                            </div>
+                        </form>  
                     </div>
-                </div>
+                </div>      
+         </div>
                 <!-- /.row -->
                 <!-- row -->
                 <div class="row">
