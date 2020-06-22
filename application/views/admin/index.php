@@ -205,12 +205,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th width="150">Image</th> 
-                                            <th width="100">Nom complet</th>
-                                            <th width="150">Titre du projet</th>
-                                            <th width="150">Description du projet</th> 
-                                            <th>Date</th> 
-                                            
+                                            <th width="100">Nom </th>
                                             <th>Etat</th> 
+                                            <th>Date</th> 
                                             <th>Option</th> 
                                         </tr>
                                     </thead>
@@ -239,8 +236,6 @@
                                                         <tr>
                                                         <td>'.$i++.'</td>
                                                         <td>'.$row -> name.'</td>
-                                                        <td>'.$row -> titre.'</td>
-                                                        <td>'.$row -> description.'</td>
                                                         <td>'.$row -> date.'</td>
                                                         <td>'.$row -> image.'</td>
                                                         <td>'.$row -> state.'</td>
