@@ -197,18 +197,19 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <small class="text-danger"><?php if(isset($msg)) echo $msg; ?></small>
-                            <h3 class="box-title">Entrepreneurs de la semaine publiés</h3>
+                            <h3 class="box-title">NOUVEAUX CLIENTS</h3>
                             <!-- <p class="text-muted">Add class <code>.table</code></p> -->
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th width="150">Image</th> 
                                             <th width="100">Nom complet</th>
                                             <th width="150">Titre du projet</th>
                                             <th width="150">Description du projet</th> 
                                             <th>Date</th> 
-                                            <th width="150">Image</th> 
+                                            
                                             <th>Etat</th> 
                                             <th>Option</th> 
                                         </tr>
