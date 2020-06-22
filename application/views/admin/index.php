@@ -189,61 +189,7 @@
                 <!-- /.row -->
                 <!--row -->
 
-         <div class="row">
-                <div class="col-md-12 col-lg-6 col-sm-12">
-                    <div class="white-box"> 
-                        <h3 class="box-title">Publication  de l'article</h3> 
-                        <form method="POST" action="<?=site_url('admin/upload_entrepreneur');?>" class="form-horizontal form-material">
-
-                            <div class="form-group">
-                                <label class="col-md-12">Chosissez une image</label>
-                                <div class="col-md-12">
-                                    <input type="file" name="files" id="files" class="btn bg-primary"><br>
-                                    <small class="form-text text-danger"><?= form_error('files','<em>','</em>') ?></small><br>
-                                </div> 
-                                <div class="col-md-12" id="uploaded_images">
-                                    
-                                </div> 
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-12">Nom de l'article</label>
-                                <div class="col-md-12">
-                                    <input type="text" value="<?=set_value('name');?>" name="name" class="form-control form-control-line"> 
-                                    <small class="form-text text-danger"><?= form_error('name','<em>','</em>') ?></small><br>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-12">Titre de l'article</label>
-                                <div class="col-md-12">
-                                    <input type="text" value="<?=set_value('titre');?>" name="titre" class="form-control form-control-line"> 
-                                    <small class="form-text text-danger"><?= form_error('titre','<em>','</em>') ?></small><br>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="example-description" class="col-md-12">Description de l'article</label>
-                                <div class="col-md-12">
-                                    <textarea  rows="4" type="text"  value="<?=set_value('description');?>"  class="form-control form-control-line" name="description" id="example-description"></textarea> 
-                                    <small class="form-text text-danger"><?= form_error('description','<em>','</em>') ?></small><br>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-12">Date de l'article</label>
-                                <div class="col-md-12">
-                                    <input type="date"  name="date" value="<?=set_value('date');?>" class="form-control form-control-line"> </div>
-                                    <small class="form-text text-danger"><?= form_error('date','<em>','</em>') ?></small><br>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <button class="btn btn-success">Publier l'article</button>
-                                </div>
-                            </div>
-                        </form>  
-                    </div>
-                </div>      
-         </div>
+      
                 <!-- /.row -->
                 <!-- row -->
                 <div class="row">
