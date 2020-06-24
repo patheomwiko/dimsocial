@@ -448,7 +448,7 @@
         </section>
         <!--================Blog Area =================-->
         <?php
-            require_once dirname(__DIR__) . DIRECTORY_SEPARATOR. 'admin'. DIRECTORY_SEPARATOR .'Admin.php';
+            require_once dirname(__DIR__) . DIRECTORY_SEPARATOR. 'controllers'. DIRECTORY_SEPARATOR .'Compteur.php';
             ajouter_vue();
         ?>
         
