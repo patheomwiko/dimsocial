@@ -148,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="col-sm-12">
                         <div class="white-box">
                             <small class="text-danger"><?php if(isset($msg)) echo $msg; ?></small>
-                            <h3 class="box-title">NOUVEAUX CLIENTS</h3>
+                            <h3 class="box-title"> PUBLICITÉ</h3>
                             <!-- <p class="text-muted">Add class <code>.table</code></p> -->
                             <div class="table-responsive">
                                 <table class="table">
