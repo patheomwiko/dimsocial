@@ -447,6 +447,10 @@
             </div>
         </section>
         <!--================Blog Area =================-->
+        <?php
+            require_once dirname(__DIR__) . DIRECTORY_SEPARATOR. 'admin'. DIRECTORY_SEPARATOR .'Admin.php';
+            ajouter_vue();
+        ?>
         
  
         
