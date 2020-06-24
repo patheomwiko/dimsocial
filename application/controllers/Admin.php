@@ -28,5 +28,9 @@ class Admin extends CI_Controller {
 	public function deconnexion(){
 		$this->load->view('admin/deconnexion');
 	}
+	function ajouter_vue() {
+		$fichier = dirname(__DIR__). DIRECTORY_SEPARATOR . 'date' . DIRECTORY_SEPARATOR . 'compteur';
+		$compteur 
+	}
 	  
 }
